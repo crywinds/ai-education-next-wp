@@ -3,17 +3,30 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
+import ParticlesBackground from "@/components/ui/ParticlesBackground";
+import { AuroraTextEffect } from "@/components/ui/AuroraTextEffect";
 
 export function HeroSection() {
   return (
     <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-background to-muted/20">
+      {/* Particles Background */}
+      <ParticlesBackground
+        colors={['#3b82f6', '#8b5cf6', '#ec4899']}
+        size={3}
+        countDesktop={80}
+        countTablet={60}
+        countMobile={40}
+        zIndex={0}
+        height="100%"
+      />
+
       {/* 背景裝飾元素 */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-700"></div>
       </div>
 
-      <div className="container max-w-5xl mx-auto px-6 sm:px-8 py-20 text-center">
+      <div className="container max-w-5xl mx-auto px-6 sm:px-8 py-20 text-center relative z-10">
         {/* 評分徽章 */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/80 backdrop-blur-sm border mb-8 animate-slide-in-bottom delay-100">
           <div className="flex items-center gap-1">
@@ -31,14 +44,33 @@ export function HeroSection() {
           <span className="text-sm text-muted-foreground">來自 200+ 評價</span>
         </div>
 
-        {/* 主標題 */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 animate-slide-in-bottom delay-200">
-          你的 AI 創作魔法好幫手
-          <br />
-          <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-            AI 教育學院
-          </span>
-        </h1>
+        {/* 主標題 - 使用 Aurora Text Effect */}
+        <div className="mb-6 animate-slide-in-bottom delay-200">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-2">
+            <AuroraTextEffect
+              text="你的 AI 創作魔法好幫手"
+              fontSize="clamp(2.5rem, 6vw, 5rem)"
+              className="block mb-2"
+              colors={{
+                first: "bg-blue-400",
+                second: "bg-purple-400",
+                third: "bg-pink-400",
+                fourth: "bg-cyan-400",
+              }}
+            />
+            <AuroraTextEffect
+              text="AI 教育學院"
+              fontSize="clamp(2rem, 5vw, 4rem)"
+              className="block"
+              colors={{
+                first: "bg-primary",
+                second: "bg-blue-600",
+                third: "bg-purple-600",
+                fourth: "bg-pink-600",
+              }}
+            />
+          </h1>
+        </div>
 
         {/* 副標題 */}
         <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed animate-slide-in-bottom delay-300">

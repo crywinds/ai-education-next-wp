@@ -2,6 +2,7 @@
 
 import { Container, Section } from "@/components/craft";
 import { Star } from "lucide-react";
+import { InteractiveCard } from "@/components/ui/InteractiveCard";
 
 const testimonials = [
   {
@@ -55,15 +56,16 @@ export function Testimonials() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
-            <div
+            <InteractiveCard
               key={index}
-              className="p-6 rounded-xl border bg-card/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.02] relative overflow-hidden group"
+              InteractiveColor="#8b5cf6"
+              borderRadius="12px"
+              rotationFactor={0.2}
+              tailwindBgClass="bg-card/50 backdrop-blur-sm border p-6 flex flex-col h-full"
               style={{
                 animationDelay: `${index * 100}ms`,
               }}
             >
-              {/* 背景裝飾 */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star
@@ -72,14 +74,14 @@ export function Testimonials() {
                   />
                 ))}
               </div>
-              <p className="text-muted-foreground mb-4 italic">
+              <p className="text-muted-foreground mb-4 italic flex-grow">
                 "{testimonial.content}"
               </p>
               <div>
                 <p className="font-semibold">{testimonial.name}</p>
                 <p className="text-sm text-muted-foreground">{testimonial.role}</p>
               </div>
-            </div>
+            </InteractiveCard>
           ))}
         </div>
       </Container>

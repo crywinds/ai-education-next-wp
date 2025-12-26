@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Palette, Code, Smartphone, Layers, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { InteractiveCard } from "@/components/ui/InteractiveCard";
 
 const services = [
   {
@@ -54,39 +55,36 @@ export function ServicesShowcase() {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <div
+              <InteractiveCard
                 key={service.title}
-                className="group relative p-6 rounded-xl border bg-card/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 cursor-pointer"
+                InteractiveColor="#3b82f6"
+                borderRadius="12px"
+                rotationFactor={0.3}
+                tailwindBgClass={cn(
+                  "bg-card/50 backdrop-blur-sm border",
+                  "p-6 flex flex-col items-center text-center gap-4"
+                )}
+                className="h-full"
                 style={{
                   animationDelay: `${index * 100}ms`,
                 }}
               >
-                {/* 漸層背景 */}
                 <div
                   className={cn(
-                    "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-xl",
-                    service.color
+                    "p-4 rounded-lg bg-gradient-to-br",
+                    service.color,
+                    "bg-opacity-10 transition-all duration-300"
                   )}
-                ></div>
-
-                <div className="relative flex flex-col items-center text-center gap-4">
-                  <div
-                    className={cn(
-                      "p-4 rounded-lg bg-gradient-to-br",
-                      service.color,
-                      "bg-opacity-10 group-hover:bg-opacity-20 transition-all duration-300"
-                    )}
-                  >
-                    <Icon className="w-8 h-8 text-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-2">{service.title}</h3>
-                    <p className="text-sm text-muted-foreground">
-                      {service.description}
-                    </p>
-                  </div>
+                >
+                  <Icon className="w-8 h-8 text-foreground" />
                 </div>
-              </div>
+                <div>
+                  <h3 className="font-semibold mb-2">{service.title}</h3>
+                  <p className="text-sm text-muted-foreground">
+                    {service.description}
+                  </p>
+                </div>
+              </InteractiveCard>
             );
           })}
         </div>

@@ -10,7 +10,7 @@ import {
   Brain,
   Zap,
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { SlidingLogoMarquee, SlidingLogoMarqueeItem } from "@/components/ui/SlidingLogoMarquee";
 
 const tools = [
   {
@@ -58,44 +58,32 @@ const tools = [
 ];
 
 export function TechShowcase() {
-  const [visibleItems, setVisibleItems] = useState<boolean[]>([]);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // 依次顯示每個工具圖標
-            tools.forEach((_, index) => {
-              setTimeout(() => {
-                setVisibleItems((prev) => {
-                  const newItems = [...prev];
-                  newItems[index] = true;
-                  return newItems;
-                });
-              }, index * 100);
-            });
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
+  const marqueeItems: SlidingLogoMarqueeItem[] = tools.map((tool) => {
+    const Icon = tool.icon;
+    return {
+      id: tool.name,
+      content: (
+        <div className={cn(
+          "group relative p-6 rounded-xl border bg-card/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 cursor-pointer",
+          tool.bgColor,
+          tool.hoverColor
+        )}>
+          <div className="flex flex-col items-center gap-3 min-w-[120px]">
+            <Icon
+              className={cn(
+                "w-8 h-8 group-hover:scale-125 transition-transform duration-300",
+                tool.color
+              )}
+            />
+            <span className="text-sm font-medium text-center whitespace-nowrap">{tool.name}</span>
+          </div>
+        </div>
+      ),
     };
-  }, []);
+  });
 
   return (
-    <Section className="bg-muted/30 relative overflow-hidden" ref={sectionRef}>
+    <Section className="bg-muted/30 relative overflow-hidden">
       {/* 背景裝飾 */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-1/4 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
@@ -110,38 +98,17 @@ export function TechShowcase() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-          {tools.map((tool, index) => {
-            const Icon = tool.icon;
-            const isVisible = visibleItems[index] ?? false;
-            return (
-              <div
-                key={tool.name}
-                className={cn(
-                  "group relative p-6 rounded-xl border bg-card/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 hover:scale-110 cursor-pointer overflow-hidden",
-                  tool.bgColor,
-                  tool.hoverColor,
-                  isVisible ? "animate-scale-in" : "opacity-0"
-                )}
-                style={{
-                  transitionDelay: `${index * 50}ms`,
-                }}
-              >
-                {/* 懸停時的發光效果 */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
-                <div className="relative flex flex-col items-center gap-3">
-                  <Icon
-                    className={cn(
-                      "w-8 h-8 group-hover:scale-125 transition-transform duration-300",
-                      tool.color
-                    )}
-                  />
-                  <span className="text-sm font-medium text-center">{tool.name}</span>
-                </div>
-              </div>
-            );
-          })}
+        <div className="py-8">
+          <SlidingLogoMarquee
+            items={marqueeItems}
+            speed={50}
+            height="180px"
+            enableBlur={true}
+            blurIntensity={2}
+            pauseOnHover={true}
+            backgroundColor="transparent"
+            gap="1.5rem"
+          />
         </div>
       </Container>
     </Section>

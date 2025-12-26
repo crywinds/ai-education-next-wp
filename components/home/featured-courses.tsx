@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Clock, Users, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { InteractiveCard } from "@/components/ui/InteractiveCard";
 
 const courses = [
   {
@@ -55,47 +56,52 @@ export function FeaturedCourses() {
 
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           {courses.map((course) => (
-            <Link
+            <InteractiveCard
               key={course.id}
-              href={`/courses/${course.slug}`}
-              className="group block p-6 rounded-xl border bg-card/50 backdrop-blur-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 relative overflow-hidden"
+              InteractiveColor="#3b82f6"
+              borderRadius="12px"
+              rotationFactor={0.2}
+              tailwindBgClass="bg-card/50 backdrop-blur-sm border p-6 flex flex-col h-full"
             >
-              {/* 懸停時的漸層背景 */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-              <div className="flex items-center justify-between mb-4">
-                <Badge variant="secondary">{course.category}</Badge>
-                <Badge
-                  variant={course.level === "初級" ? "default" : course.level === "中級" ? "outline" : "destructive"}
-                >
-                  {course.level}
-                </Badge>
-              </div>
-
-              <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                {course.title}
-              </h3>
-              <p className="text-muted-foreground mb-6 line-clamp-2">{course.description}</p>
-
-              <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                <div className="flex items-center gap-1">
-                  <Clock className="w-4 h-4" />
-                  <span>{course.duration}</span>
+              <Link
+                href={`/courses/${course.slug}`}
+                className="group flex flex-col h-full"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <Badge variant="secondary">{course.category}</Badge>
+                  <Badge
+                    variant={course.level === "初級" ? "default" : course.level === "中級" ? "outline" : "destructive"}
+                  >
+                    {course.level}
+                  </Badge>
                 </div>
-                <div className="flex items-center gap-1">
-                  <Users className="w-4 h-4" />
-                  <span>{course.students}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  <span>{course.rating}</span>
-                </div>
-              </div>
 
-              <div className="flex items-center text-primary font-semibold group-hover:gap-2 transition-all">
-                了解更多
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </Link>
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                  {course.title}
+                </h3>
+                <p className="text-muted-foreground mb-6 line-clamp-2 flex-grow">{course.description}</p>
+
+                <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
+                  <div className="flex items-center gap-1">
+                    <Clock className="w-4 h-4" />
+                    <span>{course.duration}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Users className="w-4 h-4" />
+                    <span>{course.students}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    <span>{course.rating}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center text-primary font-semibold group-hover:gap-2 transition-all mt-auto">
+                  了解更多
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
+            </InteractiveCard>
           ))}
         </div>
 
