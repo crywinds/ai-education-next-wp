@@ -15,7 +15,7 @@ export function HeroSection() {
 
       <div className="container max-w-5xl mx-auto px-6 sm:px-8 py-20 text-center">
         {/* 評分徽章 */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted border mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/80 backdrop-blur-sm border mb-8 animate-slide-in-bottom delay-100">
           <div className="flex items-center gap-1">
             {[...Array(5)].map((_, i) => (
               <svg
@@ -32,7 +32,7 @@ export function HeroSection() {
         </div>
 
         {/* 主標題 */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 animate-slide-in-bottom delay-200">
           你的 AI 創作魔法好幫手
           <br />
           <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
@@ -41,13 +41,13 @@ export function HeroSection() {
         </h1>
 
         {/* 副標題 */}
-        <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
+        <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed animate-slide-in-bottom delay-300">
           結合 AI 技術與實戰經驗，為您構建高效、實用且易於掌握的 AI 創作技能。
           從 ChatGPT 到 Midjourney，我們提供全方位的 AI 教育解決方案。
         </p>
 
         {/* CTA 按鈕組 */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-400">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-in-bottom delay-500">
           <Button asChild size="lg" className="group text-lg px-8 py-6">
             <Link href="/courses">
               探索課程

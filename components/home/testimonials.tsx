@@ -57,8 +57,13 @@ export function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="p-6 rounded-xl border bg-card hover:shadow-lg transition-all duration-300"
+              className="p-6 rounded-xl border bg-card/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.02] relative overflow-hidden group"
+              style={{
+                animationDelay: `${index * 100}ms`,
+              }}
             >
+              {/* 背景裝飾 */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star

@@ -58,8 +58,10 @@ export function FeaturedCourses() {
             <Link
               key={course.id}
               href={`/courses/${course.slug}`}
-              className="group block p-6 rounded-xl border bg-card hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+              className="group block p-6 rounded-xl border bg-card/50 backdrop-blur-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 relative overflow-hidden"
             >
+              {/* 懸停時的漸層背景 */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
               <div className="flex items-center justify-between mb-4">
                 <Badge variant="secondary">{course.category}</Badge>
                 <Badge
