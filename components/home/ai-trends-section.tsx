@@ -2,7 +2,7 @@ import { Container, Section } from "@/components/craft";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, TrendingUp } from "lucide-react";
-import { getPosts } from "@/lib/wordpress";
+import { getAllPosts } from "@/lib/wordpress";
 
 const trendingTopics = [
   {
@@ -26,10 +26,11 @@ const trendingTopics = [
 ];
 
 export async function AITrendsSection() {
-  // 獲取最新的 AI 相關文章
+  // 獲取最新的 AI 相關文章（getAllPosts 會返回最多 100 篇，我們只取前 3 篇）
   let recentPosts = [];
   try {
-    recentPosts = await getPosts({ per_page: 3 });
+    const allPosts = await getAllPosts();
+    recentPosts = allPosts.slice(0, 3);
   } catch (error) {
     console.error("Error fetching posts:", error);
     // 如果 WordPress API 不可用，使用空陣列
