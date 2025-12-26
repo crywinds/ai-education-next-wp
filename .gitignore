@@ -40,3 +40,15 @@ next-env.d.ts
 .claude
 .factory
 RAILWAY-SETUP.md
+
+# Local environment files
+.env.local
+.env*.local
+
+# pnpm
+.pnpm-store
+pnpm-lock.yaml
+
+# IDE
+.vscode
+.idea
