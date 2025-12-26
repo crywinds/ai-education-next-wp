@@ -22,7 +22,6 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 import { mainMenu, contentMenu } from "@/menu.config";
-import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/site.config";
 
 export function MobileNav() {
