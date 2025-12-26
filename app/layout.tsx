@@ -24,13 +24,14 @@ const font = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "WordPress & Next.js Starter by 9d8",
+  title: "AI 教育學院 - 學習 AI 創作的專業平台",
   description:
-    "A starter template for Next.js with WordPress as a headless CMS.",
+    "探索 AI 創作、學習最新 AI 技術，參加專業 AI 課程，從 ChatGPT 到 Midjourney，開啟您的 AI 創作之旅",
   metadataBase: new URL(siteConfig.site_domain),
   alternates: {
     canonical: "/",
   },
+  keywords: "AI 教育, AI 課程, AI 創作, 人工智慧, 機器學習, ChatGPT, Midjourney",
 };
 
 export default function RootLayout({
