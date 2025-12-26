@@ -22,6 +22,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 import { mainMenu, contentMenu } from "@/menu.config";
+import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/site.config";
 
 export function MobileNav() {
@@ -53,18 +54,18 @@ export function MobileNav() {
         </SheetHeader>
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
           <div className="flex flex-col space-y-3">
-            <h3 className="text-small mt-6">Menu</h3>
+            <h3 className="text-sm font-semibold mt-6">主要選單</h3>
             <Separator />
-            {Object.entries(mainMenu).map(([key, href]) => (
-              <MobileLink key={key} href={href} onOpenChange={setOpen}>
-                {key.charAt(0).toUpperCase() + key.slice(1)}
+            {Object.entries(mainMenu).map(([label, href]) => (
+              <MobileLink key={href} href={href} onOpenChange={setOpen}>
+                {label}
               </MobileLink>
             ))}
-            <h3 className="text-small pt-6">Blog Menu</h3>
+            <h3 className="text-sm font-semibold pt-6">內容選單</h3>
             <Separator />
-            {Object.entries(contentMenu).map(([key, href]) => (
-              <MobileLink key={key} href={href} onOpenChange={setOpen}>
-                {key.charAt(0).toUpperCase() + key.slice(1)}
+            {Object.entries(contentMenu).map(([label, href]) => (
+              <MobileLink key={href} href={href} onOpenChange={setOpen}>
+                {label}
               </MobileLink>
             ))}
           </div>
