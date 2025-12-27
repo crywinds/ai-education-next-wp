@@ -1,13 +1,29 @@
-import { getPosts } from '@/lib/wordpress'
+import { getCoursesFromWP, getPosts, transformPostToCourse } from '@/lib/wordpress'
 import CourseCard from '@/components/CourseCard'
 import { Course } from '@/types'
 
 async function getCourses(): Promise<Course[]> {
-  // 實際應用中，這裡應該從 WordPress 獲取課程
-  // const posts = await getPosts({ categories: COURSE_CATEGORY_ID })
-  // return posts.map(transformToCourse)
-  
-  // 示例數據
+  try {
+    // 只從 Custom Post Type "course" 獲取課程（自動處理分頁）
+    // 如果 course post type 不存在，會返回空數組
+    const posts = await getCoursesFromWP({ fetchAll: true })
+    
+    // 如果沒有找到課程，可能是 course post type 未設置
+    if (posts.length === 0) {
+      console.warn('未找到課程數據。請確保在 WordPress 中創建了 "course" Custom Post Type。')
+      return []
+    }
+    
+    // 轉換為 Course 類型
+    return posts.map(transformPostToCourse)
+  } catch (error) {
+    console.error('Error fetching courses:', error)
+    return []
+  }
+}
+
+// 备用示例数据（仅在开发时使用）
+function getFallbackCourses(): Course[] {
   return [
     {
       id: 1,
@@ -84,6 +100,16 @@ async function getCourses(): Promise<Course[]> {
   ]
 }
 
+// 如果需要使用备用数据，取消下面的注释
+// async function getCourses(): Promise<Course[]> {
+//   const courses = await getCoursesFromWordPress()
+//   return courses.length > 0 ? courses : getFallbackCourses()
+// }
+
+// Next.js 會自動緩存這個頁面，每60秒重新驗證一次
+// 這樣可以避免每次訪問都重新獲取數據，同時保持數據相對新鮮
+export const revalidate = 60 // 重新驗證時間（秒）
+
 export default async function CoursesPage() {
   const courses = await getCourses()
 
@@ -104,4 +130,5 @@ export default async function CoursesPage() {
     </div>
   )
 }
+
 

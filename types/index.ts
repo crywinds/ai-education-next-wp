@@ -4,7 +4,7 @@ export interface Course {
   id: number
   title: string
   description: string
-  content: string
+  content?: string
   image?: string
   duration?: string
   level?: '初級' | '中級' | '高級'
@@ -21,4 +21,5 @@ export interface Category {
   description?: string
   count: number
 }
+
 

@@ -39,7 +39,7 @@ export default function Testimonials() {
                   <p className="text-sm text-gray-600">{testimonial.role}</p>
                 </div>
               </div>
-              <p className="text-gray-700 italic">"{testimonial.content}"</p>
+              <p className="text-gray-700 italic">&ldquo;{testimonial.content}&rdquo;</p>
               <div className="flex mt-4 text-yellow-400">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -54,4 +54,5 @@ export default function Testimonials() {
     </section>
   )
 }
+
 

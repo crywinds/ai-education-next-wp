@@ -35,6 +35,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/pricing" className="hover:text-white transition">
+                  服務方案
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="hover:text-white transition">
                   關於我們
                 </Link>
@@ -46,6 +51,11 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">資源</h4>
             <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/resources" className="hover:text-white transition">
+                  設計資源
+                </Link>
+              </li>
               <li>
                 <Link href="/blog" className="hover:text-white transition">
                   AI 教學文章
@@ -100,4 +110,5 @@ export default function Footer() {
     </footer>
   )
 }
+
 

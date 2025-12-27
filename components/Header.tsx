@@ -26,6 +26,12 @@ export default function Header() {
             <Link href="/blog" className="text-gray-700 hover:text-primary-600 transition">
               文章
             </Link>
+            <Link href="/pricing" className="text-gray-700 hover:text-primary-600 transition">
+              服務方案
+            </Link>
+            <Link href="/resources" className="text-gray-700 hover:text-primary-600 transition">
+              設計資源
+            </Link>
             <Link href="/about" className="text-gray-700 hover:text-primary-600 transition">
               關於我們
             </Link>
@@ -86,6 +92,20 @@ export default function Header() {
               文章
             </Link>
             <Link
+              href="/pricing"
+              className="block py-2 text-gray-700 hover:text-primary-600"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              服務方案
+            </Link>
+            <Link
+              href="/resources"
+              className="block py-2 text-gray-700 hover:text-primary-600"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              設計資源
+            </Link>
+            <Link
               href="/about"
               className="block py-2 text-gray-700 hover:text-primary-600"
               onClick={() => setIsMenuOpen(false)}
@@ -105,4 +125,5 @@ export default function Header() {
     </header>
   )
 }
+
 

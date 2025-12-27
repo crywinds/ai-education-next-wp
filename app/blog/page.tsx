@@ -16,8 +16,14 @@ function getFeaturedImage(post: WPPost) {
   return post._embedded?.['wp:featuredmedia']?.[0]?.source_url || null
 }
 
+// Next.js 會自動緩存這個頁面，每60秒重新驗證一次
+// 這樣可以避免每次訪問都重新獲取數據，同時保持數據相對新鮮
+export const revalidate = 60 // 重新驗證時間（秒）
+
 export default async function BlogPage() {
-  const posts = await getPosts({ per_page: 12 })
+  // 如果需要顯示所有文章，可以使用 fetchAll: true
+  // 否則只獲取前12篇文章（用於首頁預覽）
+  const posts = await getPosts({ per_page: 12, fetchAll: false })
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -87,4 +93,5 @@ export default async function BlogPage() {
     </div>
   )
 }
+
 
