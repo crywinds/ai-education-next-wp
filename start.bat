@@ -1,82 +1,103 @@
 @echo off
-chcp 65001 >nul
-title [AI教育-前端] Next.js WordPress 项目 - Port 5200
+chcp 936 >nul
+cd /d "%~dp0"
+set "PROJECT_PATH=%~dp0"
+title [AI�Ш|-�e��] Next.js WordPress ?�� - Port 5200
 color 0A
 echo.
 echo ========================================
-echo    AI 教育平台 - Next.js WordPress 前端项目
-echo    项目路径: f:\FIFA\new-next-wp
-echo    服务地址: http://localhost:5200
+echo    AI �Ш|���x - Next.js WordPress �e��?��
+echo    ?�ظ�?: %PROJECT_PATH%
+echo    �A?�a�}: http://localhost:5200
 echo ========================================
 echo.
 
-REM 检查 MySQL 服务状态
+REM Check if port 5200 is in use
+netstat -ano | findstr ":5200" | findstr "LISTENING" >nul 2>&1
+if errorlevel 1 goto check_mysql
+echo [AI�Ш|-�e��] [ĵ�i] �ݤf 5200 �w�Q�e��
+echo [AI�Ш|-�e��] [����] ���b????�e�κݤf��?�{...
+for /f "tokens=5" %%a in ('netstat -ano ^| findstr ":5200" ^| findstr "LISTENING"') do (
+    echo [AI�Ш|-�e��] [�H��] ???�{ PID: %%a
+    taskkill /F /PID %%a >nul 2>&1
+    if errorlevel 1 (
+        echo [AI�Ш|-�e��] [??] ?�k???�{�A?��???
+        pause
+        exit /b 1
+    ) else (
+        echo [AI�Ш|-�e��] [���\] �w??�e�κݤf��?�{
+    )
+)
+timeout /t 2 >nul
+echo.
+
+:check_mysql
+REM Check MySQL service status
 if exist "C:\xampp\mysql\bin\mysqld.exe" (
-    echo [AI教育-前端] 检测到 XAMPP MySQL
-    REM 检查 MySQL 端口是否在监听（3306端口）
+    echo [AI�Ш|-�e��] ??�� XAMPP MySQL
     netstat -an | findstr ":3306" | findstr "LISTENING" >nul 2>&1
-    if %errorlevel% neq 0 (
-        echo [AI教育-前端] [警告] MySQL 服务似乎未运行（端口 3306 未监听）
-        echo [AI教育-前端] [提示] 请先启动 XAMPP Control Panel 并启动 MySQL 服务
-        echo [AI教育-前端] [提示] 路径: C:\xampp\xampp-control.exe
+    if errorlevel 1 (
+        echo [AI�Ш|-�e��] [ĵ�i] MySQL �A?���G��?��
+        echo [AI�Ш|-�e��] [����] ?��?? XAMPP Control Panel �}?? MySQL �A?
+        echo [AI�Ш|-�e��] [����] ��?: C:\xampp\xampp-control.exe
         echo.
-        set /p open_xampp="是否现在打开 XAMPP Control Panel? (Y/N): "
+        set /p open_xampp="�O�_?�b��? XAMPP Control Panel? (Y/N): "
         if /i "%open_xampp%"=="Y" (
             start "" "C:\xampp\xampp-control.exe"
-            echo [AI教育-前端] [信息] 请在 XAMPP Control Panel 中启动 MySQL，然后按任意键继续...
+            echo [AI�Ш|-�e��] [�H��] ?�b XAMPP Control Panel ��?? MySQL�A�M�Z�����N???...
             pause >nul
         )
     ) else (
-        echo [AI教育-前端] [信息] MySQL 服务已在运行（端口 3306 正在监听）
+        echo [AI�Ш|-�e��] [�H��] MySQL �A?�w�b?��
     )
     echo.
 ) else if exist "C:\xampp\xampp-control.exe" (
-    echo [AI教育-前端] [信息] 检测到 XAMPP
-    echo [AI教育-前端] [提示] 请确保已在 XAMPP Control Panel 中启动 MySQL
+    echo [AI�Ш|-�e��] [�H��] ??�� XAMPP
+    echo [AI�Ш|-�e��] [����] ?�̫O�w�b XAMPP Control Panel ��?? MySQL
     echo.
 )
 
-REM 检查 Node.js 是否安装
+REM Check if Node.js is installed
 where node >nul 2>&1
-if %errorlevel% neq 0 (
-    echo [AI教育-前端] [错误] 未检测到 Node.js，请先安装 Node.js
-    echo [AI教育-前端] 下载地址: https://nodejs.org/
+if errorlevel 1 (
+    echo [AI�Ш|-�e��] [??] ��??�� Node.js�A?���w? Node.js
+    echo [AI�Ш|-�e��] �U?�a�}: https://nodejs.org/
     pause
     exit /b 1
 )
 
-echo [AI教育-前端] [信息] 检测到 Node.js 版本:
+echo [AI�Ш|-�e��] [�H��] ??�� Node.js ����:
 node --version
 echo.
 
-REM 检查是否已安装依赖
+REM Check if dependencies are installed
 if not exist "node_modules" (
-    echo [AI教育-前端] [信息] 检测到未安装依赖，正在安装...
+    echo [AI�Ш|-�e��] [�H��] ??�쥼�w?��?�A���b�w?...
     echo.
     call npm install
-    if %errorlevel% neq 0 (
-        echo [AI教育-前端] [错误] 依赖安装失败
+    if errorlevel 1 (
+        echo [AI�Ш|-�e��] [??] ��?�w?��?
         pause
         exit /b 1
     )
     echo.
-    echo [AI教育-前端] [成功] 依赖安装完成
+    echo [AI�Ш|-�e��] [���\] ��?�w?����
     echo.
 ) else (
-    echo [AI教育-前端] [信息] 依赖已存在，跳过安装步骤
+    echo [AI�Ш|-�e��] [�H��] ��?�w�s�b�A��?�w?�B?
     echo.
 )
 
-REM 启动开发服务器
+REM Start development server
 color 0A
 echo.
 echo ========================================
-echo           启动开发服务器
+echo           ????�A?��
 echo ========================================
 echo.
-echo [AI教育-前端] 正在启动 Next.js 开发服务器...
-echo [AI教育-前端] 服务器地址: http://localhost:5200
-echo [AI教育-前端] 按 Ctrl+C 可停止服务器
+echo [AI�Ш|-�e��] ���b?? Next.js ??�A?��...
+echo [AI�Ш|-�e��] �A?���a�}: http://localhost:5200
+echo [AI�Ш|-�e��] �� Ctrl+C �i����A?��
 echo.
 echo ========================================
 echo.

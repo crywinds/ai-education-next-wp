@@ -371,11 +371,20 @@ export function transformPostToCourse(post: WPPost): Course {
   // 從 ACF 字段獲取課程特定資訊（如果使用了 ACF）
   const acf = (post as any).acf || {}
   
+  // 安全地獲取 excerpt，如果不存在則從 content 中提取或使用空字符串
+  let description = ''
+  if (post.excerpt?.rendered) {
+    description = post.excerpt.rendered.replace(/<[^>]*>/g, '').trim()
+  } else if (post.content?.rendered) {
+    // 如果沒有 excerpt，從 content 中提取前 150 個字符作為描述
+    description = post.content.rendered.replace(/<[^>]*>/g, '').trim().substring(0, 150)
+  }
+  
   return {
     id: post.id,
     title: post.title.rendered,
-    description: post.excerpt.rendered.replace(/<[^>]*>/g, '').trim(),
-    content: post.content.rendered,
+    description: description,
+    content: post.content?.rendered || '',
     image: featuredImage,
     duration: acf.duration || acf.course_duration,
     level: acf.level || acf.course_level,
