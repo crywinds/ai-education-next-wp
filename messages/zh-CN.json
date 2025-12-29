@@ -1,0 +1,71 @@
+{
+  "common": {
+    "brand": "Korae",
+    "brandFull": "Korae 韩国东大门买手网",
+    "home": "首页",
+    "about": "关于我们",
+    "services": "服务",
+    "contact": "联系我们",
+    "blog": "最新消息",
+    "wholesale": "纯批发服务",
+    "careers": "人才招募",
+    "awards": "业界奖项",
+    "media": "媒体影片",
+    "pricing": "服务费用",
+    "learnMore": "了解更多",
+    "getStarted": "立即开始",
+    "readMore": "阅读更多",
+    "viewAll": "查看全部",
+    "loading": "加载中...",
+    "error": "发生错误",
+    "search": "搜索",
+    "close": "关闭",
+    "menu": "菜单"
+  },
+  "hero": {
+    "badge": "透明收费・无捆绑服务・多平台数据下载",
+    "title": "日韩时装批发平台",
+    "subtitle": "为批发客户提供高效的日韩时装商品浏览、订购及数据管理工具",
+    "subtitle2": "支持多平台数据下载（CSV、Excel、JSON），轻松汇入 Shopify、WooCommerce 等平台",
+    "cta1": "免费注册开始批发",
+    "cta2": "了解会员计划",
+    "stats": {
+      "years": "年专业经验",
+      "clients": "合作客户",
+      "enterprises": "企业支持"
+    }
+  },
+  "header": {
+    "marquee": {
+      "item1": "✨ 100% AI 学费回赠计划",
+      "item2": "🎯 超过 50,000人及 40+个企业支持",
+      "item3": "🚀 香港首个一站式韩国批发平台",
+      "item4": "💎 成交费、交易费全免",
+      "item5": "⭐ 业界信誉保证"
+    },
+    "nav": {
+      "news": "最新消息",
+      "products": "批发商品列表",
+      "consultation": "预约咨询",
+      "about": "韩国批发团队简介",
+      "services": "批发+网店服务",
+      "wholesale": "纯批发服务",
+      "careers": "人才招募",
+      "awards": "业界奖项",
+      "media": "媒体影片"
+    }
+  },
+  "footer": {
+    "description": "我们团队致力让您从网络游览韩国东大门时装批发市场，协助您轻松一站式打造你个人专属的完整网店",
+    "navigation": "网站导览",
+    "services": "精选服务",
+    "featured": "编辑精选",
+    "popularPosts": "最新文章",
+    "popularTags": "热门标签",
+    "copyright": "Copyright © {year} Korae All Rights Reserved.",
+    "aboutUs": "关于我们",
+    "contactUs": "联系我们",
+    "pricing": "服务费用"
+  }
+}
+

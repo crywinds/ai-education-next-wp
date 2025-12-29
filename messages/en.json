@@ -1,0 +1,71 @@
+{
+  "common": {
+    "brand": "Korae",
+    "brandFull": "Korae Korean Dongdaemun Buying Network",
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "contact": "Contact",
+    "blog": "News",
+    "wholesale": "Wholesale Services",
+    "careers": "Careers",
+    "awards": "Awards",
+    "media": "Media",
+    "pricing": "Pricing",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "loading": "Loading...",
+    "error": "Error occurred",
+    "search": "Search",
+    "close": "Close",
+    "menu": "Menu"
+  },
+  "hero": {
+    "badge": "Transparent Pricing・No Bundled Services・Multi-Platform Data Download",
+    "title": "Japanese & Korean Fashion Wholesale Platform",
+    "subtitle": "Efficient browsing, ordering, and data management tools for wholesale clients",
+    "subtitle2": "Support multi-platform data download (CSV, Excel, JSON), easily import to Shopify, WooCommerce and other platforms",
+    "cta1": "Free Registration to Start Wholesale",
+    "cta2": "Learn About Membership Plans",
+    "stats": {
+      "years": "Years of Experience",
+      "clients": "Partner Clients",
+      "enterprises": "Enterprise Support"
+    }
+  },
+  "header": {
+    "marquee": {
+      "item1": "✨ 100% AI Tuition Rebate Program",
+      "item2": "🎯 Over 50,000 people and 40+ enterprises support",
+      "item3": "🚀 Hong Kong's First One-Stop Korean Wholesale Platform",
+      "item4": "💎 No transaction fees or commission",
+      "item5": "⭐ Industry Reputation Guarantee"
+    },
+    "nav": {
+      "news": "Latest News",
+      "products": "Wholesale Products",
+      "consultation": "Book Consultation",
+      "about": "About Korean Wholesale Team",
+      "services": "Wholesale + E-commerce Services",
+      "wholesale": "Wholesale Services",
+      "careers": "Careers",
+      "awards": "Industry Awards",
+      "media": "Media Videos"
+    }
+  },
+  "footer": {
+    "description": "Our team is committed to helping you browse the Korean Dongdaemun fashion wholesale market online and easily build your own complete online store",
+    "navigation": "Site Navigation",
+    "services": "Featured Services",
+    "featured": "Editor's Picks",
+    "popularPosts": "Latest Articles",
+    "popularTags": "Popular Tags",
+    "copyright": "Copyright © {year} Korae All Rights Reserved.",
+    "aboutUs": "About Us",
+    "contactUs": "Contact Us",
+    "pricing": "Pricing"
+  }
+}
+

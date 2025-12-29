@@ -1,107 +1,78 @@
 @echo off
-chcp 936 >nul
-cd /d "%~dp0"
-set "PROJECT_PATH=%~dp0"
-title [AI�Ш|-�e��] Next.js WordPress ?�� - Port 5200
-color 0A
-echo.
+chcp 65001
+cls
+title Korae Development Server
+
 echo ========================================
-echo    AI �Ш|���x - Next.js WordPress �e��?��
-echo    ?�ظ�?: %PROJECT_PATH%
-echo    �A?�a�}: http://localhost:5200
+echo   Korae Development Server
 echo ========================================
 echo.
 
-REM Check if port 5200 is in use
-netstat -ano | findstr ":5200" | findstr "LISTENING" >nul 2>&1
-if errorlevel 1 goto check_mysql
-echo [AI�Ш|-�e��] [ĵ�i] �ݤf 5200 �w�Q�e��
-echo [AI�Ш|-�e��] [����] ���b????�e�κݤf��?�{...
-for /f "tokens=5" %%a in ('netstat -ano ^| findstr ":5200" ^| findstr "LISTENING"') do (
-    echo [AI�Ш|-�e��] [�H��] ???�{ PID: %%a
-    taskkill /F /PID %%a >nul 2>&1
-    if errorlevel 1 (
-        echo [AI�Ш|-�e��] [??] ?�k???�{�A?��???
-        pause
-        exit /b 1
-    ) else (
-        echo [AI�Ш|-�e��] [���\] �w??�e�κݤf��?�{
-    )
-)
-timeout /t 2 >nul
-echo.
-
-:check_mysql
-REM Check MySQL service status
-if exist "C:\xampp\mysql\bin\mysqld.exe" (
-    echo [AI�Ш|-�e��] ??�� XAMPP MySQL
-    netstat -an | findstr ":3306" | findstr "LISTENING" >nul 2>&1
-    if errorlevel 1 (
-        echo [AI�Ш|-�e��] [ĵ�i] MySQL �A?���G��?��
-        echo [AI�Ш|-�e��] [����] ?��?? XAMPP Control Panel �}?? MySQL �A?
-        echo [AI�Ш|-�e��] [����] ��?: C:\xampp\xampp-control.exe
-        echo.
-        set /p open_xampp="�O�_?�b��? XAMPP Control Panel? (Y/N): "
-        if /i "%open_xampp%"=="Y" (
-            start "" "C:\xampp\xampp-control.exe"
-            echo [AI�Ш|-�e��] [�H��] ?�b XAMPP Control Panel ��?? MySQL�A�M�Z�����N???...
-            pause >nul
-        )
-    ) else (
-        echo [AI�Ш|-�e��] [�H��] MySQL �A?�w�b?��
-    )
-    echo.
-) else if exist "C:\xampp\xampp-control.exe" (
-    echo [AI�Ш|-�e��] [�H��] ??�� XAMPP
-    echo [AI�Ш|-�e��] [����] ?�̫O�w�b XAMPP Control Panel ��?? MySQL
-    echo.
-)
-
-REM Check if Node.js is installed
+REM Check Node.js
+echo [Step 1/4] Checking Node.js...
 where node >nul 2>&1
 if errorlevel 1 (
-    echo [AI�Ш|-�e��] [??] ��??�� Node.js�A?���w? Node.js
-    echo [AI�Ш|-�e��] �U?�a�}: https://nodejs.org/
+    echo.
+    echo [ERROR] Node.js not found!
+    echo Please install Node.js from: https://nodejs.org/
+    echo.
     pause
     exit /b 1
 )
-
-echo [AI�Ш|-�e��] [�H��] ??�� Node.js ����:
-node --version
+echo [OK] Node.js found
 echo.
 
-REM Check if dependencies are installed
+REM Check npm
+echo [Step 2/4] Checking npm...
+where npm >nul 2>&1
+if errorlevel 1 (
+    echo.
+    echo [ERROR] npm not found!
+    echo.
+    pause
+    exit /b 1
+)
+echo [OK] npm found
+echo.
+
+REM Check dependencies
+echo [Step 3/4] Checking dependencies...
 if not exist "node_modules" (
-    echo [AI�Ш|-�e��] [�H��] ??�쥼�w?��?�A���b�w?...
+    echo [INFO] node_modules not found, installing...
     echo.
     call npm install
     if errorlevel 1 (
-        echo [AI�Ш|-�e��] [??] ��?�w?��?
+        echo.
+        echo [ERROR] Failed to install dependencies!
+        echo.
         pause
         exit /b 1
     )
     echo.
-    echo [AI�Ш|-�e��] [���\] ��?�w?����
-    echo.
+    echo [OK] Dependencies installed
 ) else (
-    echo [AI�Ш|-�e��] [�H��] ��?�w�s�b�A��?�w?�B?
-    echo.
+    echo [OK] Dependencies exist
 )
+echo.
 
-REM Start development server
-color 0A
+REM Start server
+echo [Step 4/4] Starting development server...
 echo.
 echo ========================================
-echo           ????�A?��
+echo   Server Info
+echo ========================================
+echo   URL: http://localhost:5200
+echo   Stop: Stop: Press Ctrl+C
 echo ========================================
 echo.
-echo [AI�Ш|-�e��] ���b?? Next.js ??�A?��...
-echo [AI�Ш|-�e��] �A?���a�}: http://localhost:5200
-echo [AI�Ш|-�e��] �� Ctrl+C �i����A?��
-echo.
-echo ========================================
+echo Starting server, please wait...
 echo.
 
 call npm run dev
 
+echo.
+echo ========================================
+echo   Server stopped
+echo ========================================
+echo.
 pause

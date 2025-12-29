@@ -36,6 +36,18 @@ const config: Config = {
           800: '#075985',
           900: '#0c4a6e',
         },
+        pink: {
+          50: '#fdf2f8',
+          100: '#fce7f3',
+          200: '#fbcfe8',
+          300: '#f9a8d4',
+          400: '#f472b6',
+          500: '#ec4899',
+          600: '#db2777',
+          700: '#be185d',
+          800: '#9f1239',
+          900: '#831843',
+        },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
@@ -82,7 +94,43 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    require('daisyui'),
+  ],
+  daisyui: {
+    themes: [
+      {
+        korae: {
+          "primary": "#0ea5e9",
+          "secondary": "#64748b",
+          "accent": "#ec4899",
+          "neutral": "#1f2937",
+          "base-100": "#ffffff",
+          "info": "#3b82f6",
+          "success": "#10b981",
+          "warning": "#f59e0b",
+          "error": "#ef4444",
+        },
+        "korae-dark": {
+          "primary": "#38bdf8",
+          "secondary": "#64748b",
+          "accent": "#f472b6",
+          "neutral": "#1e293b",
+          "base-100": "#0f172a",
+          "info": "#3b82f6",
+          "success": "#10b981",
+          "warning": "#f59e0b",
+          "error": "#ef4444",
+        },
+      },
+      "light",
+      "dark",
+    ],
+    base: true,
+    styled: true,
+    utils: true,
+  },
 }
 export default config
 
