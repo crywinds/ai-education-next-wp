@@ -4,16 +4,18 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import SnowEffect from '@/components/SnowEffect'
+import { generateMetadata as genMeta } from '@/lib/seo'
 // 暫時禁用 LocaleHtmlUpdater
 // import LocaleHtmlUpdater from '@/components/LocaleHtmlUpdater'
 
 const inter = Inter({ subsets: ['latin', 'latin-ext'] })
 
-export const metadata: Metadata = {
-  title: '批發上遊、讓您從網絡瀏覽 日本、韓國批發市場 - Korae 韓國東大門買手網',
-  description: 'Korae 韓國東大門買手網 - 為您提供一站式零存貨批發‧完善網上銷售系統。從網絡瀏覽韓國東大門市場，提供韓國批發、日本時裝批發服務。',
-  keywords: '韓國批發, 東大門批發, 日本時裝批發, 韓國時裝批發, 網店系統, 批發平台, 韓國東大門, 零存貨批發',
-}
+export const metadata: Metadata = genMeta({
+  title: '批發上遊、讓您從網絡瀏覽 日本、韓國批發市場',
+  description: 'Korae 韓國東大門買手網 - 為您提供一站式零存貨批發‧完善網上銷售系統。從網絡瀏覽韓國東大門市場，提供韓國批發、日本時裝批發服務。透明收費、無捆綁服務、多平台數據下載。',
+  keywords: ['批發上遊', '網絡批發', '零存貨批發', '透明收費'],
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://korae.com',
+})
 
 export default function RootLayout({
   children,

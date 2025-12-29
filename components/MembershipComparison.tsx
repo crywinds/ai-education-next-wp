@@ -24,7 +24,7 @@ export default function MembershipComparison() {
     {
       name: '數據下載功能',
       free: '不可下載（僅可線上查看商品詳情）',
-      premium: '無限制下載（支援 CSV、Excel、JSON 格式，包含圖片、描述、價格、庫存等；相容 Shopify、WooCommerce 等平台）',
+      premium: '無限制下載（支援 CSV、Excel、JSON 格式，包含圖片、描述、價格、庫存等；相容 Shopify、WooCommerce、Shopline、Shopage 等平台）',
     },
     {
       name: '訂單與物流',

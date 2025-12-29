@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import ThemeToggle from '@/components/ThemeToggle'
@@ -10,6 +11,7 @@ import ThemeToggle from '@/components/ThemeToggle'
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [logoError, setLogoError] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,7 +33,7 @@ export default function Header() {
   const navLinks = [
     { label: '最新消息', href: '/blog', type: 'link' },
     { label: '批發商品列表', href: 'https://www.orangeboxapp.com', external: true, type: 'link' },
-    { label: '預約諮詢', href: '/contact', type: 'link' },
+    // { label: '預約諮詢', href: '/contact', type: 'link' }, // 已隱藏
     { label: '韓國批發團隊簡介', href: '/about', type: 'link' },
     { label: '批發+網店服務', href: '/services', type: 'button', highlight: true },
     { label: '純批發服務', href: '/wholesale', type: 'link' },
@@ -89,32 +91,32 @@ export default function Header() {
         <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-50"></div>
         <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-30 blur-sm"></div>
         
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="flex items-center justify-between gap-4">
+        <div className="container mx-auto px-3 sm:px-4 relative z-10">
+          <div className="flex items-center justify-between gap-2 sm:gap-4">
             {/* Left Side - Brand */}
-            <div className="flex items-center gap-4 flex-shrink-0">
+            <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
               <Link href="/" className="font-semibold hover:text-blue-400 transition relative group">
-                <span className="relative z-10">Korae 韓國東大門買手網</span>
+                <span className="relative z-10 text-xs sm:text-sm">Korae 韓國東大門買手網</span>
                 <span className="absolute inset-0 bg-blue-600 blur-xl opacity-0 group-hover:opacity-50 transition-opacity"></span>
               </Link>
             </div>
 
             {/* Center - Marquee */}
-            <div className="flex-1 overflow-hidden mx-4">
+            <div className="flex-1 overflow-hidden mx-2 sm:mx-4 min-w-0">
               <div className="marquee-container">
                 <div className="marquee-content">
                   {marqueeItems.map((item, index) => (
-                    <span key={index} className="marquee-item">
+                    <span key={index} className="marquee-item text-xs sm:text-sm">
                       {item}
-                      <span className="mx-8 text-blue-400">•</span>
+                      <span className="mx-4 sm:mx-8 text-blue-400">•</span>
                     </span>
                   ))}
                 </div>
                 <div className="marquee-content" aria-hidden="true">
                   {marqueeItems.map((item, index) => (
-                    <span key={index} className="marquee-item">
+                    <span key={index} className="marquee-item text-xs sm:text-sm">
                       {item}
-                      <span className="mx-8 text-blue-400">•</span>
+                      <span className="mx-4 sm:mx-8 text-blue-400">•</span>
                     </span>
                   ))}
                 </div>
@@ -122,7 +124,7 @@ export default function Header() {
             </div>
 
             {/* Right Side - Social Icons */}
-            <div className="flex items-center gap-4 flex-shrink-0">
+            <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
               <motion.a 
                 href="https://www.facebook.com/orangeboxhk/" 
                 target="_blank" 
@@ -184,35 +186,33 @@ export default function Header() {
           }}
         />
         
-        <nav className="container mx-auto px-4 py-3 md:py-4 relative">
-          <div className="flex items-center justify-between">
-            {/* Logo with Digital Effect */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <Link href="/" className="relative group">
-                <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-pink-500 to-cyan-500 bg-clip-text text-transparent bg-[length:200%_100%] animate-[gradient_3s_ease_infinite]">
-                  Korae
-                </span>
-                {/* Glow Effect */}
-                <span className="absolute inset-0 text-2xl font-bold bg-gradient-to-r from-blue-600 via-pink-500 to-cyan-500 bg-clip-text text-transparent blur-sm opacity-50 group-hover:opacity-100 transition-opacity"></span>
-                {/* Digital Scan Line */}
-                <motion.span
-                  className="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-transparent"
-                  animate={{
-                    y: ['-100%', '100%'],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'linear',
-                  }}
-                />
+        <nav className="container mx-auto px-3 sm:px-4 py-2 sm:py-3 md:py-4 relative">
+          <div className="flex items-center justify-between gap-2">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <Link href="/" className="block">
+                <div className="relative w-24 h-8 sm:w-32 sm:h-10 md:w-40 md:h-12">
+                  {!logoError ? (
+                    <Image
+                      src="/images/logo/korae-logo.png"
+                      alt="Korae"
+                      fill
+                      className="object-contain"
+                      priority
+                      onError={() => {
+                        setLogoError(true)
+                      }}
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 via-pink-500 to-cyan-500 bg-clip-text text-transparent">
+                        Korae
+                      </span>
+                    </div>
+                  )}
+                </div>
               </Link>
-            </motion.div>
+            </div>
 
             {/* Desktop Navigation - 逐一出現動畫 */}
             <div className="hidden lg:flex items-center space-x-1 overflow-x-auto">
@@ -274,11 +274,12 @@ export default function Header() {
             </div>
 
             {/* Theme Toggle and Mobile Menu Button */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
               <motion.div
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3, delay: 0.7 }}
+                className="hidden sm:block"
               >
                 <ThemeToggle />
               </motion.div>
@@ -291,7 +292,7 @@ export default function Header() {
               >
                 <motion.button
                   whileTap={{ scale: 0.9 }}
-                  className="p-2 text-slate-700 dark:text-slate-300 relative"
+                  className="p-2.5 sm:p-2 text-slate-700 dark:text-slate-300 relative touch-manipulation"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                   aria-label="Toggle menu"
                 >
@@ -343,19 +344,19 @@ export default function Header() {
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
-                className="lg:hidden mt-4 space-y-2 pb-4 border-t border-slate-200 pt-4 overflow-hidden"
+                className="lg:hidden mt-4 space-y-1.5 sm:space-y-2 pb-4 border-t border-slate-200 dark:border-slate-700 pt-4 overflow-hidden"
               >
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ delay: index * 0.05 }}
                   >
                     {link.type === 'button' ? (
                       <Link
                         href={link.href}
-                        className="block py-3 px-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg text-center font-semibold shadow-lg"
+                        className="block py-3.5 px-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg text-center font-semibold shadow-lg text-sm sm:text-base touch-manipulation active:scale-95 transition-transform"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         {link.label}
@@ -365,7 +366,7 @@ export default function Header() {
                         href={link.href}
                         target={link.external ? '_blank' : undefined}
                         rel={link.external ? 'noopener noreferrer' : undefined}
-                        className="block py-3 text-slate-700 hover:text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition"
+                        className="block py-3.5 px-4 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-lg hover:bg-blue-50 dark:hover:bg-slate-800 transition text-sm sm:text-base touch-manipulation active:bg-blue-100 dark:active:bg-slate-700"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         {link.label}

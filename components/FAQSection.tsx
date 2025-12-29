@@ -12,7 +12,7 @@ export default function FAQSection() {
     },
     {
       question: '數據下載功能支援哪些格式？可以匯入哪些平台？',
-      answer: 'Korae 支援 CSV、Excel、JSON 三種數據格式下載。下載的數據包含商品圖片、描述、價格、庫存等完整資訊。這些數據可輕鬆匯入 Shopify、WooCommerce 或其他電商平台，讓您自由選擇銷售渠道，無需綁定特定網店系統。',
+      answer: 'Korae 支援 CSV、Excel、JSON 三種數據格式下載。下載的數據包含商品圖片、描述、價格、庫存等完整資訊。這些數據可輕鬆匯入 Shopify、WooCommerce、Shopline、Shopage 或其他電商平台，讓您自由選擇銷售渠道，無需綁定特定網店系統。',
     },
     {
       question: 'Korae 的收費是否透明？有沒有隱藏費用？',
@@ -20,7 +20,7 @@ export default function FAQSection() {
     },
     {
       question: '我需要綁定網店系統嗎？',
-      answer: '不需要。Korae 提供純批發服務，客戶無需強制綁定網店系統。您可以選擇下載商品數據，匯入您現有的 Shopify、WooCommerce 或其他電商平台。如需網店系統，我們也提供可選的網店服務，但這不是強制要求。',
+      answer: '不需要。Korae 提供純批發服務，客戶無需強制綁定網店系統。您可以選擇下載商品數據，匯入您現有的 Shopify、WooCommerce、Shopline、Shopage 或其他電商平台。如需網店系統，我們也提供可選的網店服務，但這不是強制要求。',
     },
     {
       question: '付費會員可以隨時取消嗎？',

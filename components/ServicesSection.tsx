@@ -8,7 +8,7 @@ export default function ServicesSection() {
     {
       icon: '📥',
       title: '多平台數據下載（核心功能）',
-      description: '支援 CSV、Excel、JSON 格式，批量下載商品數據（圖片、描述、價格、庫存），相容 Shopify、WooCommerce 等平台，讓您輕鬆匯入自家網店。',
+      description: '支援 CSV、Excel、JSON 格式，批量下載商品數據（圖片、描述、價格、庫存），相容 Shopify、WooCommerce、Shopline、Shopage 等平台，讓您輕鬆匯入自家網店。',
       color: 'green',
     },
     {
@@ -42,14 +42,14 @@ export default function ServicesSection() {
     <section className="py-16 md:py-24 bg-slate-50 dark:bg-slate-800">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <div className="inline-block px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium mb-4">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16 px-2 sm:px-4">
+          <div className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4">
             全方位提升個人與企業競爭力
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-3 sm:mb-4">
             推動批發數碼化落地應用
           </h2>
-          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
             為批發客戶提供高效的日韓時裝商品瀏覽、訂購及數據管理工具，支援多平台數據下載，讓您自由選擇銷售渠道。
           </p>
         </div>
@@ -64,7 +64,7 @@ export default function ServicesSection() {
               多平台數據下載功能
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-              Korae 的核心優勢是提供靈活的數據下載功能。付費會員可無限制下載商品數據（圖片、描述、價格、庫存等），支援 CSV、Excel、JSON 格式，輕鬆匯入 Shopify、WooCommerce 或其他電商平台，無需綁定特定網店系統。
+              Korae 的核心優勢是提供靈活的數據下載功能。付費會員可無限制下載商品數據（圖片、描述、價格、庫存等），支援 CSV、Excel、JSON 格式，輕鬆匯入 Shopify、WooCommerce、Shopline、Shopage 或其他電商平台，無需綁定特定網店系統。
             </p>
             <Link 
               href="/wholesale"
@@ -83,7 +83,7 @@ export default function ServicesSection() {
                   <div className="text-5xl mb-4">📊</div>
                   <div className="text-slate-700 dark:text-slate-300 font-semibold text-lg mb-2">數據下載功能展示</div>
                   <div className="text-sm text-slate-500 dark:text-slate-400">CSV、Excel、JSON 格式</div>
-                  <div className="text-sm text-slate-500 dark:text-slate-400 mt-2">支援 Shopify、WooCommerce</div>
+                  <div className="text-sm text-slate-500 dark:text-slate-400 mt-2">支援 Shopify、WooCommerce、Shopline、Shopage</div>
                 </div>
               </div>
             </div>
@@ -110,7 +110,7 @@ export default function ServicesSection() {
                 <div className="text-center p-4">
                   <div className="text-3xl mb-2">🖼️</div>
                   <div className="text-slate-600 dark:text-slate-300 font-semibold text-sm">東大門 | Korae 韓國批發</div>
-                  <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">建議尺寸: 1200x675</div>
+                  <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">建議尺寸: 1200x675<br/>參考: koraeweb.com 東大門圖片</div>
                 </div>
               </div>
             </div>
@@ -198,7 +198,7 @@ export default function ServicesSection() {
                 <div className="text-center p-4">
                   <div className="text-4xl mb-2">🖼️</div>
                   <div className="text-slate-700 dark:text-slate-300 font-semibold mb-1">服務收費說明圖</div>
-                  <div className="text-xs text-slate-500 dark:text-slate-400">建議尺寸: 800x600</div>
+                  <div className="text-xs text-slate-500 dark:text-slate-400">建議尺寸: 800x600<br/>參考: koraeweb.com 服務收費說明圖</div>
                 </div>
               </div>
             </div>

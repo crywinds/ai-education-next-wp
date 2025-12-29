@@ -1,4 +1,4 @@
-// Middleware 已完全禁用，使用簡單的 Context 語系系統
+// Middleware 已禁用，使用簡單的 Context 語系系統
 // 如果需要恢復 next-intl，請取消註釋以下代碼並重新配置
 
 /*
@@ -16,11 +16,11 @@ export const config = {
 }
 */
 
-// 完全禁用 - 返回 undefined 讓 Next.js 跳過此 middleware
+// 完全禁用 middleware - 返回 undefined 讓 Next.js 跳過
 export default function middleware() {
   // 不做任何處理
 }
 
 export const config = {
-  matcher: [] // 空數組表示不匹配任何路由
+  matcher: []
 }

@@ -69,30 +69,24 @@ export default function PartnersSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section ref={ref} className="py-16 md:py-24 bg-slate-50 dark:bg-slate-800">
-      <div className="container mx-auto px-4">
+    <section ref={ref} className="py-12 sm:py-16 md:py-24 bg-white dark:bg-slate-900">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           variants={containerVariants}
         >
-          {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
-            <div className="inline-block px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium mb-4">
-              長期合作夥伴
-            </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-              合作伙伴
-            </h2>
-            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              與我們 Korae 團隊一直合作的機構
-            </p>
+          {/* Top Text - 類似 dotai.hk */}
+          <motion.div variants={itemVariants} className="text-center mb-8 sm:mb-12">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-slate-900 dark:text-white">
+              超過 50,000 人及 40+ 個企業支持
+            </h3>
           </motion.div>
 
-          {/* Partners Grid */}
+          {/* Partners Grid - 類似 dotai.hk 的橫向滾動佈局 */}
           <motion.div
             variants={containerVariants}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 max-w-6xl mx-auto"
+            className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-12 max-w-7xl mx-auto"
           >
             {partners.map((partner, index) => (
               <motion.div
@@ -105,9 +99,9 @@ export default function PartnersSection() {
                   href={partner.url}
                   target={partner.url !== '#' ? '_blank' : undefined}
                   rel={partner.url !== '#' ? 'noopener noreferrer' : undefined}
-                  className="block bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 dark:border-slate-700 h-full flex items-center justify-center"
+                  className="block bg-transparent hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg p-4 sm:p-6 transition-all duration-300 flex items-center justify-center group"
                 >
-                  <div className="relative w-full h-20 flex items-center justify-center">
+                  <div className="relative w-24 sm:w-32 md:w-40 h-16 sm:h-20 md:h-24 flex items-center justify-center">
                     {/* 嘗試載入圖片，如果失敗則顯示佔位符 */}
                     <div className="relative w-full h-full">
                       <Image
@@ -136,7 +130,7 @@ export default function PartnersSection() {
                             {partner.name}
                           </div>
                           <div className="text-xs text-slate-400 dark:text-slate-500 mt-1">
-                            請放置 Logo
+                            請放置 Logo<br/>參考: koraeweb.com 合作伙伴 Logo
                           </div>
                         </div>
                       </div>
@@ -147,15 +141,6 @@ export default function PartnersSection() {
             ))}
           </motion.div>
 
-          {/* Info Note */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-12 text-center text-sm text-slate-500 dark:text-slate-400"
-          >
-            <p>
-              圖片應放置在 <code className="bg-slate-200 dark:bg-slate-700 px-2 py-1 rounded">public/images/partners/</code> 目錄下
-            </p>
-          </motion.div>
         </motion.div>
       </div>
     </section>

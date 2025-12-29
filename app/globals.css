@@ -163,14 +163,64 @@
 
 .marquee-item {
   display: inline-block;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   font-weight: 500;
   text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+@media (min-width: 640px) {
+  .marquee-item {
+    padding: 0 1rem;
+  }
+}
+
+/* 觸控友好樣式 */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 手機版優化 */
+@media (max-width: 640px) {
+  /* 確保按鈕和鏈接有足夠的觸控區域 */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* 優化文字大小 */
+  body {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
 }
 
 /* Hover pause effect */
 .marquee-container:hover .marquee-content {
   animation-play-state: paused;
+}
+
+/* Brands Marquee Animation */
+@keyframes marquee-slow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-slow {
+  animation: marquee-slow 40s linear infinite;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* Snow Effect Animation */

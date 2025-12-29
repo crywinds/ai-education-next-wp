@@ -113,13 +113,13 @@ export default function Footer() {
       </div>
 
       {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-16 relative z-10">
-        <motion.div
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12"
-        >
+          <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10">
+            <motion.div
+              initial="hidden"
+              animate={isInView ? 'visible' : 'hidden'}
+              variants={containerVariants}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 md:gap-12 mb-8 sm:mb-12"
+            >
           {/* Brand Section with Image */}
           <FooterSection delay={0}>
             <div className="lg:col-span-2">
@@ -145,11 +145,12 @@ export default function Footer() {
                     <div className="text-xs text-blue-400/70 mt-1">一站式批發平台</div>
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-[url('https://via.placeholder.com/400x200/1e293b/64748b?text=Korae')] bg-cover bg-center opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                {/* 參考: koraeweb.com Footer 背景圖片 */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-cyan-600/30 opacity-20 group-hover:opacity-30 transition-opacity"></div>
               </motion.div>
 
               {/* Social Links */}
-              <div className="flex gap-4">
+              <div className="flex gap-3 sm:gap-4">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={social.name}
@@ -159,7 +160,7 @@ export default function Footer() {
                     variants={socialVariants}
                     whileHover={{ scale: 1.2, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
-                    className="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors"
+                    className="w-10 h-10 sm:w-10 sm:h-10 bg-slate-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors touch-manipulation"
                     aria-label={social.name}
                   >
                     {social.icon === 'twitter' && (
@@ -191,15 +192,15 @@ export default function Footer() {
           {/* Quick Links */}
           <FooterSection delay={0.1}>
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-white">關於我們</h4>
-              <ul className="space-y-3">
+              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-white">關於我們</h4>
+              <ul className="space-y-2 sm:space-y-3">
                 {footerLinks.about.map((link, index) => (
                   <motion.li
                     key={index}
                     whileHover={{ x: 5 }}
                     transition={{ type: 'spring', stiffness: 400 }}
                   >
-                    <Link href={link.href} className="text-slate-300 hover:text-blue-400 transition-colors text-sm">
+                    <Link href={link.href} className="text-xs sm:text-sm text-slate-300 hover:text-blue-400 transition-colors block py-1 touch-manipulation">
                       {link.label}
                     </Link>
                   </motion.li>
@@ -211,15 +212,15 @@ export default function Footer() {
           {/* Services */}
           <FooterSection delay={0.2}>
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-white">服務</h4>
-              <ul className="space-y-3">
+              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-white">服務</h4>
+              <ul className="space-y-2 sm:space-y-3">
                 {footerLinks.services.map((link, index) => (
                   <motion.li
                     key={index}
                     whileHover={{ x: 5 }}
                     transition={{ type: 'spring', stiffness: 400 }}
                   >
-                    <Link href={link.href} className="text-slate-300 hover:text-blue-400 transition-colors text-sm">
+                    <Link href={link.href} className="text-xs sm:text-sm text-slate-300 hover:text-blue-400 transition-colors block py-1 touch-manipulation">
                       {link.label}
                     </Link>
                   </motion.li>
@@ -231,8 +232,8 @@ export default function Footer() {
           {/* Resources */}
           <FooterSection delay={0.3}>
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-white">資源</h4>
-              <ul className="space-y-3">
+              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-white">資源</h4>
+              <ul className="space-y-2 sm:space-y-3">
                 {footerLinks.resources.map((link, index) => (
                   <motion.li
                     key={index}
@@ -241,7 +242,7 @@ export default function Footer() {
                   >
                     <Link 
                       href={link.href} 
-                      className="text-slate-300 hover:text-blue-400 transition-colors text-sm"
+                      className="text-xs sm:text-sm text-slate-300 hover:text-blue-400 transition-colors block py-1 touch-manipulation"
                       {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                     >
                       {link.label}
@@ -258,13 +259,13 @@ export default function Footer() {
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12 pt-12 border-t border-slate-800"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 mb-8 sm:mb-12 pt-8 sm:pt-12 border-t border-slate-800"
         >
           {/* Popular Posts */}
           <FooterSection delay={0.4}>
             <div>
-              <h4 className="text-lg font-semibold mb-6 text-white">熱門文章</h4>
-              <ul className="space-y-4">
+              <h4 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6 text-white">熱門文章</h4>
+              <ul className="space-y-3 sm:space-y-4">
                 {popularPosts.map((post, index) => (
                   <motion.li
                     key={index}
@@ -272,8 +273,8 @@ export default function Footer() {
                     whileHover={{ x: 5 }}
                     className="group"
                   >
-                    <Link href={post.url} className="block">
-                      <p className="text-slate-300 group-hover:text-blue-400 transition-colors text-sm mb-1 line-clamp-2">
+                    <Link href={post.url} className="block touch-manipulation">
+                      <p className="text-xs sm:text-sm text-slate-300 group-hover:text-blue-400 transition-colors mb-1 line-clamp-2">
                         {post.title}
                       </p>
                       <span className="text-xs text-slate-500">{post.date}</span>
@@ -287,7 +288,7 @@ export default function Footer() {
           {/* Popular Tags */}
           <FooterSection delay={0.5}>
             <div>
-              <h4 className="text-lg font-semibold mb-6 text-white">熱門搜尋</h4>
+              <h4 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6 text-white">熱門搜尋</h4>
               <div className="flex flex-wrap gap-2">
                 {popularTags.map((tag, index) => (
                   <motion.div
@@ -347,7 +348,8 @@ export default function Footer() {
                   <div className="text-sm text-cyan-400/70">Contact Us</div>
                 </div>
               </div>
-              <div className="absolute inset-0 bg-[url('https://via.placeholder.com/600x400/1e293b/64748b?text=Contact')] bg-cover bg-center opacity-20 group-hover:opacity-30 transition-opacity"></div>
+              {/* 參考: koraeweb.com 聯繫我們圖片 */}
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/30 to-blue-600/30 opacity-20 group-hover:opacity-30 transition-opacity"></div>
             </motion.div>
           </div>
         </motion.div>
@@ -363,7 +365,7 @@ export default function Footer() {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-slate-400">
-              © 2016-{currentYear} Clickbala Network Limited. (公司註冊編號 CR No. 2280747) 版權所有
+              © 2016-2026 Clickbala Network Limited. (公司註冊編號 CR No. 2280747) 版權所有
             </p>
             <div className="flex gap-6">
               <Link href="/about" className="text-sm text-slate-400 hover:text-blue-400 transition">

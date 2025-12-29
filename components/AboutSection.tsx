@@ -1,26 +1,174 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 export default function AboutSection() {
+  const teamImages = [
+    { src: '/images/about/team-member-1.jpg', alt: 'Korae 團隊活動' },
+    { src: '/images/about/team-member-2.jpg', alt: 'Korae 團隊會議' },
+    { src: '/images/about/team-member-3.jpg', alt: 'Korae 團隊工作' },
+  ]
+
   return (
-    <section className="py-16 md:py-24 bg-white dark:bg-slate-900">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <div className="inline-block px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium mb-4">
-            業界肯定 Korae 前身 OrangeBox 日韓時裝批發平台
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-            關於我們
-          </h2>
-          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            從 OrangeBox 重組而來，致力提供更透明、更靈活的批發服務
-          </p>
+    <section className="relative py-12 sm:py-16 md:py-24 bg-white dark:bg-slate-900 overflow-hidden">
+      {/* Background Brand Text - 淡化的 Korae 文字 */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 opacity-5 dark:opacity-10 pointer-events-none select-none">
+        <div className="text-[200px] sm:text-[300px] md:text-[400px] lg:text-[500px] font-black text-slate-900 dark:text-white leading-none whitespace-nowrap">
+          Korae
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        {/* Main Content - 左右分欄佈局 */}
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
+          {/* Left Side - 文字內容 */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6 sm:space-y-8"
+          >
+            {/* Header - 藍色圖標 + 關於我們 */}
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0">
+                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <span className="text-blue-600 dark:text-blue-400 font-semibold text-sm sm:text-base">關於我們</span>
+            </div>
+
+            {/* Main Headings */}
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight">
+              由香港出發
+              <br />
+              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                推動批發數碼化落地應用
+              </span>
+            </h2>
+
+            {/* Description */}
+            <p className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+              從傳統批發到數碼化平台，從單一服務到靈活選擇，每一次的技術轉變都會帶來新的機遇，重新為整個市場洗牌，而您正站在這個變革的前沿。我們希望推廣香港批發數碼化的普及和創新，並提升批發客戶的競爭力，為您帶來新的機遇。
+            </p>
+
+            {/* CTA Button */}
+            <Link
+              href="/about"
+              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 text-sm sm:text-base touch-manipulation"
+            >
+              了解更多
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </motion.div>
+
+          {/* Right Side - 三張重疊傾斜的照片拼貼 */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative h-[400px] sm:h-[500px] md:h-[600px]"
+          >
+            {/* 第一張照片 - 左上，稍微傾斜 */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: -5 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="absolute top-0 left-0 w-[60%] sm:w-[55%] h-[45%] sm:h-[50%] rounded-2xl overflow-hidden shadow-xl z-10"
+            >
+              <div className="relative w-full h-full bg-slate-200 dark:bg-slate-700">
+                <Image
+                  src={teamImages[0].src}
+                  alt={teamImages[0].alt}
+                  fill
+                  className="object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement
+                    target.style.display = 'none'
+                    const placeholder = target.parentElement?.querySelector('.image-placeholder') as HTMLElement
+                    if (placeholder) placeholder.style.display = 'flex'
+                  }}
+                />
+                <div className="image-placeholder hidden absolute inset-0 items-center justify-center bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600">
+                  <div className="text-center p-4">
+                    <div className="text-3xl mb-2">📸</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-400">團隊照片 1</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* 第二張照片 - 中間右側，稍微傾斜 */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, rotate: 8 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 8 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="absolute top-[25%] sm:top-[20%] right-0 w-[55%] sm:w-[50%] h-[50%] sm:h-[55%] rounded-2xl overflow-hidden shadow-xl z-20"
+            >
+              <div className="relative w-full h-full bg-slate-200 dark:bg-slate-700">
+                <Image
+                  src={teamImages[1].src}
+                  alt={teamImages[1].alt}
+                  fill
+                  className="object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement
+                    target.style.display = 'none'
+                    const placeholder = target.parentElement?.querySelector('.image-placeholder') as HTMLElement
+                    if (placeholder) placeholder.style.display = 'flex'
+                  }}
+                />
+                <div className="image-placeholder hidden absolute inset-0 items-center justify-center bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600">
+                  <div className="text-center p-4">
+                    <div className="text-3xl mb-2">📸</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-400">團隊照片 2</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* 第三張照片 - 左下，稍微傾斜 */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, rotate: -3 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: -3 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="absolute bottom-0 left-[10%] sm:left-[5%] w-[50%] sm:w-[45%] h-[40%] sm:h-[45%] rounded-2xl overflow-hidden shadow-xl z-30"
+            >
+              <div className="relative w-full h-full bg-slate-200 dark:bg-slate-700">
+                <Image
+                  src={teamImages[2].src}
+                  alt={teamImages[2].alt}
+                  fill
+                  className="object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement
+                    target.style.display = 'none'
+                    const placeholder = target.parentElement?.querySelector('.image-placeholder') as HTMLElement
+                    if (placeholder) placeholder.style.display = 'flex'
+                  }}
+                />
+                <div className="image-placeholder hidden absolute inset-0 items-center justify-center bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600">
+                  <div className="text-center p-4">
+                    <div className="text-3xl mb-2">📸</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-400">團隊照片 3</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
 
-        {/* Main Content */}
-        <div className="max-w-4xl mx-auto mb-12 md:mb-16">
+        {/* Additional Content - 保留原有的重要資訊，但簡化顯示 */}
+        <div className="mt-16 md:mt-24 max-w-4xl mx-auto">
           <div className="prose prose-lg max-w-none text-slate-700 dark:text-slate-300 space-y-5 md:space-y-6">
             <p className="text-base md:text-lg leading-relaxed">
               Korae 延續 OrangeBox 的卓越傳統，於 2026 年全新出發，致力提供更優質、更透明的價格及服務，涵蓋亞洲地區客戶需求。
@@ -76,7 +224,7 @@ export default function AboutSection() {
                 }}
               />
               <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-xs text-slate-500 dark:text-slate-400 text-center px-2">獎項圖片<br/>200x200</div>
+                <div className="text-xs text-slate-500 dark:text-slate-400 text-center px-2">獎項圖片<br/>200x200<br/>參考: koraeweb.com 獎項圖片</div>
               </div>
             </div>
             <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">香港數碼品牌 2018</h3>
@@ -98,7 +246,7 @@ export default function AboutSection() {
                 }}
               />
               <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-xs text-slate-500 dark:text-slate-400 text-center px-2">獎項圖片<br/>200x200</div>
+                <div className="text-xs text-slate-500 dark:text-slate-400 text-center px-2">獎項圖片<br/>200x200<br/>參考: koraeweb.com 獎項圖片</div>
               </div>
             </div>
             <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">得獎品牌</h3>
@@ -120,7 +268,7 @@ export default function AboutSection() {
                 }}
               />
               <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-xs text-slate-500 dark:text-slate-400 text-center px-2">獎項圖片<br/>200x200</div>
+                <div className="text-xs text-slate-500 dark:text-slate-400 text-center px-2">獎項圖片<br/>200x200<br/>參考: koraeweb.com 獎項圖片</div>
               </div>
             </div>
             <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">傑出網上批發平台</h3>
@@ -147,7 +295,7 @@ export default function AboutSection() {
                 }}
               />
               <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-xs text-slate-500 dark:text-slate-400 text-center">滙豐銀行 Logo<br/>200x100</div>
+                <div className="text-xs text-slate-500 dark:text-slate-400 text-center">滙豐銀行 Logo<br/>200x100<br/>參考: koraeweb.com 合作伙伴 Logo</div>
               </div>
             </div>
             <div className="relative w-32 h-16 rounded-lg overflow-hidden bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
@@ -165,7 +313,7 @@ export default function AboutSection() {
                 }}
               />
               <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-xs text-slate-500 dark:text-slate-400 text-center">SHOPAGE Logo<br/>200x100</div>
+                <div className="text-xs text-slate-500 dark:text-slate-400 text-center">SHOPAGE Logo<br/>200x100<br/>參考: koraeweb.com 合作伙伴 Logo</div>
               </div>
             </div>
           </div>
@@ -191,7 +339,7 @@ export default function AboutSection() {
           <div className="text-sm font-semibold text-blue-100 mb-3">核心差異化功能</div>
           <h3 className="text-3xl font-bold mb-6">多平台數據下載</h3>
           <p className="text-lg text-blue-50 leading-relaxed max-w-2xl mb-6">
-            Korae 的核心優勢是提供靈活的數據下載功能，支援 CSV、Excel、JSON 格式，讓您輕鬆將商品數據匯入 Shopify、WooCommerce 或其他電商平台，無需綁定特定網店系統。
+            Korae 的核心優勢是提供靈活的數據下載功能，支援 CSV、Excel、JSON 格式，讓您輕鬆將商品數據匯入 Shopify、WooCommerce、Shopline、Shopage 或其他電商平台，無需綁定特定網店系統。
           </p>
           <div className="grid md:grid-cols-3 gap-4 text-center">
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
@@ -202,7 +350,7 @@ export default function AboutSection() {
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
               <div className="text-2xl mb-2">🔄</div>
               <div className="font-semibold mb-1">多平台相容</div>
-              <div className="text-sm text-blue-100">Shopify、WooCommerce</div>
+              <div className="text-sm text-blue-100">Shopify、WooCommerce、Shopline、Shopage</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
               <div className="text-2xl mb-2">⚡</div>
