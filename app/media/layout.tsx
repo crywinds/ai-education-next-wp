@@ -10,3 +10,11 @@ export const metadata: Metadata = genMeta({
   url: `${siteUrl}/media`,
 })
 
+export default function MediaLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return <>{children}</>
+}
+

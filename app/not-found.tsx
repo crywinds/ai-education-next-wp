@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import Icon from '@/components/Icon'
 
 export default function NotFound() {
   return (
@@ -21,7 +22,9 @@ export default function NotFound() {
           {/* Image Placeholder */}
           <div className="relative aspect-video bg-slate-200 border-2 border-dashed border-slate-400 rounded-2xl mb-8 flex items-center justify-center">
             <div className="text-center p-8">
-              <div className="text-5xl mb-4">🔍</div>
+              <div className="mb-4 flex items-center justify-center">
+                <Icon emoji="🔍" size={64} className="text-slate-600" />
+              </div>
               <div className="text-slate-600 font-semibold mb-2">404 插圖</div>
               <div className="text-xs text-slate-500">建議尺寸: 800x600</div>
             </div>
@@ -29,13 +32,13 @@ export default function NotFound() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/zh-TW"
+              href="/"
               className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
             >
               返回首頁
             </Link>
             <Link
-              href="/zh-TW/contact"
+              href="/contact"
               className="px-8 py-4 bg-white hover:bg-slate-50 text-slate-900 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all border border-slate-200"
             >
               聯絡我們

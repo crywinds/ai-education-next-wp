@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Icon from '@/components/Icon'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -281,7 +282,9 @@ export default function ContactPage() {
               <div className="bg-slate-100 rounded-2xl p-6 md:p-8 border-2 border-dashed border-slate-400">
                 <div className="aspect-video bg-slate-200 rounded-lg flex items-center justify-center">
                   <div className="text-center">
-                    <div className="text-4xl mb-2">🗺️</div>
+                    <div className="mb-2 flex items-center justify-center">
+                      <Icon emoji="🗺️" size={48} className="text-slate-600" />
+                    </div>
                     <div className="text-slate-600 font-semibold mb-1">地圖位置</div>
                     <div className="text-xs text-slate-500">建議尺寸: 800x600</div>
                   </div>

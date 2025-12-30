@@ -40,7 +40,12 @@ export default function ThemeToggle() {
   }
 
   if (!mounted) {
-    return null
+    // 返回一個與最終渲染相同結構的佔位符，避免 hydration 錯誤
+    return (
+      <div className="relative w-12 h-6 rounded-full bg-slate-300 transition-colors duration-300">
+        <div className="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-lg"></div>
+      </div>
+    )
   }
 
   return (

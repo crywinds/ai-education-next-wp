@@ -5,6 +5,7 @@ import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import Link from 'next/link'
 import MembershipComparison from '@/components/MembershipComparison'
+import Icon from '@/components/Icon'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -280,7 +281,9 @@ export default function WholesalePage() {
                   whileHover={{ y: -5, scale: 1.02 }}
                   className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700"
                 >
-                  <div className="text-3xl mb-4">🚀</div>
+                  <div className="mb-4 flex items-center justify-center">
+                    <Icon emoji="🚀" size={40} className="text-slate-700 dark:text-slate-300" />
+                  </div>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">付費會員適合</h3>
                   <ul className="space-y-2 text-slate-600 dark:text-slate-300 text-sm">
                     <li className="flex items-start">

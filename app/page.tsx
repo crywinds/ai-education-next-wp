@@ -1,12 +1,11 @@
 import Hero from '@/components/Hero'
+import BrandsMarquee from '@/components/BrandsMarquee'
+import NewsletterSection from '@/components/NewsletterSection'
 import AboutSection from '@/components/AboutSection'
 import ServicesSection from '@/components/ServicesSection'
 import PartnersSection from '@/components/PartnersSection'
 import TestimonialsSection from '@/components/TestimonialsSection'
 import FAQSection from '@/components/FAQSection'
-import StatsSection from '@/components/StatsSection'
-import BrandsMarquee from '@/components/BrandsMarquee'
-import NewsletterSection from '@/components/NewsletterSection'
 import { generateMetadata as genMeta } from '@/lib/seo'
 import { generateStructuredData } from '@/lib/seo'
 import type { Metadata } from 'next'
@@ -48,15 +47,13 @@ export default function Home() {
       />
       
       <Hero />
+      <BrandsMarquee />
       <NewsletterSection />
       <AboutSection />
       <ServicesSection />
       <PartnersSection />
       <TestimonialsSection />
       <FAQSection />
-      <StatsSection />
-      <BrandsMarquee />
-      <NewsletterSection />
     </>
   )
 }

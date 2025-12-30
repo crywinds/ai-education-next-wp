@@ -10,3 +10,11 @@ export const metadata: Metadata = genMeta({
   url: `${siteUrl}/careers`,
 })
 
+export default function CareersLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return <>{children}</>
+}
+

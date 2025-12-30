@@ -36,32 +36,50 @@ const partners = [
     logo: '/images/partners/hsbc-logo.png',
     alt: '香港上海滙豐銀行',
     url: 'https://www.visiongo.hsbc.com.hk/zh-HK/article/online-store-product-purchasing',
+    description: '香港上海滙豐銀行專題推薦',
   },
   {
     name: 'SHOPAGE',
     logo: '/images/partners/shopage-logo.png',
     alt: 'SHOPAGE',
     url: 'https://www.shopage.org/zh/post/%E7%B6%B2%E5%BA%97%E8%B2%A8%E6%BA%90%E5%BE%9E%E4%BD%95%E4%BE%86',
+    description: 'SHOPAGE 專題推薦',
   },
   {
-    name: '順豐速遞',
-    logo: '/images/partners/sfexpress-logo.png',
-    alt: '順豐速遞',
-    url: 'https://www.sf-express.com',
+    name: 'Bowtie',
+    logo: '/images/partners/bowtie-logo.png',
+    alt: 'Bowtie',
+    url: 'https://www.bowtie.com.hk',
+    description: 'Bowtie 合作夥伴',
+  },
+  {
+    name: 'Shopline',
+    logo: '/images/partners/shopline-logo.png',
+    alt: 'Shopline',
+    url: 'https://shopline.hk',
+    description: 'Shopline 合作夥伴',
   },
   {
     name: '新城電台',
     logo: '/images/partners/metro-radio-logo.png',
     alt: '新城電台',
     url: '#',
+    description: '新城電台 傑出批發平台',
   },
   {
     name: '香港電腦商會',
     logo: '/images/partners/hkcc-logo.png',
     alt: '香港電腦商會',
     url: '#',
+    description: '香港電腦商會會員',
   },
-  // 可以添加更多合作伙伴
+  {
+    name: '順豐速遞',
+    logo: '/images/partners/sfexpress-logo.png',
+    alt: '順豐速遞',
+    url: 'https://www.sf-express.com',
+    description: '順豐速遞物流合作夥伴',
+  },
 ]
 
 export default function PartnersSection() {
@@ -76,7 +94,7 @@ export default function PartnersSection() {
           animate={isInView ? 'visible' : 'hidden'}
           variants={containerVariants}
         >
-          {/* Top Text - 類似 dotai.hk */}
+          {/* Top Text */}
           <motion.div variants={itemVariants} className="text-center mb-8 sm:mb-12">
             <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-slate-900 dark:text-white">
               超過 50,000 人及 40+ 個企業支持

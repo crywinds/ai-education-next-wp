@@ -5,6 +5,7 @@ import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import Link from 'next/link'
 import { generateStructuredData } from '@/lib/seo'
+import Icon from '@/components/Icon'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -356,7 +357,9 @@ export default function ServicesPage() {
                   <div className="aspect-video bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl shadow-xl overflow-hidden border-2 border-dashed border-slate-400">
                     <div className="w-full h-full bg-slate-200 flex items-center justify-center">
                       <div className="text-center p-4">
-                        <div className="text-4xl mb-2">🖼️</div>
+                        <div className="mb-2 flex items-center justify-center">
+                          <Icon emoji="🖼️" size={48} className="text-slate-600 dark:text-slate-400" />
+                        </div>
                         <div className="text-slate-700 font-semibold mb-1">網店系統展示</div>
                         <div className="text-xs text-slate-500">建議尺寸: 1200x675</div>
                       </div>
@@ -738,7 +741,9 @@ export default function ServicesPage() {
                   <div className="aspect-video bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl shadow-xl overflow-hidden border-2 border-dashed border-slate-400">
                     <div className="w-full h-full bg-slate-200 flex items-center justify-center">
                       <div className="text-center p-4">
-                        <div className="text-4xl mb-2">🖼️</div>
+                        <div className="mb-2 flex items-center justify-center">
+                          <Icon emoji="🖼️" size={48} className="text-slate-600 dark:text-slate-400" />
+                        </div>
                         <div className="text-slate-700 font-semibold mb-1">攝影場地</div>
                         <div className="text-xs text-slate-500">建議尺寸: 1200x675</div>
                       </div>

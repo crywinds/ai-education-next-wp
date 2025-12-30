@@ -10,3 +10,11 @@ export const metadata: Metadata = genMeta({
   url: `${siteUrl}/awards`,
 })
 
+export default function AwardsLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return <>{children}</>
+}
+

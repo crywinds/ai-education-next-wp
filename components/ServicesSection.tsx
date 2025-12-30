@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import Icon from '@/components/Icon'
 
 export default function ServicesSection() {
   const services = [
@@ -80,7 +81,9 @@ export default function ServicesSection() {
             <div className="aspect-video bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl shadow-xl overflow-hidden border-2 border-dashed border-slate-400 dark:border-slate-600">
               <div className="w-full h-full flex items-center justify-center">
                 <div className="text-center p-8">
-                  <div className="text-5xl mb-4">📊</div>
+                  <div className="mb-4 flex items-center justify-center">
+                    <Icon emoji="📊" size={64} className="text-slate-700 dark:text-slate-300" />
+                  </div>
                   <div className="text-slate-700 dark:text-slate-300 font-semibold text-lg mb-2">數據下載功能展示</div>
                   <div className="text-sm text-slate-500 dark:text-slate-400">CSV、Excel、JSON 格式</div>
                   <div className="text-sm text-slate-500 dark:text-slate-400 mt-2">支援 Shopify、WooCommerce、Shopline、Shopage</div>
@@ -108,7 +111,9 @@ export default function ServicesSection() {
               />
               <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
                 <div className="text-center p-4">
-                  <div className="text-3xl mb-2">🖼️</div>
+                  <div className="mb-2 flex items-center justify-center">
+                    <Icon emoji="🖼️" size={40} className="text-slate-600 dark:text-slate-400" />
+                  </div>
                   <div className="text-slate-600 dark:text-slate-300 font-semibold text-sm">東大門 | Korae 韓國批發</div>
                   <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">建議尺寸: 1200x675<br/>參考: koraeweb.com 東大門圖片</div>
                 </div>
@@ -146,7 +151,9 @@ export default function ServicesSection() {
               key={index} 
               className={`bg-gradient-to-br ${colorClasses[service.color as keyof typeof colorClasses]} p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200 border`}
             >
-              <div className="text-5xl mb-4">{service.icon}</div>
+              <div className="mb-4 flex items-center justify-center">
+                <Icon emoji={service.icon} size={48} className="text-slate-700 dark:text-slate-300" />
+              </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{service.title}</h3>
               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{service.description}</p>
             </div>
@@ -161,17 +168,23 @@ export default function ServicesSection() {
           </p>
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
-              <div className="text-4xl mb-4">📄</div>
+              <div className="mb-4 flex items-center justify-center">
+                <Icon emoji="📄" size={48} className="text-slate-700 dark:text-slate-300" />
+              </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">CSV 格式</h3>
               <p className="text-slate-600 dark:text-slate-300 text-sm">適合 Excel 和 Google Sheets，方便編輯和管理</p>
             </div>
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
-              <div className="text-4xl mb-4">📊</div>
+              <div className="mb-4 flex items-center justify-center">
+                <Icon emoji="📊" size={48} className="text-slate-700 dark:text-slate-300" />
+              </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Excel 格式</h3>
               <p className="text-slate-600 dark:text-slate-300 text-sm">包含完整商品資訊，可直接開啟編輯</p>
             </div>
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
-              <div className="text-4xl mb-4">🔗</div>
+              <div className="mb-4 flex items-center justify-center">
+                <Icon emoji="🔗" size={48} className="text-slate-700 dark:text-slate-300" />
+              </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">JSON 格式</h3>
               <p className="text-slate-600 dark:text-slate-300 text-sm">適合 API 整合，支援程式化處理</p>
             </div>
@@ -196,7 +209,9 @@ export default function ServicesSection() {
               />
               <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
                 <div className="text-center p-4">
-                  <div className="text-4xl mb-2">🖼️</div>
+                  <div className="mb-2 flex items-center justify-center">
+                    <Icon emoji="🖼️" size={48} className="text-slate-600 dark:text-slate-400" />
+                  </div>
                   <div className="text-slate-700 dark:text-slate-300 font-semibold mb-1">服務收費說明圖</div>
                   <div className="text-xs text-slate-500 dark:text-slate-400">建議尺寸: 800x600<br/>參考: koraeweb.com 服務收費說明圖</div>
                 </div>

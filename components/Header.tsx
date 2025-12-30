@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { usePathname } from 'next/navigation'
 import ThemeToggle from '@/components/ThemeToggle'
 // 暫時禁用語言切換器以恢復網站功能
 // import LanguageToggle from '@/components/LanguageToggle'
@@ -12,8 +13,11 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [logoError, setLogoError] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
+    setMounted(true)
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
     }
@@ -22,21 +26,22 @@ export default function Header() {
   }, [])
 
   const marqueeItems = [
-    '✨ 100% AI 學費回贈計劃',
-    '🎯 超過 50,000人及 40+個企業支持',
-    '🚀 香港首個一站式韓國批發平台',
-    '💎 成交費、交易費全免',
-    '⭐ 業界信譽保證',
+    '100% AI 學費回贈計劃',
+    '超過 50,000人及 40+個企業支持',
+    '香港首個一站式韓國批發平台',
+    '成交費、交易費全免',
+    '業界信譽保證',
   ]
 
   // 按照圖片順序排列的導航項目
+  // 將「批發服務」改為主打
   const navLinks = [
     { label: '最新消息', href: '/blog', type: 'link' },
     { label: '批發商品列表', href: 'https://www.orangeboxapp.com', external: true, type: 'link' },
     // { label: '預約諮詢', href: '/contact', type: 'link' }, // 已隱藏
     { label: '韓國批發團隊簡介', href: '/about', type: 'link' },
-    { label: '批發+網店服務', href: '/services', type: 'button', highlight: true },
-    { label: '純批發服務', href: '/wholesale', type: 'link' },
+    // { label: '批發+網店服務', href: '/services', type: 'button', highlight: true }, // 已隱藏
+    { label: '批發服務', href: '/wholesale', type: 'button', highlight: true },
     { label: '人才招募', href: '/careers', type: 'link' },
     { label: '業界獎項', href: '/awards', type: 'link' },
     { label: '媒體影片', href: '/media', type: 'link' },
@@ -237,13 +242,17 @@ export default function Header() {
                     >
                       <Link
                         href={link.href}
-                        className="relative px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold rounded-lg transition-all shadow-md hover:shadow-lg overflow-hidden group"
+                        className={`relative px-4 py-2 ${
+                          link.highlight
+                            ? 'bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white'
+                            : 'bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white'
+                        } font-semibold rounded-lg transition-all shadow-md hover:shadow-lg overflow-hidden group`}
                       >
                         <span className="relative z-10">{link.label}</span>
                         {/* Shimmer Effect */}
                         <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></span>
                         {/* Glow Effect */}
-                        <span className="absolute inset-0 bg-amber-500 blur-xl opacity-0 group-hover:opacity-50 transition-opacity"></span>
+                        <span className={`absolute inset-0 ${link.highlight ? 'bg-amber-500' : 'bg-blue-500'} blur-xl opacity-0 group-hover:opacity-50 transition-opacity`}></span>
                       </Link>
                     </motion.div>
                   ) : (
@@ -275,14 +284,16 @@ export default function Header() {
 
             {/* Theme Toggle and Mobile Menu Button */}
             <div className="flex items-center gap-2 sm:gap-4">
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: 0.7 }}
-                className="hidden sm:block"
-              >
-                <ThemeToggle />
-              </motion.div>
+              {mounted && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: 0.7 }}
+                  className="hidden sm:block"
+                >
+                  <ThemeToggle />
+                </motion.div>
+              )}
               
               <motion.div
                 initial={{ opacity: 0, scale: 0 }}
@@ -356,7 +367,11 @@ export default function Header() {
                     {link.type === 'button' ? (
                       <Link
                         href={link.href}
-                        className="block py-3.5 px-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg text-center font-semibold shadow-lg text-sm sm:text-base touch-manipulation active:scale-95 transition-transform"
+                        className={`block py-3.5 px-4 ${
+                          link.highlight
+                            ? 'bg-gradient-to-r from-amber-500 to-orange-500'
+                            : 'bg-gradient-to-r from-blue-600 to-cyan-600'
+                        } text-white rounded-lg text-center font-semibold shadow-lg text-sm sm:text-base touch-manipulation active:scale-95 transition-transform`}
                         onClick={() => setIsMenuOpen(false)}
                       >
                         {link.label}

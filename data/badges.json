@@ -1,0 +1,40 @@
+{
+  "badges": [
+    {
+      "id": 1,
+      "text": "🎯 業界認可",
+      "position": {
+        "top": "-21",
+        "left": "5%"
+      },
+      "animation": "bounce-gentle"
+    },
+    {
+      "id": 2,
+      "text": "⭐ 信譽保證",
+      "position": {
+        "top": "-22",
+        "right": "8%"
+      },
+      "animation": "bounce-gentle-delay1"
+    },
+    {
+      "id": 3,
+      "text": "💎 透明收費",
+      "position": {
+        "top": "-16",
+        "left": "2%"
+      },
+      "animation": "bounce-gentle-delay2"
+    },
+    {
+      "id": 4,
+      "text": "🚀 專業服務",
+      "position": {
+        "top": "-18",
+        "right": "3%"
+      },
+      "animation": "bounce-gentle-delay3"
+    }
+  ]
+}

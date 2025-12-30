@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import NextImage from 'next/image'
+import Icon from '@/components/Icon'
 
 interface ImageInfo {
   path: string
@@ -17,7 +18,7 @@ const imageCategories = [
   
   // 首頁
   { id: 'hero', name: 'Hero 背景圖片', path: '/images/hero/', files: ['hero-background.jpg'] },
-  { id: 'partners', name: '合作伙伴 Logo', path: '/images/partners/', files: ['hsbc-logo.png', 'shopage-logo.png', 'sfexpress-logo.png', 'metro-radio-logo.png', 'hkcc-logo.png'] },
+  { id: 'partners', name: '合作伙伴 Logo', path: '/images/partners/', files: ['hsbc-logo.png', 'shopage-logo.png', 'bowtie-logo.png', 'shopline-logo.png', 'metro-radio-logo.png', 'hkcc-logo.png', 'sfexpress-logo.png'] },
   { id: 'testimonials', name: '客戶見證', path: '/images/testimonials/', files: ['testimonial-1.jpg', 'testimonial-2.jpg', 'testimonial-3.jpg'] },
   
   // 韓國批發團隊簡介 (about)
@@ -53,6 +54,10 @@ export default function AdminPanel() {
   const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({})
   const [deleting, setDeleting] = useState<Record<string, boolean>>({})
   const [imageExists, setImageExists] = useState<Record<string, boolean>>({})
+  const [activeTab, setActiveTab] = useState<'images' | 'badges'>('images')
+  const [badges, setBadges] = useState<any[]>([])
+  const [editingBadge, setEditingBadge] = useState<number | null>(null)
+  const [savingBadges, setSavingBadges] = useState(false)
 
   useEffect(() => {
     // 檢查是否已登錄
@@ -65,8 +70,69 @@ export default function AdminPanel() {
           checkImageExists(category.id, filename)
         })
       })
+      // 載入徽章數據
+      loadBadges()
     }
   }, [])
+
+  const loadBadges = async () => {
+    try {
+      const response = await fetch('/api/admin/badges')
+      const data = await response.json()
+      if (data.success && data.data?.badges) {
+        setBadges(data.data.badges)
+      }
+    } catch (error) {
+      console.error('Failed to load badges:', error)
+    }
+  }
+
+  const handleSaveBadges = async () => {
+    setSavingBadges(true)
+    try {
+      const authToken = localStorage.getItem('admin_authenticated') === 'true' ? 'Bearer admin' : ''
+      const response = await fetch('/api/admin/badges', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': authToken,
+        },
+        body: JSON.stringify({ badges }),
+      })
+      const data = await response.json()
+      if (data.success) {
+        alert('徽章已保存！')
+      } else {
+        alert(`保存失敗: ${data.message}`)
+      }
+    } catch (error) {
+      alert('保存失敗，請稍後再試')
+    } finally {
+      setSavingBadges(false)
+    }
+  }
+
+  const handleAddBadge = () => {
+    const newBadge = {
+      id: Date.now(),
+      text: '✨ 新徽章',
+      position: { top: '0', left: '10%' },
+      animation: 'bounce-gentle',
+    }
+    setBadges([...badges, newBadge])
+  }
+
+  const handleDeleteBadge = (id: number) => {
+    if (confirm('確定要刪除這個徽章嗎？')) {
+      setBadges(badges.filter(badge => badge.id !== id))
+    }
+  }
+
+  const handleUpdateBadge = (id: number, field: string, value: any) => {
+    setBadges(badges.map(badge => 
+      badge.id === id ? { ...badge, [field]: value } : badge
+    ))
+  }
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -260,7 +326,7 @@ export default function AdminPanel() {
       {/* Header */}
       <header className="bg-white border-b border-slate-200 shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-slate-900">圖片管理面板</h1>
+          <h1 className="text-2xl font-bold text-slate-900">管理面板</h1>
           <button
             onClick={handleLogout}
             className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors"
@@ -268,21 +334,49 @@ export default function AdminPanel() {
             登出
           </button>
         </div>
+        
+        {/* Tabs */}
+        <div className="container mx-auto px-4 border-b border-slate-200">
+          <div className="flex gap-4">
+            <button
+              onClick={() => setActiveTab('images')}
+              className={`px-4 py-2 font-medium transition-colors ${
+                activeTab === 'images'
+                  ? 'text-blue-600 border-b-2 border-blue-600'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              圖片管理
+            </button>
+            <button
+              onClick={() => setActiveTab('badges')}
+              className={`px-4 py-2 font-medium transition-colors ${
+                activeTab === 'badges'
+                  ? 'text-blue-600 border-b-2 border-blue-600'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              徽章管理
+            </button>
+          </div>
+        </div>
       </header>
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
-        <div className="mb-6">
-          <p className="text-slate-600 mb-2">
-            選擇分類並上傳對應的圖片。圖片將自動保存到 <code className="bg-slate-200 px-2 py-1 rounded">public/images/</code> 目錄。
-          </p>
-          <p className="text-sm text-slate-500">
-            共 <strong>{imageCategories.length}</strong> 個分類，<strong>{imageCategories.reduce((sum, cat) => sum + cat.files.length, 0)}</strong> 個圖片位置
-          </p>
-        </div>
+        {activeTab === 'images' ? (
+          <>
+            <div className="mb-6">
+              <p className="text-slate-600 mb-2">
+                選擇分類並上傳對應的圖片。圖片將自動保存到 <code className="bg-slate-200 px-2 py-1 rounded">public/images/</code> 目錄。
+              </p>
+              <p className="text-sm text-slate-500">
+                共 <strong>{imageCategories.length}</strong> 個分類，<strong>{imageCategories.reduce((sum, cat) => sum + cat.files.length, 0)}</strong> 個圖片位置
+              </p>
+            </div>
 
-        {/* Categories */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Categories */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {imageCategories.map((category) => (
             <motion.div
               key={category.id}
@@ -352,7 +446,9 @@ export default function AdminPanel() {
                           />
                           <div className="hidden absolute inset-0 items-center justify-center bg-slate-200 border-2 border-dashed border-slate-400">
                             <div className="text-center text-xs text-slate-500">
-                              <div className="text-2xl mb-1">🖼️</div>
+                              <div className="mb-1 flex items-center justify-center">
+                                <Icon emoji="🖼️" size={32} className="text-slate-500" />
+                              </div>
                               <div>尚未上傳</div>
                             </div>
                           </div>
@@ -402,6 +498,152 @@ export default function AdminPanel() {
             <li>• 圖片會自動覆蓋同名文件</li>
           </ul>
         </motion.div>
+          </>
+        ) : (
+          <>
+            {/* Badges Management */}
+            <div className="mb-6">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h2 className="text-2xl font-bold text-slate-900 mb-2">徽章管理</h2>
+                  <p className="text-slate-600">
+                    編輯跳動徽章的文字和位置。徽章會顯示在 Hero 卡片下方和品牌跑馬燈區域。
+                  </p>
+                </div>
+                <div className="flex gap-3">
+                  <button
+                    onClick={handleAddBadge}
+                    className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors"
+                  >
+                    + 新增徽章
+                  </button>
+                  <button
+                    onClick={handleSaveBadges}
+                    disabled={savingBadges}
+                    className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors disabled:opacity-50"
+                  >
+                    {savingBadges ? '保存中...' : '保存徽章'}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Badges List */}
+            <div className="grid md:grid-cols-2 gap-6">
+              {badges.map((badge, index) => (
+                <motion.div
+                  key={badge.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white rounded-xl shadow-lg border border-slate-200 p-6"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-lg font-bold text-slate-900">徽章 #{index + 1}</h3>
+                    <button
+                      onClick={() => handleDeleteBadge(badge.id)}
+                      className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm rounded transition-colors"
+                    >
+                      刪除
+                    </button>
+                  </div>
+
+                  <div className="space-y-4">
+                    {/* Badge Text */}
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        徽章文字
+                      </label>
+                      <input
+                        type="text"
+                        value={badge.text}
+                        onChange={(e) => handleUpdateBadge(badge.id, 'text', e.target.value)}
+                        className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="例如：🎯 業界認可"
+                      />
+                    </div>
+
+                    {/* Position */}
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">
+                          Top (rem 或 %)
+                        </label>
+                        <input
+                          type="text"
+                          value={badge.position.top || ''}
+                          onChange={(e) => handleUpdateBadge(badge.id, 'position', { ...badge.position, top: e.target.value })}
+                          className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                          placeholder="例如：0 或 5%"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">
+                          Left (%)
+                        </label>
+                        <input
+                          type="text"
+                          value={badge.position.left || ''}
+                          onChange={(e) => handleUpdateBadge(badge.id, 'position', { ...badge.position, left: e.target.value })}
+                          className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                          placeholder="例如：5%"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">
+                          Right (%)
+                        </label>
+                        <input
+                          type="text"
+                          value={badge.position.right || ''}
+                          onChange={(e) => handleUpdateBadge(badge.id, 'position', { ...badge.position, right: e.target.value })}
+                          className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                          placeholder="例如：8%"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">
+                          動畫類型
+                        </label>
+                        <select
+                          value={badge.animation}
+                          onChange={(e) => handleUpdateBadge(badge.id, 'animation', e.target.value)}
+                          className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                        >
+                          <option value="bounce-gentle">跳動 1</option>
+                          <option value="bounce-gentle-delay1">跳動 2</option>
+                          <option value="bounce-gentle-delay2">跳動 3</option>
+                          <option value="bounce-gentle-delay3">跳動 4</option>
+                          <option value="bounce-gentle-delay4">跳動 5</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Preview */}
+                    <div className="mt-4 p-4 bg-slate-50 rounded-lg">
+                      <p className="text-xs text-slate-500 mb-2">預覽：</p>
+                      <div className="inline-block bg-white rounded-[80px] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.25)] px-4 py-2">
+                        <p className="text-sm text-slate-900 font-medium">{badge.text}</p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {badges.length === 0 && (
+              <div className="text-center py-12 bg-slate-50 rounded-xl">
+                <p className="text-slate-600 mb-4">還沒有徽章，點擊「新增徽章」開始添加</p>
+                <button
+                  onClick={handleAddBadge}
+                  className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                >
+                  + 新增第一個徽章
+                </button>
+              </div>
+            )}
+          </>
+        )}
       </main>
     </div>
   )

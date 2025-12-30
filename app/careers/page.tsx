@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
+import Icon from '@/components/Icon'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -207,7 +208,9 @@ export default function CareersPage() {
                   whileHover={{ y: -5, scale: 1.02 }}
                   className="bg-gradient-to-br from-slate-50 to-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all border border-slate-200 text-center"
                 >
-                  <div className="text-5xl mb-4">{item.icon}</div>
+                  <div className="mb-4 flex items-center justify-center">
+                    <Icon emoji={item.icon} size={48} className="text-slate-700 dark:text-slate-300" />
+                  </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
                   <p className="text-slate-600 leading-relaxed">{item.description}</p>
                 </motion.div>

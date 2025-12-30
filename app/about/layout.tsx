@@ -10,3 +10,11 @@ export const metadata: Metadata = genMeta({
   url: `${siteUrl}/about`,
 })
 
+export default function AboutLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return <>{children}</>
+}
+

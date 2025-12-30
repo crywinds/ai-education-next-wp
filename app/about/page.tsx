@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
+import Icon from '@/components/Icon'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -51,28 +52,28 @@ export default function AboutPage() {
       name: '麥晧威先生',
       role: '創辦人',
       description: 'Korae 創辦人，榮獲「香港傑出數碼品牌大獎」——傑出網上批發平台。',
-      image: '👨‍💼',
+      icon: '👨‍💼',
       achievements: ['香港傑出數碼品牌大獎', '10+ 年批發行業經驗'],
     },
     {
       name: '韓國採購團隊',
       role: '專業買手',
       description: '駐紮韓國東大門市場，每日為客戶精選最新時裝及批發貨源。',
-      image: '👔',
+      icon: '👔',
       achievements: ['東大門市場深度了解', '每週更新過千款商品'],
     },
     {
       name: '品質檢查團隊',
       role: '品質保證',
       description: '嚴格檢查每一件商品品質，確保客戶收到最優質的批發貨源。',
-      image: '🔍',
+      icon: '🔍',
       achievements: ['100% 品質檢查', '專業物流配送'],
     },
     {
       name: '客戶服務團隊',
       role: '客戶支援',
       description: '提供專業諮詢服務，協助客戶開展批發業務，絕不硬性銷售。',
-      image: '💬',
+      icon: '💬',
       achievements: ['7x24 小時支援', '專業開店顧問'],
     },
   ]
@@ -206,9 +207,9 @@ export default function AboutPage() {
                 className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all border border-slate-200"
               >
                 <div className="flex items-start gap-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-xl flex items-center justify-center text-4xl flex-shrink-0 overflow-hidden border-2 border-dashed border-slate-400">
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden border-2 border-dashed border-slate-400">
                     <div className="relative w-full h-full bg-slate-200 flex items-center justify-center">
-                      <div className="text-xs text-slate-500 text-center px-1">團隊照片<br/>200x200</div>
+                      <Icon emoji={member.icon} size={40} className="text-slate-600" />
                     </div>
                   </div>
                   <div className="flex-1">
@@ -266,7 +267,9 @@ export default function AboutPage() {
                 whileHover={{ y: -5 }}
                 className="bg-gradient-to-br from-slate-50 to-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all border border-slate-200 text-center"
               >
-                <div className="text-5xl mb-4">{value.icon}</div>
+                <div className="mb-4 flex items-center justify-center">
+                  <Icon emoji={value.icon} size={48} className="text-slate-700 dark:text-slate-300" />
+                </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{value.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{value.description}</p>
               </motion.div>

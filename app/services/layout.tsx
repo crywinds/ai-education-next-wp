@@ -11,3 +11,11 @@ export const metadata: Metadata = genMeta({
   type: 'website',
 })
 
+export default function ServicesLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return <>{children}</>
+}
+

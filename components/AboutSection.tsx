@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import Icon from '@/components/Icon'
 
 export default function AboutSection() {
   const teamImages = [
@@ -211,8 +212,8 @@ export default function AboutSection() {
           <div className="bg-gradient-to-br from-blue-50 to-white dark:from-blue-900/20 dark:to-slate-800 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-blue-100 dark:border-blue-800">
             <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/50 rounded-xl flex items-center justify-center mb-4 overflow-hidden relative">
               <Image
-                src="/images/awards/hk-digital-brand-2018.png"
-                alt="香港數碼品牌 2018"
+                src="/images/awards/metro-radio-award.png"
+                alt="新城電台 傑出批發平台"
                 width={64}
                 height={64}
                 className="object-contain w-full h-full"
@@ -227,7 +228,7 @@ export default function AboutSection() {
                 <div className="text-xs text-slate-500 dark:text-slate-400 text-center px-2">獎項圖片<br/>200x200<br/>參考: koraeweb.com 獎項圖片</div>
               </div>
             </div>
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">香港數碼品牌 2018</h3>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">新城電台 傑出批發平台</h3>
             <p className="text-slate-600 dark:text-slate-400">業界認可的數碼品牌</p>
           </div>
           <div className="bg-gradient-to-br from-amber-50 to-white dark:from-amber-900/20 dark:to-slate-800 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-amber-100 dark:border-amber-800">
@@ -316,6 +317,78 @@ export default function AboutSection() {
                 <div className="text-xs text-slate-500 dark:text-slate-400 text-center">SHOPAGE Logo<br/>200x100<br/>參考: koraeweb.com 合作伙伴 Logo</div>
               </div>
             </div>
+            <div className="relative w-32 h-16 rounded-lg overflow-hidden bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+              <Image
+                src="/images/partners/bowtie-logo.png"
+                alt="Bowtie"
+                width={128}
+                height={64}
+                className="object-contain p-2"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  target.style.display = 'none'
+                  const placeholder = target.nextElementSibling as HTMLElement
+                  if (placeholder) placeholder.style.display = 'flex'
+                }}
+              />
+              <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
+                <div className="text-xs text-slate-500 dark:text-slate-400 text-center">Bowtie Logo<br/>200x100<br/>參考: koraeweb.com 合作伙伴 Logo</div>
+              </div>
+            </div>
+            <div className="relative w-32 h-16 rounded-lg overflow-hidden bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+              <Image
+                src="/images/partners/shopline-logo.png"
+                alt="Shopline"
+                width={128}
+                height={64}
+                className="object-contain p-2"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  target.style.display = 'none'
+                  const placeholder = target.nextElementSibling as HTMLElement
+                  if (placeholder) placeholder.style.display = 'flex'
+                }}
+              />
+              <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
+                <div className="text-xs text-slate-500 dark:text-slate-400 text-center">Shopline Logo<br/>200x100<br/>參考: koraeweb.com 合作伙伴 Logo</div>
+              </div>
+            </div>
+            <div className="relative w-32 h-16 rounded-lg overflow-hidden bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+              <Image
+                src="/images/partners/metro-radio-logo.png"
+                alt="新城電台"
+                width={128}
+                height={64}
+                className="object-contain p-2"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  target.style.display = 'none'
+                  const placeholder = target.nextElementSibling as HTMLElement
+                  if (placeholder) placeholder.style.display = 'flex'
+                }}
+              />
+              <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
+                <div className="text-xs text-slate-500 dark:text-slate-400 text-center">新城電台 Logo<br/>200x100<br/>參考: koraeweb.com 合作伙伴 Logo</div>
+              </div>
+            </div>
+            <div className="relative w-32 h-16 rounded-lg overflow-hidden bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+              <Image
+                src="/images/partners/hkcc-logo.png"
+                alt="香港電腦商會"
+                width={128}
+                height={64}
+                className="object-contain p-2"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  target.style.display = 'none'
+                  const placeholder = target.nextElementSibling as HTMLElement
+                  if (placeholder) placeholder.style.display = 'flex'
+                }}
+              />
+              <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
+                <div className="text-xs text-slate-500 dark:text-slate-400 text-center">香港電腦商會 Logo<br/>200x100<br/>參考: koraeweb.com 合作伙伴 Logo</div>
+              </div>
+            </div>
           </div>
           <div className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-3">業界信譽保證，多元化網絡批發平台</div>
           <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">
@@ -330,7 +403,19 @@ export default function AboutSection() {
             <a href="https://www.shopage.org/zh/post/%E7%B6%B2%E5%BA%97%E8%B2%A8%E6%BA%90%E5%BE%9E%E4%BD%95%E4%BE%86" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline font-medium">
               SHOPAGE
             </a>
-            」推薦介紹，評價為可信性高的網絡批發平台，十分方便。
+            」推薦介紹，評價為可信性高的網絡批發平台，十分方便。此外，我們也與「
+            <a href="https://www.bowtie.com.hk" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline font-medium">
+              Bowtie
+            </a>
+            」、「
+            <a href="https://shopline.hk" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline font-medium">
+              Shopline
+            </a>
+            」、「
+            <span className="text-blue-600 dark:text-blue-400 font-medium">新城電台</span>
+            」及「
+            <span className="text-blue-600 dark:text-blue-400 font-medium">香港電腦商會</span>
+            」建立合作關係，持續為客戶提供優質服務。
           </p>
         </div>
 
@@ -343,17 +428,23 @@ export default function AboutSection() {
           </p>
           <div className="grid md:grid-cols-3 gap-4 text-center">
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-              <div className="text-2xl mb-2">📊</div>
+              <div className="mb-2 flex items-center justify-center">
+                <Icon emoji="📊" size={32} className="text-white" />
+              </div>
               <div className="font-semibold mb-1">多格式支援</div>
               <div className="text-sm text-blue-100">CSV、Excel、JSON</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-              <div className="text-2xl mb-2">🔄</div>
+              <div className="mb-2 flex items-center justify-center">
+                <Icon emoji="🔄" size={32} className="text-white" />
+              </div>
               <div className="font-semibold mb-1">多平台相容</div>
               <div className="text-sm text-blue-100">Shopify、WooCommerce、Shopline、Shopage</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-              <div className="text-2xl mb-2">⚡</div>
+              <div className="mb-2 flex items-center justify-center">
+                <Icon emoji="⚡" size={32} className="text-white" />
+              </div>
               <div className="font-semibold mb-1">批量下載</div>
               <div className="text-sm text-blue-100">一鍵匯出商品數據</div>
             </div>

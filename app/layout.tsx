@@ -23,11 +23,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="zh-TW" data-theme="korae" suppressHydrationWarning>
-      <body className={inter.className}>
+    <html lang="zh-TW" data-theme="korae" suppressHydrationWarning className="overflow-x-hidden">
+      <body className={`${inter.className} overflow-x-hidden max-w-full`}>
         <SnowEffect />
         <Header />
-        <main className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">{children}</main>
+        <main className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300 overflow-x-hidden max-w-full">{children}</main>
         <Footer />
       </body>
     </html>
