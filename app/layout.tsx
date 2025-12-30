@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import SafeWrapper from '@/components/SafeWrapper'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import SnowEffect from '@/components/SnowEffect'
@@ -25,10 +26,18 @@ export default function RootLayout({
   return (
     <html lang="zh-TW" data-theme="korae" suppressHydrationWarning className="overflow-x-hidden">
       <body className={`${inter.className} overflow-x-hidden max-w-full`}>
-        <SnowEffect />
-        <Header />
-        <main className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300 overflow-x-hidden max-w-full">{children}</main>
-        <Footer />
+        <SafeWrapper>
+          <SnowEffect />
+        </SafeWrapper>
+        <SafeWrapper>
+          <Header />
+        </SafeWrapper>
+        <main className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300 overflow-x-hidden max-w-full">
+          {children}
+        </main>
+        <SafeWrapper>
+          <Footer />
+        </SafeWrapper>
       </body>
     </html>
   )
