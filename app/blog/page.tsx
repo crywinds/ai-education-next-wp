@@ -97,12 +97,18 @@ export default async function BlogPage() {
                       </Link>
                     ) : (
                       <Link href={`/blog/${post.slug}`}>
-                        <div className="relative h-48 bg-slate-200 border-2 border-dashed border-slate-400 flex items-center justify-center">
+                        <div className="relative h-48 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 flex items-center justify-center">
                           <div className="text-center p-4">
                             <div className="mb-2 flex items-center justify-center">
-                              <Icon emoji="🖼️" size={48} className="text-slate-500" />
+                              <Icon emoji="🖼️" size={48} className="text-slate-500 dark:text-slate-400" />
                             </div>
-                            <div className="text-xs text-slate-500">文章圖片<br/>800x600</div>
+                            <div className="text-xs text-slate-600 dark:text-slate-400 font-medium mb-1">文章圖片</div>
+                            <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                              WordPress 特色圖片
+                            </div>
+                            <div className="text-[9px] text-slate-500 dark:text-slate-500 mt-1 leading-tight">
+                              在 WordPress 後台<br/>設置文章特色圖片
+                            </div>
                           </div>
                         </div>
                       </Link>

@@ -78,30 +78,102 @@ export default function Hero() {
         <div className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[28rem] lg:w-96 lg:h-[32rem]">
           {/* 第一張相片 - 左上，稍微傾斜 */}
           <div className="absolute top-0 left-0 w-[60%] h-[45%] rounded-2xl overflow-hidden shadow-xl z-10 bg-blue-100/80 dark:bg-blue-900/40 border-2 border-dashed border-blue-300/50 dark:border-blue-600/30 rotate-[-5deg] backdrop-blur-sm">
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="text-center p-4">
-                <Icon emoji="📸" size={40} className="text-blue-500 dark:text-blue-400 mx-auto mb-2" />
-                <div className="text-sm text-blue-600 dark:text-blue-300 font-medium">團隊照片 1</div>
+            <div className="relative w-full h-full">
+              <Image
+                src="/images/about/team-1.jpg"
+                alt="團隊照片 1"
+                fill
+                className="object-cover rounded-2xl"
+                unoptimized
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  target.style.display = 'none'
+                  const placeholder = target.parentElement?.querySelector('.image-placeholder') as HTMLElement
+                  if (placeholder) placeholder.style.display = 'flex'
+                }}
+              />
+              <div className="image-placeholder hidden absolute inset-0 items-center justify-center">
+                <div className="text-center p-3">
+                  <Icon emoji="📸" size={32} className="text-blue-500 dark:text-blue-400 mx-auto mb-1" />
+                  <div className="text-xs text-blue-600 dark:text-blue-300 font-medium mb-1">團隊照片 1</div>
+                  <div className="text-[9px] text-blue-500 dark:text-blue-400 font-semibold mb-1 px-1.5 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                    team-1.jpg
+                  </div>
+                  <div className="text-[8px] text-blue-400 dark:text-blue-500 leading-tight">
+                    <a href="/admin" target="_blank" className="underline hover:text-blue-600 dark:hover:text-blue-400">
+                      /admin
+                    </a>
+                    <br/>分類: 關於我們
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           
           {/* 第二張相片 - 中間右側，稍微傾斜 */}
           <div className="absolute top-[25%] right-0 w-[55%] h-[50%] rounded-2xl overflow-hidden shadow-xl z-20 bg-cyan-100/80 dark:bg-cyan-900/40 border-2 border-dashed border-cyan-300/50 dark:border-cyan-600/30 rotate-[8deg] backdrop-blur-sm">
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="text-center p-4">
-                <Icon emoji="📸" size={40} className="text-cyan-500 dark:text-cyan-400 mx-auto mb-2" />
-                <div className="text-sm text-cyan-600 dark:text-cyan-300 font-medium">團隊照片 2</div>
+            <div className="relative w-full h-full">
+              <Image
+                src="/images/about/team-2.jpg"
+                alt="團隊照片 2"
+                fill
+                className="object-cover rounded-2xl"
+                unoptimized
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  target.style.display = 'none'
+                  const placeholder = target.parentElement?.querySelector('.image-placeholder') as HTMLElement
+                  if (placeholder) placeholder.style.display = 'flex'
+                }}
+              />
+              <div className="image-placeholder hidden absolute inset-0 items-center justify-center">
+                <div className="text-center p-3">
+                  <Icon emoji="📸" size={32} className="text-cyan-500 dark:text-cyan-400 mx-auto mb-1" />
+                  <div className="text-xs text-cyan-600 dark:text-cyan-300 font-medium mb-1">團隊照片 2</div>
+                  <div className="text-[9px] text-cyan-500 dark:text-cyan-400 font-semibold mb-1 px-1.5 py-0.5 bg-cyan-50 dark:bg-cyan-900/30 rounded">
+                    team-2.jpg
+                  </div>
+                  <div className="text-[8px] text-cyan-400 dark:text-cyan-500 leading-tight">
+                    <a href="/admin" target="_blank" className="underline hover:text-cyan-600 dark:hover:text-cyan-400">
+                      /admin
+                    </a>
+                    <br/>分類: 關於我們
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           
           {/* 第三張相片 - 左下，稍微傾斜 */}
           <div className="absolute bottom-0 left-[10%] w-[50%] h-[40%] rounded-2xl overflow-hidden shadow-xl z-30 bg-pink-100/80 dark:bg-pink-900/40 border-2 border-dashed border-pink-300/50 dark:border-pink-600/30 rotate-[-3deg] backdrop-blur-sm">
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="text-center p-4">
-                <Icon emoji="📸" size={40} className="text-pink-500 dark:text-pink-400 mx-auto mb-2" />
-                <div className="text-sm text-pink-600 dark:text-pink-300 font-medium">團隊照片 3</div>
+            <div className="relative w-full h-full">
+              <Image
+                src="/images/about/team-3.jpg"
+                alt="團隊照片 3"
+                fill
+                className="object-cover rounded-2xl"
+                unoptimized
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  target.style.display = 'none'
+                  const placeholder = target.parentElement?.querySelector('.image-placeholder') as HTMLElement
+                  if (placeholder) placeholder.style.display = 'flex'
+                }}
+              />
+              <div className="image-placeholder hidden absolute inset-0 items-center justify-center">
+                <div className="text-center p-3">
+                  <Icon emoji="📸" size={32} className="text-pink-500 dark:text-pink-400 mx-auto mb-1" />
+                  <div className="text-xs text-pink-600 dark:text-pink-300 font-medium mb-1">團隊照片 3</div>
+                  <div className="text-[9px] text-pink-500 dark:text-pink-400 font-semibold mb-1 px-1.5 py-0.5 bg-pink-50 dark:bg-pink-900/30 rounded">
+                    team-3.jpg
+                  </div>
+                  <div className="text-[8px] text-pink-400 dark:text-pink-500 leading-tight">
+                    <a href="/admin" target="_blank" className="underline hover:text-pink-600 dark:hover:text-pink-400">
+                      /admin
+                    </a>
+                    <br/>分類: 關於我們
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -113,30 +185,102 @@ export default function Hero() {
         <div className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[28rem] lg:w-96 lg:h-[32rem]">
           {/* 第一張相片 - 右上，稍微傾斜 */}
           <div className="absolute top-0 right-0 w-[60%] h-[45%] rounded-2xl overflow-hidden shadow-xl z-10 bg-purple-100/80 dark:bg-purple-900/40 border-2 border-dashed border-purple-300/50 dark:border-purple-600/30 rotate-[5deg] backdrop-blur-sm">
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="text-center p-4">
-                <Icon emoji="📸" size={40} className="text-purple-500 dark:text-purple-400 mx-auto mb-2" />
-                <div className="text-sm text-purple-600 dark:text-purple-300 font-medium">團隊照片 1</div>
+            <div className="relative w-full h-full">
+              <Image
+                src="/images/about/team-1.jpg"
+                alt="團隊照片 1"
+                fill
+                className="object-cover rounded-2xl"
+                unoptimized
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  target.style.display = 'none'
+                  const placeholder = target.parentElement?.querySelector('.image-placeholder') as HTMLElement
+                  if (placeholder) placeholder.style.display = 'flex'
+                }}
+              />
+              <div className="image-placeholder hidden absolute inset-0 items-center justify-center">
+                <div className="text-center p-3">
+                  <Icon emoji="📸" size={32} className="text-purple-500 dark:text-purple-400 mx-auto mb-1" />
+                  <div className="text-xs text-purple-600 dark:text-purple-300 font-medium mb-1">團隊照片 1</div>
+                  <div className="text-[9px] text-purple-500 dark:text-purple-400 font-semibold mb-1 px-1.5 py-0.5 bg-purple-50 dark:bg-purple-900/30 rounded">
+                    team-1.jpg
+                  </div>
+                  <div className="text-[8px] text-purple-400 dark:text-purple-500 leading-tight">
+                    <a href="/admin" target="_blank" className="underline hover:text-purple-600 dark:hover:text-purple-400">
+                      /admin
+                    </a>
+                    <br/>分類: 關於我們
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           
           {/* 第二張相片 - 中間左側，稍微傾斜 */}
           <div className="absolute top-[25%] left-0 w-[55%] h-[50%] rounded-2xl overflow-hidden shadow-xl z-20 bg-indigo-100/80 dark:bg-indigo-900/40 border-2 border-dashed border-indigo-300/50 dark:border-indigo-600/30 rotate-[-8deg] backdrop-blur-sm">
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="text-center p-4">
-                <Icon emoji="📸" size={40} className="text-indigo-500 dark:text-indigo-400 mx-auto mb-2" />
-                <div className="text-sm text-indigo-600 dark:text-indigo-300 font-medium">團隊照片 2</div>
+            <div className="relative w-full h-full">
+              <Image
+                src="/images/about/team-2.jpg"
+                alt="團隊照片 2"
+                fill
+                className="object-cover rounded-2xl"
+                unoptimized
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  target.style.display = 'none'
+                  const placeholder = target.parentElement?.querySelector('.image-placeholder') as HTMLElement
+                  if (placeholder) placeholder.style.display = 'flex'
+                }}
+              />
+              <div className="image-placeholder hidden absolute inset-0 items-center justify-center">
+                <div className="text-center p-3">
+                  <Icon emoji="📸" size={32} className="text-indigo-500 dark:text-indigo-400 mx-auto mb-1" />
+                  <div className="text-xs text-indigo-600 dark:text-indigo-300 font-medium mb-1">團隊照片 2</div>
+                  <div className="text-[9px] text-indigo-500 dark:text-indigo-400 font-semibold mb-1 px-1.5 py-0.5 bg-indigo-50 dark:bg-indigo-900/30 rounded">
+                    team-2.jpg
+                  </div>
+                  <div className="text-[8px] text-indigo-400 dark:text-indigo-500 leading-tight">
+                    <a href="/admin" target="_blank" className="underline hover:text-indigo-600 dark:hover:text-indigo-400">
+                      /admin
+                    </a>
+                    <br/>分類: 關於我們
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           
           {/* 第三張相片 - 右下，稍微傾斜 */}
           <div className="absolute bottom-0 right-[10%] w-[50%] h-[40%] rounded-2xl overflow-hidden shadow-xl z-30 bg-teal-100/80 dark:bg-teal-900/40 border-2 border-dashed border-teal-300/50 dark:border-teal-600/30 rotate-[3deg] backdrop-blur-sm">
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="text-center p-4">
-                <Icon emoji="📸" size={40} className="text-teal-500 dark:text-teal-400 mx-auto mb-2" />
-                <div className="text-sm text-teal-600 dark:text-teal-300 font-medium">團隊照片 3</div>
+            <div className="relative w-full h-full">
+              <Image
+                src="/images/about/team-3.jpg"
+                alt="團隊照片 3"
+                fill
+                className="object-cover rounded-2xl"
+                unoptimized
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  target.style.display = 'none'
+                  const placeholder = target.parentElement?.querySelector('.image-placeholder') as HTMLElement
+                  if (placeholder) placeholder.style.display = 'flex'
+                }}
+              />
+              <div className="image-placeholder hidden absolute inset-0 items-center justify-center">
+                <div className="text-center p-3">
+                  <Icon emoji="📸" size={32} className="text-teal-500 dark:text-teal-400 mx-auto mb-1" />
+                  <div className="text-xs text-teal-600 dark:text-teal-300 font-medium mb-1">團隊照片 3</div>
+                  <div className="text-[9px] text-teal-500 dark:text-teal-400 font-semibold mb-1 px-1.5 py-0.5 bg-teal-50 dark:bg-teal-900/30 rounded">
+                    team-3.jpg
+                  </div>
+                  <div className="text-[8px] text-teal-400 dark:text-teal-500 leading-tight">
+                    <a href="/admin" target="_blank" className="underline hover:text-teal-600 dark:hover:text-teal-400">
+                      /admin
+                    </a>
+                    <br/>分類: 關於我們
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -90,9 +90,15 @@ export default function BrandsMarquee() {
                           }}
                         />
                         <div className="brand-placeholder hidden absolute inset-0 items-center justify-center bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-lg">
-                          <div className="text-center p-3">
-                            <div className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">
+                          <div className="text-center p-2">
+                            <div className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium mb-1">
                               {brand.name}
+                            </div>
+                            <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                              {brand.logo.split('/').pop()}
+                            </div>
+                            <div className="text-[9px] text-slate-400 dark:text-slate-500 leading-tight">
+                              Admin: /admin<br/>分類: 品牌 Logo
                             </div>
                           </div>
                         </div>
@@ -120,9 +126,15 @@ export default function BrandsMarquee() {
                           }}
                         />
                         <div className="brand-placeholder hidden absolute inset-0 items-center justify-center bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-lg">
-                          <div className="text-center p-3">
-                            <div className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">
+                          <div className="text-center p-2">
+                            <div className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium mb-1">
                               {brand.name}
+                            </div>
+                            <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                              {brand.logo.split('/').pop()}
+                            </div>
+                            <div className="text-[9px] text-slate-400 dark:text-slate-500 leading-tight">
+                              Admin: /admin<br/>分類: 品牌 Logo
                             </div>
                           </div>
                         </div>

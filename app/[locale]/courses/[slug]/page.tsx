@@ -5,10 +5,15 @@ import { getCourseFromWP, transformPostToCourse } from '@/lib/wordpress'
 import type { Course } from '@/types'
 
 interface CourseDetailPageProps {
-  params: {
+  params: Promise<{
+    locale: string
     slug: string
-  }
+  }>
 }
+
+// 設置為動態路由，避免構建時需要 WordPress API
+export const dynamic = 'force-dynamic'
+export const dynamicParams = true
 
 async function getCourse(slug: string): Promise<Course | null> {
   try {
@@ -27,7 +32,8 @@ async function getCourse(slug: string): Promise<Course | null> {
 }
 
 export default async function CourseDetailPage({ params }: CourseDetailPageProps) {
-  const course = await getCourse(params.slug)
+  const { slug } = await params
+  const course = await getCourse(slug)
 
   if (!course) {
     notFound()

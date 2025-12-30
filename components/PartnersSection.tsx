@@ -145,11 +145,14 @@ export default function PartnersSection() {
                       >
                         <div className="text-center p-2">
                           <div className="text-2xl mb-1">🏢</div>
-                          <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                          <div className="text-xs text-slate-500 dark:text-slate-400 font-medium mb-1">
                             {partner.name}
                           </div>
-                          <div className="text-xs text-slate-400 dark:text-slate-500 mt-1">
-                            請放置 Logo<br/>參考: koraeweb.com 合作伙伴 Logo
+                          <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                            {partner.logo.split('/').pop()}
+                          </div>
+                          <div className="text-[9px] text-slate-400 dark:text-slate-500 mt-1 leading-tight">
+                            Admin: /admin<br/>分類: 合作伙伴 Logo
                           </div>
                         </div>
                       </div>

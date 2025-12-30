@@ -7,9 +7,9 @@ import Icon from '@/components/Icon'
 
 export default function AboutSection() {
   const teamImages = [
-    { src: '/images/about/team-member-1.jpg', alt: 'Korae 團隊活動' },
-    { src: '/images/about/team-member-2.jpg', alt: 'Korae 團隊會議' },
-    { src: '/images/about/team-member-3.jpg', alt: 'Korae 團隊工作' },
+    { src: '/images/about/team-1.jpg', alt: 'Korae 團隊活動' },
+    { src: '/images/about/team-2.jpg', alt: 'Korae 團隊會議' },
+    { src: '/images/about/team-3.jpg', alt: 'Korae 團隊工作' },
   ]
 
   return (
@@ -101,7 +101,13 @@ export default function AboutSection() {
                 <div className="image-placeholder hidden absolute inset-0 items-center justify-center bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600">
                   <div className="text-center p-4">
                     <div className="text-3xl mb-2">📸</div>
-                    <div className="text-xs text-slate-600 dark:text-slate-400">團隊照片 1</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-400 font-medium mb-1">團隊照片 1</div>
+                    <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                      {teamImages[0].src.split('/').pop()}
+                    </div>
+                    <div className="text-[9px] text-slate-400 dark:text-slate-500 mt-1 leading-tight">
+                      Admin: /admin<br/>分類: 關於我們 - 團隊照片
+                    </div>
                   </div>
                 </div>
               </div>
@@ -132,7 +138,13 @@ export default function AboutSection() {
                 <div className="image-placeholder hidden absolute inset-0 items-center justify-center bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600">
                   <div className="text-center p-4">
                     <div className="text-3xl mb-2">📸</div>
-                    <div className="text-xs text-slate-600 dark:text-slate-400">團隊照片 2</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-400 font-medium mb-1">團隊照片 2</div>
+                    <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                      {teamImages[1].src.split('/').pop()}
+                    </div>
+                    <div className="text-[9px] text-slate-400 dark:text-slate-500 mt-1 leading-tight">
+                      Admin: /admin<br/>分類: 關於我們 - 團隊照片
+                    </div>
                   </div>
                 </div>
               </div>
@@ -163,7 +175,13 @@ export default function AboutSection() {
                 <div className="image-placeholder hidden absolute inset-0 items-center justify-center bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600">
                   <div className="text-center p-4">
                     <div className="text-3xl mb-2">📸</div>
-                    <div className="text-xs text-slate-600 dark:text-slate-400">團隊照片 3</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-400 font-medium mb-1">團隊照片 3</div>
+                    <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                      {teamImages[2].src.split('/').pop()}
+                    </div>
+                    <div className="text-[9px] text-slate-400 dark:text-slate-500 mt-1 leading-tight">
+                      Admin: /admin<br/>分類: 關於我們 - 團隊照片
+                    </div>
                   </div>
                 </div>
               </div>
@@ -229,7 +247,14 @@ export default function AboutSection() {
                 }}
               />
               <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-xs text-slate-500 dark:text-slate-400 text-center px-2">獎項圖片<br/>200x200<br/>參考: koraeweb.com 獎項圖片</div>
+                <div className="text-center px-2">
+                  <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                    metro-radio-award.png
+                  </div>
+                  <div className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight">
+                    Admin: /admin<br/>分類: 獎項圖片<br/>尺寸: 400x400
+                  </div>
+                </div>
               </div>
             </div>
             <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">新城電台 傑出批發平台</h3>
@@ -252,7 +277,14 @@ export default function AboutSection() {
                 }}
               />
               <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-xs text-slate-500 dark:text-slate-400 text-center px-2">獎項圖片<br/>200x200<br/>參考: koraeweb.com 獎項圖片</div>
+                <div className="text-center px-2">
+                  <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                    award-brand.png
+                  </div>
+                  <div className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight">
+                    Admin: /admin<br/>分類: 獎項圖片<br/>尺寸: 400x400
+                  </div>
+                </div>
               </div>
             </div>
             <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">得獎品牌</h3>
@@ -275,7 +307,14 @@ export default function AboutSection() {
                 }}
               />
               <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-xs text-slate-500 dark:text-slate-400 text-center px-2">獎項圖片<br/>200x200<br/>參考: koraeweb.com 獎項圖片</div>
+                <div className="text-center px-2">
+                  <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                    outstanding-platform.png
+                  </div>
+                  <div className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight">
+                    Admin: /admin<br/>分類: 獎項圖片<br/>尺寸: 400x400
+                  </div>
+                </div>
               </div>
             </div>
             <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">傑出網上批發平台</h3>
@@ -303,7 +342,14 @@ export default function AboutSection() {
                 }}
               />
               <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-xs text-slate-500 dark:text-slate-400 text-center">滙豐銀行 Logo<br/>200x100<br/>參考: koraeweb.com 合作伙伴 Logo</div>
+                <div className="text-center px-2">
+                  <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                    hsbc-logo.png
+                  </div>
+                  <div className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight">
+                    Admin: /admin<br/>分類: 合作伙伴 Logo
+                  </div>
+                </div>
               </div>
             </div>
             <div className="relative w-32 h-16 rounded-lg overflow-hidden bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
@@ -322,7 +368,14 @@ export default function AboutSection() {
                 }}
               />
               <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-xs text-slate-500 dark:text-slate-400 text-center">SHOPAGE Logo<br/>200x100<br/>參考: koraeweb.com 合作伙伴 Logo</div>
+                <div className="text-center px-2">
+                  <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                    shopage-logo.png
+                  </div>
+                  <div className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight">
+                    Admin: /admin<br/>分類: 合作伙伴 Logo
+                  </div>
+                </div>
               </div>
             </div>
             <div className="relative w-32 h-16 rounded-lg overflow-hidden bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
@@ -341,7 +394,14 @@ export default function AboutSection() {
                 }}
               />
               <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-xs text-slate-500 dark:text-slate-400 text-center">Bowtie Logo<br/>200x100<br/>參考: koraeweb.com 合作伙伴 Logo</div>
+                <div className="text-center px-2">
+                  <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                    bowtie-logo.png
+                  </div>
+                  <div className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight">
+                    Admin: /admin<br/>分類: 合作伙伴 Logo
+                  </div>
+                </div>
               </div>
             </div>
             <div className="relative w-32 h-16 rounded-lg overflow-hidden bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
@@ -360,7 +420,14 @@ export default function AboutSection() {
                 }}
               />
               <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-xs text-slate-500 dark:text-slate-400 text-center">Shopline Logo<br/>200x100<br/>參考: koraeweb.com 合作伙伴 Logo</div>
+                <div className="text-center px-2">
+                  <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                    shopline-logo.png
+                  </div>
+                  <div className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight">
+                    Admin: /admin<br/>分類: 合作伙伴 Logo
+                  </div>
+                </div>
               </div>
             </div>
             <div className="relative w-32 h-16 rounded-lg overflow-hidden bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
@@ -379,7 +446,14 @@ export default function AboutSection() {
                 }}
               />
               <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-xs text-slate-500 dark:text-slate-400 text-center">新城電台 Logo<br/>200x100<br/>參考: koraeweb.com 合作伙伴 Logo</div>
+                <div className="text-center px-2">
+                  <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                    metro-radio-logo.png
+                  </div>
+                  <div className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight">
+                    Admin: /admin<br/>分類: 合作伙伴 Logo
+                  </div>
+                </div>
               </div>
             </div>
             <div className="relative w-32 h-16 rounded-lg overflow-hidden bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
@@ -398,7 +472,14 @@ export default function AboutSection() {
                 }}
               />
               <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-xs text-slate-500 dark:text-slate-400 text-center">香港電腦商會 Logo<br/>200x100<br/>參考: koraeweb.com 合作伙伴 Logo</div>
+                <div className="text-center px-2">
+                  <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                    hkcc-logo.png
+                  </div>
+                  <div className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight">
+                    Admin: /admin<br/>分類: 合作伙伴 Logo
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -115,8 +115,13 @@ export default function ServicesSection() {
                   <div className="mb-2 flex items-center justify-center">
                     <Icon emoji="🖼️" size={40} className="text-slate-600 dark:text-slate-400" />
                   </div>
-                  <div className="text-slate-600 dark:text-slate-300 font-semibold text-sm">東大門 | Korae 韓國批發</div>
-                  <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">建議尺寸: 1200x675<br/>參考: koraeweb.com 東大門圖片</div>
+                  <div className="text-slate-600 dark:text-slate-300 font-semibold text-sm mb-1">東大門 | Korae 韓國批發</div>
+                  <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                    dongdaemun-mobile.jpg
+                  </div>
+                  <div className="text-[9px] text-slate-500 dark:text-slate-400 mt-1 leading-tight">
+                    Admin: /admin<br/>分類: 服務圖片<br/>尺寸: 1200x675
+                  </div>
                 </div>
               </div>
             </div>
@@ -215,7 +220,12 @@ export default function ServicesSection() {
                     <Icon emoji="🖼️" size={48} className="text-slate-600 dark:text-slate-400" />
                   </div>
                   <div className="text-slate-700 dark:text-slate-300 font-semibold mb-1">服務收費說明圖</div>
-                  <div className="text-xs text-slate-500 dark:text-slate-400">建議尺寸: 800x600<br/>參考: koraeweb.com 服務收費說明圖</div>
+                  <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                    service-fee.jpg
+                  </div>
+                  <div className="text-[9px] text-slate-500 dark:text-slate-400 mt-1 leading-tight">
+                    Admin: /admin<br/>分類: 服務圖片<br/>尺寸: 1200x675
+                  </div>
                 </div>
               </div>
             </div>

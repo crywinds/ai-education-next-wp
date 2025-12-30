@@ -18,6 +18,17 @@ const nextConfig = {
       },
     ],
   },
+  // 優化 webpack 構建，確保 vendor chunks 正確生成
+  webpack: (config, { isServer }) => {
+    // 確保 framer-motion 正確打包
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      }
+    }
+    return config
+  },
 }
 
 module.exports = nextConfig

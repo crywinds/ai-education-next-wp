@@ -278,12 +278,17 @@ export default function ContactPage() {
               </div>
 
               {/* Map Placeholder */}
-              <div className="bg-slate-100 rounded-2xl p-6 md:p-8 border-2 border-dashed border-slate-400">
-                <div className="aspect-video bg-slate-200 rounded-lg flex items-center justify-center">
-                  <div className="text-center">
+              <div className="bg-slate-100 dark:bg-slate-800 rounded-2xl p-6 md:p-8 border-2 border-dashed border-slate-400 dark:border-slate-600">
+                <div className="aspect-video bg-slate-200 dark:bg-slate-700 rounded-lg flex items-center justify-center">
+                  <div className="text-center p-4">
                     <div className="text-4xl mb-2">🗺️</div>
-                    <div className="text-slate-600 font-semibold mb-1">地圖位置</div>
-                    <div className="text-xs text-slate-500">建議尺寸: 800x600</div>
+                    <div className="text-slate-600 dark:text-slate-300 font-semibold mb-1">地圖位置</div>
+                    <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                      map-location.jpg
+                    </div>
+                    <div className="text-[9px] text-slate-500 dark:text-slate-400 mt-1 leading-tight">
+                      Admin: /admin<br/>分類: 聯絡頁面<br/>尺寸: 1200x600
+                    </div>
                   </div>
                 </div>
               </div>

@@ -12,36 +12,182 @@ interface ImageInfo {
   size?: number
 }
 
-const imageCategories = [
+interface ImageFile {
+  filename: string
+  size?: string // 建議尺寸，例如 "1920x1080"
+  description?: string // 圖片說明
+}
+
+interface ImageCategory {
+  id: string
+  name: string
+  path: string
+  files: ImageFile[]
+  defaultSize?: string // 該分類的默認尺寸
+}
+
+const imageCategories: ImageCategory[] = [
   // Logo
-  { id: 'logo', name: 'Logo', path: '/images/logo/', files: ['korae-logo.png'] },
+  { 
+    id: 'logo', 
+    name: 'Logo', 
+    path: '/images/logo/', 
+    defaultSize: '300x150',
+    files: [
+      { filename: 'korae-logo.png', size: '300x150', description: 'Korae 主 Logo（透明背景 PNG）' }
+    ] 
+  },
   
   // 首頁
-  { id: 'hero', name: 'Hero 背景圖片', path: '/images/hero/', files: ['hero-background.jpg'] },
-  { id: 'partners', name: '合作伙伴 Logo', path: '/images/partners/', files: ['hsbc-logo.png', 'shopage-logo.png', 'bowtie-logo.png', 'shopline-logo.png', 'metro-radio-logo.png', 'hkcc-logo.png', 'sfexpress-logo.png'] },
-  { id: 'testimonials', name: '客戶見證', path: '/images/testimonials/', files: ['testimonial-1.jpg', 'testimonial-2.jpg', 'testimonial-3.jpg'] },
+  { 
+    id: 'hero', 
+    name: 'Hero 背景圖片', 
+    path: '/images/hero/', 
+    defaultSize: '1920x1080',
+    files: [
+      { filename: 'hero-background.jpg', size: '1920x1080', description: '首頁 Hero 區塊背景圖（寬屏橫向）' }
+    ] 
+  },
+  { 
+    id: 'partners', 
+    name: '合作伙伴 Logo', 
+    path: '/images/partners/', 
+    defaultSize: '300x150',
+    files: [
+      { filename: 'hsbc-logo.png', size: '300x150', description: '香港上海滙豐銀行 Logo（透明背景）' },
+      { filename: 'shopage-logo.png', size: '300x150', description: 'SHOPAGE Logo（透明背景）' },
+      { filename: 'bowtie-logo.png', size: '300x150', description: 'Bowtie Logo（透明背景）' },
+      { filename: 'shopline-logo.png', size: '300x150', description: 'Shopline Logo（透明背景）' },
+      { filename: 'metro-radio-logo.png', size: '300x150', description: '新城電台 Logo（透明背景）' },
+      { filename: 'hkcc-logo.png', size: '300x150', description: '香港電腦商會 Logo（透明背景）' },
+      { filename: 'sfexpress-logo.png', size: '300x150', description: '順豐速遞 Logo（透明背景）' }
+    ] 
+  },
+  { 
+    id: 'testimonials', 
+    name: '客戶見證', 
+    path: '/images/testimonials/', 
+    defaultSize: '400x300',
+    files: [
+      { filename: 'testimonial-1.jpg', size: '400x300', description: '客戶見證圖片 1（人物照片）' },
+      { filename: 'testimonial-2.jpg', size: '400x300', description: '客戶見證圖片 2（人物照片）' },
+      { filename: 'testimonial-3.jpg', size: '400x300', description: '客戶見證圖片 3（人物照片）' }
+    ] 
+  },
   
   // 韓國批發團隊簡介 (about)
-  { id: 'about', name: '關於我們 - 團隊照片', path: '/images/about/', files: ['team-member-1.jpg', 'team-member-2.jpg', 'team-member-3.jpg', 'team-member-4.jpg'] },
+  { 
+    id: 'about', 
+    name: '關於我們 - 團隊照片', 
+    path: '/images/about/', 
+    defaultSize: '400x400',
+    files: [
+      { filename: 'team-1.jpg', size: '400x400', description: '團隊成員照片 1（正方形）' },
+      { filename: 'team-2.jpg', size: '400x400', description: '團隊成員照片 2（正方形）' },
+      { filename: 'team-3.jpg', size: '400x400', description: '團隊成員照片 3（正方形）' },
+      { filename: 'team-4.jpg', size: '400x400', description: '團隊成員照片 4（正方形）' },
+      { filename: 'team-5.jpg', size: '400x400', description: '團隊成員照片 5（正方形）' },
+      { filename: 'team-6.jpg', size: '400x400', description: '團隊成員照片 6（正方形）' }
+    ] 
+  },
   
   // 批發+網店服務 (services)
-  { id: 'services', name: '服務圖片', path: '/images/services/', files: ['dongdaemun-mobile.jpg', 'service-fee.jpg', 'website-showcase.jpg', 'admin-dashboard.jpg', 'photography-studio.jpg'] },
+  { 
+    id: 'services', 
+    name: '服務圖片', 
+    path: '/images/services/', 
+    defaultSize: '1200x675',
+    files: [
+      { filename: 'dongdaemun-mobile.jpg', size: '1200x675', description: '東大門批發網站手機版截圖' },
+      { filename: 'service-fee.jpg', size: '1200x675', description: '服務收費說明圖' },
+      { filename: 'website-showcase.jpg', size: '1200x675', description: '網站展示截圖' },
+      { filename: 'admin-dashboard.jpg', size: '1200x675', description: '後台管理系統截圖' },
+      { filename: 'photography-studio.jpg', size: '1200x675', description: '攝影工作室照片' }
+    ] 
+  },
   
   // 純批發服務 (wholesale)
-  { id: 'wholesale', name: '批發商品圖片', path: '/images/wholesale/', files: ['korea-fashion.jpg', 'japan-fashion.jpg', 'korea-furniture.jpg', 'skincare.jpg', 'jewelry.jpg'] },
+  { 
+    id: 'wholesale', 
+    name: '批發商品圖片', 
+    path: '/images/wholesale/', 
+    defaultSize: '1200x800',
+    files: [
+      { filename: 'korea-fashion.jpg', size: '1200x800', description: '韓國時尚商品照片' },
+      { filename: 'japan-fashion.jpg', size: '1200x800', description: '日本時尚商品照片' },
+      { filename: 'korea-furniture.jpg', size: '1200x800', description: '韓國家具商品照片' },
+      { filename: 'skincare.jpg', size: '1200x800', description: '護膚品商品照片' },
+      { filename: 'jewelry.jpg', size: '1200x800', description: '珠寶商品照片' }
+    ] 
+  },
   
   // 人才招募 (careers)
-  { id: 'careers', name: '職位圖片', path: '/images/careers/', files: ['position-procurement.jpg', 'position-customer-service.jpg', 'position-quality.jpg', 'position-developer.jpg'] },
+  { 
+    id: 'careers', 
+    name: '職位圖片', 
+    path: '/images/careers/', 
+    defaultSize: '800x600',
+    files: [
+      { filename: 'position-procurement.jpg', size: '800x600', description: '採購職位相關圖片' },
+      { filename: 'position-customer-service.jpg', size: '800x600', description: '客服職位相關圖片' },
+      { filename: 'position-quality.jpg', size: '800x600', description: '質檢職位相關圖片' },
+      { filename: 'position-developer.jpg', size: '800x600', description: '開發職位相關圖片' }
+    ] 
+  },
   
   // 業界獎項 (awards)
-  { id: 'awards', name: '獎項圖片', path: '/images/awards/', files: ['hk-digital-brand-2018.png', 'award-brand.png', 'outstanding-platform.png', 'chals-interview.jpg', 'ebonia-sponsor.jpg'] },
+  { 
+    id: 'awards', 
+    name: '獎項圖片', 
+    path: '/images/awards/', 
+    defaultSize: '400x400',
+    files: [
+      { filename: 'hk-digital-brand-2018.png', size: '400x400', description: '香港數碼品牌 2018 獎項（正方形）' },
+      { filename: 'award-brand.png', size: '400x400', description: '得獎品牌標誌（正方形）' },
+      { filename: 'outstanding-platform.png', size: '400x400', description: '傑出網上批發平台獎項（正方形）' },
+      { filename: 'chals-interview.jpg', size: '800x600', description: 'CHALS 訪問照片' },
+      { filename: 'ebonia-sponsor.jpg', size: '800x600', description: 'EBONIA 贊助活動照片' }
+    ] 
+  },
   
   // 媒體影片 (media)
-  { id: 'media', name: '媒體影片縮圖', path: '/images/media/', files: ['video-wholesale-intro.jpg', 'video-dongdaemun.jpg', 'video-customer-case.jpg', 'video-website-demo.jpg', 'video-quality-check.jpg', 'video-team-intro.jpg'] },
-  { id: 'media-logos', name: '媒體 Logo', path: '/images/media/logos/', files: ['metro-radio-logo.png', 'singtao-logo.png', 'hsbc-logo.png', 'shopage-logo.png'] },
+  { 
+    id: 'media', 
+    name: '媒體影片縮圖', 
+    path: '/images/media/', 
+    defaultSize: '1280x720',
+    files: [
+      { filename: 'video-wholesale-intro.jpg', size: '1280x720', description: '批發介紹影片縮圖（16:9）' },
+      { filename: 'video-dongdaemun.jpg', size: '1280x720', description: '東大門影片縮圖（16:9）' },
+      { filename: 'video-customer-case.jpg', size: '1280x720', description: '客戶案例影片縮圖（16:9）' },
+      { filename: 'video-website-demo.jpg', size: '1280x720', description: '網站演示影片縮圖（16:9）' },
+      { filename: 'video-quality-check.jpg', size: '1280x720', description: '質檢流程影片縮圖（16:9）' },
+      { filename: 'video-team-intro.jpg', size: '1280x720', description: '團隊介紹影片縮圖（16:9）' }
+    ] 
+  },
+  { 
+    id: 'media-logos', 
+    name: '媒體 Logo', 
+    path: '/images/media/logos/', 
+    defaultSize: '300x150',
+    files: [
+      { filename: 'metro-radio-logo.png', size: '300x150', description: '新城電台 Logo（透明背景）' },
+      { filename: 'singtao-logo.png', size: '300x150', description: '星島日報 Logo（透明背景）' },
+      { filename: 'hsbc-logo.png', size: '300x150', description: '滙豐銀行 Logo（透明背景）' },
+      { filename: 'shopage-logo.png', size: '300x150', description: 'SHOPAGE Logo（透明背景）' }
+    ] 
+  },
   
   // 預約諮詢 (contact)
-  { id: 'contact', name: '聯絡頁面', path: '/images/contact/', files: ['map-location.jpg'] },
+  { 
+    id: 'contact', 
+    name: '聯絡頁面', 
+    path: '/images/contact/', 
+    defaultSize: '1200x600',
+    files: [
+      { filename: 'map-location.jpg', size: '1200x600', description: '地圖位置截圖（寬屏橫向）' }
+    ] 
+  },
 ]
 
 export default function AdminPanel() {
@@ -54,7 +200,9 @@ export default function AdminPanel() {
   const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({})
   const [deleting, setDeleting] = useState<Record<string, boolean>>({})
   const [imageExists, setImageExists] = useState<Record<string, boolean>>({})
+  const [imageRefreshKey, setImageRefreshKey] = useState<Record<string, number>>({})
   const [activeTab, setActiveTab] = useState<'images' | 'badges'>('images')
+  const [checkingImages, setCheckingImages] = useState(true)
   const [badges, setBadges] = useState<any[]>([])
   const [editingBadge, setEditingBadge] = useState<number | null>(null)
   const [savingBadges, setSavingBadges] = useState(false)
@@ -66,7 +214,8 @@ export default function AdminPanel() {
       setIsAuthenticated(true)
       // 檢查所有圖片是否存在
       imageCategories.forEach(category => {
-        category.files.forEach(filename => {
+        category.files.forEach(fileInfo => {
+          const filename = typeof fileInfo === 'string' ? fileInfo : fileInfo.filename
           checkImageExists(category.id, filename)
         })
       })
@@ -168,17 +317,18 @@ export default function AdminPanel() {
   }
 
   const checkImageExists = (category: string, filename: string) => {
-    const categoryData = imageCategories.find(c => c.id === category)
+    const uploadKey = `${category}-${filename}`
+    const categoryData = imageCategories.find(cat => cat.id === category)
     if (!categoryData) return
     
     // 使用原生 HTML Image 構造函數，避免與 Next.js Image 組件衝突
     const img = new window.Image()
     const imagePath = `${categoryData.path}${filename}?t=${Date.now()}` // 添加時間戳避免緩存
     img.onload = () => {
-      setImageExists(prev => ({ ...prev, [`${category}-${filename}`]: true }))
+      setImageExists(prev => ({ ...prev, [uploadKey]: true }))
     }
     img.onerror = () => {
-      setImageExists(prev => ({ ...prev, [`${category}-${filename}`]: false }))
+      setImageExists(prev => ({ ...prev, [uploadKey]: false }))
     }
     img.src = imagePath
   }
@@ -241,11 +391,29 @@ export default function AdminPanel() {
         if (xhr.status === 200) {
           const data = JSON.parse(xhr.responseText)
           if (data.success) {
-            alert(`圖片上傳成功！\n路徑: ${data.path}`)
-            setUploading({ ...uploading, [`${category}-${filename}`]: false })
-            setUploadProgress({ ...uploadProgress, [`${category}-${filename}`]: 0 })
-            // 刷新頁面以顯示新圖片
-            window.location.reload()
+            // 標記圖片已存在並強制刷新
+            const uploadKey = `${category}-${filename}`
+            const refreshTimestamp = Date.now()
+            
+            // 先更新 refresh key 強制重新載入圖片
+            setImageRefreshKey(prev => ({ ...prev, [uploadKey]: refreshTimestamp }))
+            
+            // 等待一小段時間後再標記為存在，確保圖片已寫入磁盤
+            setTimeout(() => {
+              setImageExists(prev => ({ ...prev, [uploadKey]: true }))
+              
+              // 強制刷新圖片元素
+              const imgElement = document.querySelector(`img[alt="${filename}"]`) as HTMLImageElement
+              if (imgElement && imgElement.parentElement) {
+                const categoryPath = imageCategories.find(cat => cat.id === category)?.path || ''
+                imgElement.src = `${categoryPath}${filename}?t=${refreshTimestamp}`
+              }
+            }, 300)
+            
+            setUploading(prev => ({ ...prev, [uploadKey]: false }))
+            setUploadProgress(prev => ({ ...prev, [uploadKey]: 0 }))
+            
+            alert(`圖片上傳成功！\n路徑: ${data.path}\n\n如果圖片未顯示，請刷新頁面。`)
           } else {
             alert(`上傳失敗: ${data.message}`)
             setUploading({ ...uploading, [`${category}-${filename}`]: false })
@@ -386,19 +554,41 @@ export default function AdminPanel() {
             >
               <div className="p-6">
                 <h2 className="text-xl font-bold text-slate-900 mb-4">{category.name}</h2>
-                <p className="text-sm text-slate-500 mb-4">路徑: {category.path}</p>
+                <div className="flex items-center gap-2 mb-4">
+                <p className="text-sm text-slate-500">路徑: {category.path}</p>
+                {category.defaultSize && (
+                  <span className="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs font-medium rounded">
+                    建議尺寸: {category.defaultSize}
+                  </span>
+                )}
+              </div>
 
                 <div className="space-y-4">
-                  {category.files.map((filename) => {
+                  {category.files.map((fileInfo) => {
+                    const filename = typeof fileInfo === 'string' ? fileInfo : fileInfo.filename
+                    const fileSize = typeof fileInfo === 'string' ? category.defaultSize : (fileInfo.size || category.defaultSize)
+                    const fileDescription = typeof fileInfo === 'string' ? undefined : fileInfo.description
                     const uploadKey = `${category.id}-${filename}`
                     const isUploading = uploading[uploadKey] || false
                     const progress = uploadProgress[uploadKey] || 0
 
                     return (
                       <div key={filename} className="border border-slate-200 rounded-lg p-4">
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="text-sm font-medium text-slate-700">{filename}</span>
-                          <label className="cursor-pointer">
+                        <div className="flex items-start justify-between mb-2">
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="text-sm font-medium text-slate-700">{filename}</span>
+                              {fileSize && (
+                                <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded">
+                                  📐 {fileSize}
+                                </span>
+                              )}
+                            </div>
+                            {fileDescription && (
+                              <p className="text-xs text-slate-500 mt-1">{fileDescription}</p>
+                            )}
+                          </div>
+                          <label className="cursor-pointer ml-2">
                             <input
                               type="file"
                               accept="image/*"
@@ -411,7 +601,7 @@ export default function AdminPanel() {
                               }}
                               disabled={isUploading}
                             />
-                            <span className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-xs rounded transition-colors disabled:opacity-50">
+                            <span className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-xs rounded transition-colors disabled:opacity-50 whitespace-nowrap">
                               {isUploading ? '上傳中...' : '選擇圖片'}
                             </span>
                           </label>
@@ -428,30 +618,33 @@ export default function AdminPanel() {
 
                         {/* Preview */}
                         <div className="mt-3 relative aspect-video bg-slate-100 rounded overflow-hidden group">
-                          <NextImage
-                            src={`${category.path}${filename}`}
+                          <img
+                            key={imageRefreshKey[uploadKey] || uploadKey}
+                            src={`${category.path}${filename}${imageRefreshKey[uploadKey] ? `?t=${imageRefreshKey[uploadKey]}` : `?t=${Date.now()}`}`}
                             alt={filename}
-                            fill
-                            className="object-contain"
+                            className={`w-full h-full object-contain ${imageExists[uploadKey] ? '' : 'hidden'}`}
                             onLoad={() => {
                               setImageExists(prev => ({ ...prev, [uploadKey]: true }))
                             }}
                             onError={(e) => {
                               const target = e.target as HTMLImageElement
                               target.style.display = 'none'
-                              const placeholder = target.nextElementSibling as HTMLElement
-                              if (placeholder) placeholder.style.display = 'flex'
                               setImageExists(prev => ({ ...prev, [uploadKey]: false }))
                             }}
                           />
-                          <div className="hidden absolute inset-0 items-center justify-center bg-slate-200 border-2 border-dashed border-slate-400">
-                            <div className="text-center text-xs text-slate-500">
-                              <div className="mb-1 flex items-center justify-center">
-                                <Icon emoji="🖼️" size={32} className="text-slate-500" />
+                          {!imageExists[uploadKey] && (
+                            <div className="absolute inset-0 flex items-center justify-center bg-slate-200 border-2 border-dashed border-slate-400">
+                              <div className="text-center text-xs text-slate-500">
+                                <div className="mb-1 flex items-center justify-center">
+                                  <Icon emoji="🖼️" size={32} className="text-slate-500" />
+                                </div>
+                                <div>尚未上傳</div>
+                                <div className="mt-2 text-[10px] text-blue-600 break-all px-2">
+                                  {category.path}{filename}
+                                </div>
                               </div>
-                              <div>尚未上傳</div>
                             </div>
-                          </div>
+                          )}
                           {/* Delete Button - 只在圖片存在時顯示 */}
                           {imageExists[uploadKey] && (
                             <button

@@ -34,10 +34,22 @@ export default function TestimonialsSection() {
           
           {/* Testimonial Images */}
           <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4].map((item) => (
-              <div key={item} className="relative aspect-video rounded-lg overflow-hidden bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600">
+            {[
+              { num: 1, filename: 'testimonial-1.jpg' },
+              { num: 2, filename: 'testimonial-2.jpg' },
+              { num: 3, filename: 'testimonial-3.jpg' },
+              { num: 4, filename: 'testimonial-4.jpg' }
+            ].map((item) => (
+              <div key={item.num} className="relative aspect-video rounded-lg overflow-hidden bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-xs text-slate-500 dark:text-slate-400 text-center px-2">客戶見證圖片<br/>400x300</div>
+                  <div className="text-center px-2">
+                    <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                      {item.filename}
+                    </div>
+                    <div className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight">
+                      Admin: /admin<br/>分類: 客戶見證<br/>尺寸: 400x300
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}

@@ -25,9 +25,26 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // 構建保存路徑（支持嵌套目錄，如 media/logos）
-    const categoryPath = category.includes('/') ? category : category
-    const uploadDir = join(process.cwd(), 'public', 'images', categoryPath)
+    // 構建保存路徑
+    // category 可能是 'partners', 'about', 'services' 等
+    // 需要從 category 映射到實際的路徑
+    const categoryPathMap: Record<string, string> = {
+      'logo': 'logo',
+      'hero': 'hero',
+      'partners': 'partners',
+      'testimonials': 'testimonials',
+      'about': 'about',
+      'services': 'services',
+      'wholesale': 'wholesale',
+      'careers': 'careers',
+      'awards': 'awards',
+      'media': 'media',
+      'media-logos': 'media/logos',
+      'contact': 'contact',
+    }
+    
+    const actualPath = categoryPathMap[category] || category
+    const uploadDir = join(process.cwd(), 'public', 'images', actualPath)
     
     // 確保目錄存在（包括嵌套目錄）
     if (!existsSync(uploadDir)) {
@@ -42,11 +59,15 @@ export async function POST(request: NextRequest) {
     const filePath = join(uploadDir, filename)
     await writeFile(filePath, buffer)
 
+    console.log(`圖片已保存到: ${filePath}`)
+    console.log(`訪問路徑: /images/${actualPath}/${filename}`)
+
     // 返回成功響應
     return NextResponse.json({
       success: true,
       message: '圖片上傳成功',
-      path: `/images/${categoryPath}/${filename}`,
+      path: `/images/${actualPath}/${filename}`,
+      filePath: filePath,
     })
   } catch (error) {
     console.error('Upload error:', error)
