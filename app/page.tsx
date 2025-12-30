@@ -46,14 +46,30 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteData) }}
       />
       
-      <Hero />
-      <BrandsMarquee />
-      <NewsletterSection />
-      <AboutSection />
-      <ServicesSection />
-      <PartnersSection />
-      <TestimonialsSection />
-      <FAQSection />
+      <div>
+        <Hero />
+      </div>
+      <div>
+        <BrandsMarquee />
+      </div>
+      <div>
+        <NewsletterSection />
+      </div>
+      <div>
+        <AboutSection />
+      </div>
+      <div>
+        <ServicesSection />
+      </div>
+      <div>
+        <PartnersSection />
+      </div>
+      <div>
+        <TestimonialsSection />
+      </div>
+      <div>
+        <FAQSection />
+      </div>
     </>
   )
 }
