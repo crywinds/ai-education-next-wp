@@ -20,35 +20,37 @@ export default function HeroBadges() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    // 從 API 獲取徽章數據
-    fetch('/api/admin/badges')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success && data.data?.badges) {
-          // 只取前 4 個徽章
-          setBadges(data.data.badges.slice(0, 4))
-        } else {
-          // 使用默認徽章（只 4 個）
-          setBadges([
-            { id: 1, text: '🎯 業界認可', position: { top: '0', left: '5%' }, animation: 'bounce-gentle' },
-            { id: 2, text: '⭐ 信譽保證', position: { top: '2', right: '8%' }, animation: 'bounce-gentle-delay1' },
-            { id: 3, text: '💎 透明收費', position: { top: '8', left: '2%' }, animation: 'bounce-gentle-delay2' },
-            { id: 4, text: '🚀 專業服務', position: { top: '10', right: '3%' }, animation: 'bounce-gentle-delay3' },
-          ])
-        }
-        setIsVisible(true)
-      })
-      .catch((error) => {
-        console.error('Failed to load badges:', error)
-        // 使用默認徽章（只 4 個）
-        setBadges([
-          { id: 1, text: '🎯 業界認可', position: { top: '0', left: '5%' }, animation: 'bounce-gentle' },
-          { id: 2, text: '⭐ 信譽保證', position: { top: '2', right: '8%' }, animation: 'bounce-gentle-delay1' },
-          { id: 3, text: '💎 透明收費', position: { top: '8', left: '2%' }, animation: 'bounce-gentle-delay2' },
-          { id: 4, text: '🚀 專業服務', position: { top: '10', right: '3%' }, animation: 'bounce-gentle-delay3' },
-        ])
-        setIsVisible(true)
-      })
+    // 先設置默認徽章，確保即使 API 失敗也能顯示
+    const defaultBadges = [
+      { id: 1, text: '🎯 業界認可', position: { top: '0', left: '5%' }, animation: 'bounce-gentle' },
+      { id: 2, text: '⭐ 信譽保證', position: { top: '2', right: '8%' }, animation: 'bounce-gentle-delay1' },
+      { id: 3, text: '💎 透明收費', position: { top: '8', left: '2%' }, animation: 'bounce-gentle-delay2' },
+      { id: 4, text: '🚀 專業服務', position: { top: '10', right: '3%' }, animation: 'bounce-gentle-delay3' },
+    ]
+    setBadges(defaultBadges)
+    setIsVisible(true)
+
+    // 嘗試從 API 獲取徽章數據（可選，不阻塞渲染）
+    try {
+      fetch('/api/admin/badges')
+        .then((res) => {
+          if (!res.ok) throw new Error('API request failed')
+          return res.json()
+        })
+        .then((data) => {
+          if (data?.success && data?.data?.badges && Array.isArray(data.data.badges)) {
+            // 只取前 4 個徽章
+            setBadges(data.data.badges.slice(0, 4))
+          }
+        })
+        .catch((error) => {
+          // 靜默失敗，使用默認徽章
+          console.warn('Failed to load badges from API, using defaults:', error)
+        })
+    } catch (error) {
+      // 靜默失敗，使用默認徽章
+      console.warn('Error fetching badges:', error)
+    }
   }, [])
 
   if (!isVisible || badges.length === 0) return null

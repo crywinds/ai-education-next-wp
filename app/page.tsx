@@ -1,3 +1,4 @@
+import SafeComponent from '@/components/SafeComponent'
 import Hero from '@/components/Hero'
 import BrandsMarquee from '@/components/BrandsMarquee'
 import NewsletterSection from '@/components/NewsletterSection'
@@ -46,15 +47,30 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteData) }}
       />
       
-      <Hero />
-      <BrandsMarquee />
-      <NewsletterSection />
-      <AboutSection />
-      <ServicesSection />
-      <PartnersSection />
-      <TestimonialsSection />
-      <FAQSection />
+      <SafeComponent>
+        <Hero />
+      </SafeComponent>
+      <SafeComponent>
+        <BrandsMarquee />
+      </SafeComponent>
+      <SafeComponent>
+        <NewsletterSection />
+      </SafeComponent>
+      <SafeComponent>
+        <AboutSection />
+      </SafeComponent>
+      <SafeComponent>
+        <ServicesSection />
+      </SafeComponent>
+      <SafeComponent>
+        <PartnersSection />
+      </SafeComponent>
+      <SafeComponent>
+        <TestimonialsSection />
+      </SafeComponent>
+      <SafeComponent>
+        <FAQSection />
+      </SafeComponent>
     </>
   )
 }
-

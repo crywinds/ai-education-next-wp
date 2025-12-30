@@ -1,8 +1,8 @@
 'use client'
 
-import { ErrorBoundary } from './ErrorBoundary'
+import ErrorBoundary from './ErrorBoundary'
 
-export default function ErrorBoundaryWrapper({
+export default function SafeComponent({
   children,
 }: {
   children: React.ReactNode

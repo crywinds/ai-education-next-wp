@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import SafeComponent from '@/components/SafeComponent'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { generateMetadata as genMeta } from '@/lib/seo'
@@ -22,11 +23,15 @@ export default function RootLayout({
   return (
     <html lang="zh-TW" data-theme="korae" suppressHydrationWarning className="overflow-x-hidden">
       <body className={`${inter.className} overflow-x-hidden max-w-full`}>
-        <Header />
+        <SafeComponent>
+          <Header />
+        </SafeComponent>
         <main className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300 overflow-x-hidden max-w-full">
           {children}
         </main>
-        <Footer />
+        <SafeComponent>
+          <Footer />
+        </SafeComponent>
       </body>
     </html>
   )
