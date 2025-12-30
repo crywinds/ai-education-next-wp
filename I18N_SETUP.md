@@ -84,3 +84,4 @@ powershell -ExecutionPolicy Bypass -File move-pages.ps1
 - 所有內部鏈接需要使用 `usePathname()` 和 `useRouter()` 來處理語言前綴
 - 翻譯文件位於 `messages/` 目錄，可以隨時添加更多翻譯內容
 
+

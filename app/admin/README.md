@@ -32,3 +32,4 @@ ADMIN_PASSWORD=your_secure_password_here
 
 ⚠️ **重要**：請確保設置一個強密碼，並且不要將 `.env.local` 文件提交到 Git。
 
+
