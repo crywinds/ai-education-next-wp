@@ -35,20 +35,8 @@ export default function TestimonialsSection() {
           {/* Testimonial Images */}
           <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
             {[1, 2, 3, 4].map((item) => (
-              <div key={item} className="relative aspect-video rounded-lg overflow-hidden bg-slate-200 dark:bg-slate-700">
-                <Image
-                  src={`/images/testimonials/testimonial-${item}.jpg`}
-                  alt={`客戶見證圖片 ${item}`}
-                  fill
-                  className="object-cover"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement
-                    target.style.display = 'none'
-                    const placeholder = target.nextElementSibling as HTMLElement
-                    if (placeholder) placeholder.style.display = 'flex'
-                  }}
-                />
-                <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
+              <div key={item} className="relative aspect-video rounded-lg overflow-hidden bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600">
+                <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-xs text-slate-500 dark:text-slate-400 text-center px-2">客戶見證圖片<br/>400x300</div>
                 </div>
               </div>

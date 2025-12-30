@@ -128,6 +128,7 @@ export default function PartnersSection() {
                         fill
                         className="object-contain opacity-70 group-hover:opacity-100 transition-opacity"
                         sizes="(max-width: 768px) 150px, 200px"
+                        unoptimized
                         onError={(e) => {
                           // 如果圖片載入失敗，顯示佔位符
                           const target = e.target as HTMLImageElement

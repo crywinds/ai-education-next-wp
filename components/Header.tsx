@@ -202,6 +202,7 @@ export default function Header() {
                       src="/images/logo/korae-logo.png"
                       alt="Korae"
                       fill
+                      unoptimized
                       className="object-contain"
                       priority
                       onError={() => {

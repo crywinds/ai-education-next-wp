@@ -102,6 +102,7 @@ export default function ServicesSection() {
                 alt="東大門 | Korae 韓國批發"
                 fill
                 className="object-cover"
+                unoptimized
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
                   target.style.display = 'none'
@@ -200,6 +201,7 @@ export default function ServicesSection() {
                 alt="服務收費說明圖"
                 fill
                 className="object-cover"
+                unoptimized
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
                   target.style.display = 'none'

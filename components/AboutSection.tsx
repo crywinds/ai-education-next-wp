@@ -90,6 +90,7 @@ export default function AboutSection() {
                   alt={teamImages[0].alt}
                   fill
                   className="object-cover"
+                  unoptimized
                   onError={(e) => {
                     const target = e.target as HTMLImageElement
                     target.style.display = 'none'
@@ -120,6 +121,7 @@ export default function AboutSection() {
                   alt={teamImages[1].alt}
                   fill
                   className="object-cover"
+                  unoptimized
                   onError={(e) => {
                     const target = e.target as HTMLImageElement
                     target.style.display = 'none'
@@ -150,6 +152,7 @@ export default function AboutSection() {
                   alt={teamImages[2].alt}
                   fill
                   className="object-cover"
+                  unoptimized
                   onError={(e) => {
                     const target = e.target as HTMLImageElement
                     target.style.display = 'none'
@@ -217,6 +220,7 @@ export default function AboutSection() {
                 width={64}
                 height={64}
                 className="object-contain w-full h-full"
+                unoptimized
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
                   target.style.display = 'none'
@@ -239,6 +243,7 @@ export default function AboutSection() {
                 width={64}
                 height={64}
                 className="object-contain w-full h-full"
+                unoptimized
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
                   target.style.display = 'none'
@@ -261,6 +266,7 @@ export default function AboutSection() {
                 width={64}
                 height={64}
                 className="object-contain w-full h-full"
+                unoptimized
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
                   target.style.display = 'none'
@@ -288,6 +294,7 @@ export default function AboutSection() {
                 width={128}
                 height={64}
                 className="object-contain p-2"
+                unoptimized
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
                   target.style.display = 'none'
@@ -306,6 +313,7 @@ export default function AboutSection() {
                 width={128}
                 height={64}
                 className="object-contain p-2"
+                unoptimized
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
                   target.style.display = 'none'
@@ -324,6 +332,7 @@ export default function AboutSection() {
                 width={128}
                 height={64}
                 className="object-contain p-2"
+                unoptimized
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
                   target.style.display = 'none'
@@ -342,6 +351,7 @@ export default function AboutSection() {
                 width={128}
                 height={64}
                 className="object-contain p-2"
+                unoptimized
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
                   target.style.display = 'none'
@@ -360,6 +370,7 @@ export default function AboutSection() {
                 width={128}
                 height={64}
                 className="object-contain p-2"
+                unoptimized
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
                   target.style.display = 'none'
@@ -378,6 +389,7 @@ export default function AboutSection() {
                 width={128}
                 height={64}
                 className="object-contain p-2"
+                unoptimized
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
                   target.style.display = 'none'

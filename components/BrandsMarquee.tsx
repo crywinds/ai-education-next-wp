@@ -81,6 +81,7 @@ export default function BrandsMarquee() {
                           width={240}
                           height={144}
                           className="object-contain w-full h-full opacity-75 hover:opacity-100 transition-all duration-300 filter grayscale-[0.2] hover:grayscale-0"
+                          unoptimized
                           onError={(e) => {
                             const target = e.target as HTMLImageElement
                             target.style.display = 'none'
