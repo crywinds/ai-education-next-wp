@@ -23,7 +23,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: 'easeOut',
+      ease: [0.4, 0, 0.2, 1] as const,
     },
   },
 }
@@ -34,7 +34,7 @@ const socialVariants = {
     opacity: 1,
     scale: 1,
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       stiffness: 200,
       damping: 15,
     },
@@ -135,7 +135,7 @@ export default function Footer() {
               {/* Placeholder Image */}
               <motion.div
                 whileHover={{ scale: 1.05, rotate: 1 }}
-                transition={{ type: 'spring', stiffness: 300 }}
+                transition={{ type: 'spring' as const, stiffness: 300 }}
                 className="relative w-full max-w-sm h-48 rounded-xl overflow-hidden bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 mb-6 group"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-cyan-600/30 flex items-center justify-center">
@@ -198,7 +198,7 @@ export default function Footer() {
                   <motion.li
                     key={index}
                     whileHover={{ x: 5 }}
-                    transition={{ type: 'spring', stiffness: 400 }}
+                    transition={{ type: 'spring' as const, stiffness: 400 }}
                   >
                     <Link href={link.href} className="text-xs sm:text-sm text-slate-300 hover:text-blue-400 transition-colors block py-1 touch-manipulation">
                       {link.label}
@@ -218,7 +218,7 @@ export default function Footer() {
                   <motion.li
                     key={index}
                     whileHover={{ x: 5 }}
-                    transition={{ type: 'spring', stiffness: 400 }}
+                    transition={{ type: 'spring' as const, stiffness: 400 }}
                   >
                     <Link href={link.href} className="text-xs sm:text-sm text-slate-300 hover:text-blue-400 transition-colors block py-1 touch-manipulation">
                       {link.label}
@@ -238,7 +238,7 @@ export default function Footer() {
                   <motion.li
                     key={index}
                     whileHover={{ x: 5 }}
-                    transition={{ type: 'spring', stiffness: 400 }}
+                    transition={{ type: 'spring' as const, stiffness: 400 }}
                   >
                     <Link 
                       href={link.href} 

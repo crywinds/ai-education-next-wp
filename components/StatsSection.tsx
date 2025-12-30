@@ -22,7 +22,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: 'easeOut',
+      ease: [0.4, 0, 0.2, 1] as const,
     },
   },
 }
@@ -76,7 +76,7 @@ export default function StatsSection() {
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
-                transition={{ delay: index * 0.15, duration: 0.5, ease: 'easeOut' }}
+                transition={{ delay: index * 0.15, duration: 0.5, ease: [0.4, 0, 0.2, 1] as const }}
               >
                 {stat.number}
               </motion.div>

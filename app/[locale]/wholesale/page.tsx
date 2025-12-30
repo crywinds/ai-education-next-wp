@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import Link from 'next/link'
+import MembershipComparison from '@/components/MembershipComparison'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -23,7 +24,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: 'easeOut',
+      ease: [0.4, 0, 0.2, 1] as const,
     },
   },
 }

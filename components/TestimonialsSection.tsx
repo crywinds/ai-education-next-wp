@@ -16,7 +16,7 @@ export default function TestimonialsSection() {
           
           <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 md:p-8 lg:p-12 shadow-lg border border-slate-200 dark:border-slate-700">
             <div className="flex items-start mb-6">
-              <div className="text-5xl text-blue-600 dark:text-blue-400 mr-4">"</div>
+              <div className="text-5xl text-blue-600 dark:text-blue-400 mr-4">&ldquo;</div>
               <blockquote className="text-xl md:text-2xl italic text-slate-700 dark:text-slate-300 leading-relaxed flex-1">
                 Korae 作為網上批發平台的市場領導者，一直致力為不論規模大小的商店，供應合適且好質量的商品。其透明收費制度和多平台數據下載功能，讓我們可以自由選擇銷售渠道，無需綁定特定網店系統，大大提升了我們的靈活性和競爭優勢！
               </blockquote>
