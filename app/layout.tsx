@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import SnowEffect from '@/components/SnowEffect'
+import ErrorBoundaryWrapper from '@/components/ErrorBoundaryWrapper'
 import { generateMetadata as genMeta } from '@/lib/seo'
 // 暫時禁用 LocaleHtmlUpdater
 // import LocaleHtmlUpdater from '@/components/LocaleHtmlUpdater'
@@ -25,10 +26,12 @@ export default function RootLayout({
   return (
     <html lang="zh-TW" data-theme="korae" suppressHydrationWarning className="overflow-x-hidden">
       <body className={`${inter.className} overflow-x-hidden max-w-full`}>
-        <SnowEffect />
-        <Header />
-        <main className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300 overflow-x-hidden max-w-full">{children}</main>
-        <Footer />
+        <ErrorBoundaryWrapper>
+          <SnowEffect />
+          <Header />
+          <main className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300 overflow-x-hidden max-w-full">{children}</main>
+          <Footer />
+        </ErrorBoundaryWrapper>
       </body>
     </html>
   )
