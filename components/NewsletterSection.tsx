@@ -101,20 +101,28 @@ export default function NewsletterSection() {
           {/* Newsletter Form Card */}
           <motion.div
             variants={itemVariants}
-            className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-6 sm:p-8 md:p-10"
+            className="relative bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-6 sm:p-8 md:p-10 overflow-hidden"
           >
-            {/* Title */}
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-2 text-center">
-              訂閱 Korae 電子報
-            </h3>
-            
-            {/* Subtitle */}
-            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-6 sm:mb-8 text-center">
-              每週精選最實用批發攻略
-            </p>
+            {/* Korae 水印背景 */}
+            <div className="absolute right-0 bottom-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none select-none">
+              <div className="text-[200px] sm:text-[250px] md:text-[300px] lg:text-[350px] font-black text-slate-400 dark:text-slate-500 leading-none whitespace-nowrap transform translate-x-1/4 translate-y-1/4">
+                Korae
+              </div>
+            </div>
+            {/* Content Container - 確保在水印之上 */}
+            <div className="relative z-10">
+              {/* Title */}
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-2 text-center">
+                訂閱 Korae 電子報
+              </h3>
+              
+              {/* Subtitle */}
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-6 sm:mb-8 text-center">
+                每週精選最實用批發攻略
+              </p>
 
-            {/* Form */}
-            <form onSubmit={handleSubmit} className="mb-6 sm:mb-8">
+              {/* Form */}
+              <form onSubmit={handleSubmit} className="mb-6 sm:mb-8">
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <input
                   type="email"
@@ -154,26 +162,27 @@ export default function NewsletterSection() {
               )}
             </form>
 
-            {/* Social Media Icons */}
-            <motion.div
-              variants={itemVariants}
-              className="flex items-center justify-center gap-4 sm:gap-6"
-            >
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={social.name}
-                  href={social.href}
-                  target={social.href.startsWith('http') ? '_blank' : undefined}
-                  rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 touch-manipulation"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label={social.name}
-                >
-                  {social.icon}
-                </motion.a>
-              ))}
-            </motion.div>
+              {/* Social Media Icons */}
+              <motion.div
+                variants={itemVariants}
+                className="flex items-center justify-center gap-4 sm:gap-6"
+              >
+                {socialLinks.map((social, index) => (
+                  <motion.a
+                    key={social.name}
+                    href={social.href}
+                    target={social.href.startsWith('http') ? '_blank' : undefined}
+                    rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 touch-manipulation"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    aria-label={social.name}
+                  >
+                    {social.icon}
+                  </motion.a>
+                ))}
+              </motion.div>
+            </div>
           </motion.div>
         </motion.div>
       </div>

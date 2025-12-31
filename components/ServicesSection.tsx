@@ -305,18 +305,172 @@ export default function ServicesSection() {
 
         {/* Service Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 mb-16 md:mb-20">
-          {services.map((service, index) => (
-            <div 
-              key={index} 
-              className={`bg-gradient-to-br ${colorClasses[service.color as keyof typeof colorClasses]} p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200 border`}
-            >
-              <div className="mb-4 flex items-center justify-center">
-                <Icon emoji={service.icon} size={48} className="text-slate-700 dark:text-slate-300" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{service.title}</h3>
-              <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{service.description}</p>
-            </div>
-          ))}
+          {services.map((service, index) => {
+            // 根據服務類型渲染對應的 SVG 圖標
+            const renderIcon = () => {
+              const iconProps = {
+                className: "w-12 h-12 sm:w-14 sm:h-14",
+              }
+              
+              switch (service.color) {
+                case 'green': // 下載圖標
+                  return (
+                    <motion.div
+                      className="relative"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ type: 'spring', stiffness: 300 }}
+                    >
+                      <div className="absolute inset-0 bg-green-500/20 dark:bg-green-500/10 rounded-xl blur-lg"></div>
+                      <svg {...iconProps} className={`${iconProps.className} relative text-green-600 dark:text-green-400`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <motion.path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                          initial={{ pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ duration: 1, delay: index * 0.2, repeat: Infinity, repeatDelay: 2 }}
+                        />
+                      </svg>
+                      <motion.div
+                        className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full"
+                        animate={{
+                          scale: [1, 1.3, 1],
+                          opacity: [0.7, 1, 0.7],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: index * 0.3,
+                        }}
+                      />
+                    </motion.div>
+                  )
+                
+                case 'blue': // 購物袋圖標
+                  return (
+                    <motion.div
+                      className="relative"
+                      whileHover={{ scale: 1.1, y: -5 }}
+                      transition={{ type: 'spring', stiffness: 300 }}
+                    >
+                      <div className="absolute inset-0 bg-blue-500/20 dark:bg-blue-500/10 rounded-xl blur-lg"></div>
+                      <svg {...iconProps} className={`${iconProps.className} relative text-blue-600 dark:text-blue-400`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <motion.path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                          initial={{ pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ duration: 1, delay: index * 0.2, repeat: Infinity, repeatDelay: 2 }}
+                        />
+                      </svg>
+                      <motion.div
+                        className="absolute top-0 right-0 w-2 h-2 bg-blue-500 rounded-full"
+                        animate={{
+                          y: [0, -8, 0],
+                          opacity: [0.5, 1, 0.5],
+                        }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          delay: index * 0.2,
+                        }}
+                      />
+                    </motion.div>
+                  )
+                
+                case 'purple': // 圖表圖標
+                  return (
+                    <motion.div
+                      className="relative"
+                      whileHover={{ scale: 1.1, rotate: -5 }}
+                      transition={{ type: 'spring', stiffness: 300 }}
+                    >
+                      <div className="absolute inset-0 bg-purple-500/20 dark:bg-purple-500/10 rounded-xl blur-lg"></div>
+                      <svg {...iconProps} className={`${iconProps.className} relative text-purple-600 dark:text-purple-400`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <motion.path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                          initial={{ pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ duration: 1.5, delay: index * 0.2, repeat: Infinity, repeatDelay: 2 }}
+                        />
+                      </svg>
+                      <motion.div
+                        className="absolute bottom-0 left-0 w-2 h-2 bg-purple-500 rounded-full"
+                        animate={{
+                          y: [0, -4, 0],
+                          scale: [1, 1.2, 1],
+                        }}
+                        transition={{
+                          duration: 1.2,
+                          repeat: Infinity,
+                          delay: index * 0.25,
+                        }}
+                      />
+                    </motion.div>
+                  )
+                
+                case 'orange': // 卡車圖標
+                  return (
+                    <motion.div
+                      className="relative"
+                      whileHover={{ scale: 1.1, x: 5 }}
+                      transition={{ type: 'spring', stiffness: 300 }}
+                    >
+                      <div className="absolute inset-0 bg-orange-500/20 dark:bg-orange-500/10 rounded-xl blur-lg"></div>
+                      <svg {...iconProps} className={`${iconProps.className} relative text-orange-600 dark:text-orange-400`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <motion.path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"
+                          initial={{ pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ duration: 1.5, delay: index * 0.2, repeat: Infinity, repeatDelay: 2 }}
+                        />
+                      </svg>
+                      <motion.div
+                        className="absolute top-1/2 right-0 w-2 h-2 bg-orange-500 rounded-full -translate-y-1/2"
+                        animate={{
+                          x: [0, 8, 0],
+                          opacity: [0.5, 1, 0.5],
+                        }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          delay: index * 0.3,
+                        }}
+                      />
+                    </motion.div>
+                  )
+                
+                default:
+                  return null
+              }
+            }
+            
+            return (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`bg-gradient-to-br ${colorClasses[service.color as keyof typeof colorClasses]} p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200 border group`}
+              >
+                <div className="mb-4 flex items-center justify-center relative">
+                  {renderIcon()}
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-opacity-80 transition-colors">{service.title}</h3>
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{service.description}</p>
+              </motion.div>
+            )
+          })}
         </div>
 
         {/* Data Export Formats Section */}
@@ -326,27 +480,162 @@ export default function ServicesSection() {
             付費會員可下載商品數據，支援多種格式，輕鬆匯入您現有的電商平台
           </p>
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
-              <div className="mb-4 flex items-center justify-center">
-                <Icon emoji="📄" size={48} className="text-slate-700 dark:text-slate-300" />
+            {/* CSV 格式卡片 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 group cursor-pointer"
+            >
+              <div className="mb-4 flex items-center justify-center relative">
+                <motion.div
+                  className="relative"
+                  whileHover={{ scale: 1.15, rotate: 5 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                >
+                  <div className="absolute inset-0 bg-blue-500/20 dark:bg-blue-500/10 rounded-xl blur-lg"></div>
+                  <svg className="w-12 h-12 sm:w-14 sm:h-14 relative text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <motion.path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 1.2, delay: 0.2, repeat: Infinity, repeatDelay: 3 }}
+                    />
+                  </svg>
+                  <motion.div
+                    className="absolute -top-1 -right-1 w-3 h-3 bg-blue-500 rounded-full"
+                    animate={{
+                      scale: [1, 1.4, 1],
+                      opacity: [0.6, 1, 0.6],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: 0.3,
+                    }}
+                  />
+                </motion.div>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">CSV 格式</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">CSV 格式</h3>
               <p className="text-slate-600 dark:text-slate-300 text-sm">適合 Excel 和 Google Sheets，方便編輯和管理</p>
-            </div>
-            <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
-              <div className="mb-4 flex items-center justify-center">
-                <Icon emoji="📊" size={48} className="text-slate-700 dark:text-slate-300" />
+            </motion.div>
+
+            {/* Excel 格式卡片 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 group cursor-pointer"
+            >
+              <div className="mb-4 flex items-center justify-center relative">
+                <motion.div
+                  className="relative"
+                  whileHover={{ scale: 1.15, rotate: -5 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                >
+                  <div className="absolute inset-0 bg-green-500/20 dark:bg-green-500/10 rounded-xl blur-lg"></div>
+                  <svg className="w-12 h-12 sm:w-14 sm:h-14 relative text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <motion.path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 1.5, delay: 0.4, repeat: Infinity, repeatDelay: 3 }}
+                    />
+                  </svg>
+                  <motion.div
+                    className="absolute bottom-0 left-1/2 w-2 h-2 bg-green-500 rounded-full -translate-x-1/2 translate-y-1/2"
+                    animate={{
+                      y: ['50%', '-50%', '50%'],
+                      scale: [1, 1.3, 1],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      delay: 0.5,
+                    }}
+                  />
+                </motion.div>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Excel 格式</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Excel 格式</h3>
               <p className="text-slate-600 dark:text-slate-300 text-sm">包含完整商品資訊，可直接開啟編輯</p>
-            </div>
-            <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
-              <div className="mb-4 flex items-center justify-center">
-                <Icon emoji="🔗" size={48} className="text-slate-700 dark:text-slate-300" />
+            </motion.div>
+
+            {/* JSON 格式卡片 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 group cursor-pointer"
+            >
+              <div className="mb-4 flex items-center justify-center relative">
+                <motion.div
+                  className="relative"
+                  whileHover={{ scale: 1.15, rotate: 10 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                >
+                  <div className="absolute inset-0 bg-purple-500/20 dark:bg-purple-500/10 rounded-xl blur-lg"></div>
+                  <svg className="w-12 h-12 sm:w-14 sm:h-14 relative text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <motion.path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 1.3, delay: 0.6, repeat: Infinity, repeatDelay: 3 }}
+                    />
+                    <motion.circle
+                      cx="8"
+                      cy="8"
+                      r="2"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      fill="none"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 0.8, delay: 1.2, repeat: Infinity, repeatDelay: 3 }}
+                    />
+                    <motion.circle
+                      cx="16"
+                      cy="16"
+                      r="2"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      fill="none"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 0.8, delay: 1.4, repeat: Infinity, repeatDelay: 3 }}
+                    />
+                  </svg>
+                  <motion.div
+                    className="absolute top-0 right-0 w-2 h-2 bg-purple-500 rounded-full"
+                    animate={{
+                      rotate: [0, 360],
+                      scale: [1, 1.2, 1],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: 0.7,
+                    }}
+                  />
+                </motion.div>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">JSON 格式</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">JSON 格式</h3>
               <p className="text-slate-600 dark:text-slate-300 text-sm">適合 API 整合，支援程式化處理</p>
-            </div>
+            </motion.div>
           </div>
         </div>
 

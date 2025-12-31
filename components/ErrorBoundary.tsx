@@ -30,6 +30,10 @@ export default class ErrorBoundary extends React.Component<Props, State> {
       return this.props.fallback || null
     }
 
-    return this.props.children
+    return (
+      <div suppressHydrationWarning>
+        {this.props.children}
+      </div>
+    )
   }
 }

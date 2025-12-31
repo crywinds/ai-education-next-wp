@@ -66,7 +66,7 @@ export default function Header() {
   ]
 
   return (
-    <>
+    <div suppressHydrationWarning>
       {/* Top Banner with Marquee and Digital Effects */}
       <motion.div 
         suppressHydrationWarning
@@ -416,6 +416,6 @@ export default function Header() {
           </AnimatePresence>
         </nav>
       </motion.header>
-    </>
+    </div>
   )
 }

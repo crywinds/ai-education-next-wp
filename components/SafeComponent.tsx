@@ -7,7 +7,11 @@ export default function SafeComponent({
 }: {
   children: React.ReactNode
 }) {
-  return <ErrorBoundary>{children}</ErrorBoundary>
+  return (
+    <div suppressHydrationWarning>
+      <ErrorBoundary>{children}</ErrorBoundary>
+    </div>
+  )
 }
 
 

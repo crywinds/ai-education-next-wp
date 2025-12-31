@@ -26,7 +26,7 @@ export default function RootLayout({
         <SafeComponent>
           <Header />
         </SafeComponent>
-        <main className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300 overflow-x-hidden max-w-full">
+        <main className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300 overflow-x-hidden max-w-full" suppressHydrationWarning>
           {children}
         </main>
         <SafeComponent>
