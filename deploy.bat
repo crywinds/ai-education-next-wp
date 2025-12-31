@@ -88,7 +88,7 @@ echo [提示] 您可以在 Vercel 控制台查看部署進度：
 echo   https://vercel.com/dashboard
 echo.
 echo [提示] 部署完成後，您的網站會自動更新：
-echo   https://ai-education-next-wp.vercel.app/
+echo   https://koraeweb-full.vercel.app/
 echo.
 pause
 
