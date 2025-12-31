@@ -14,6 +14,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [logoError, setLogoError] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [isDark, setIsDark] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -22,7 +23,24 @@ export default function Header() {
       setIsScrolled(window.scrollY > 20)
     }
     window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    
+    // 檢查初始主題
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains('dark'))
+    }
+    checkTheme()
+    
+    // 監聽主題變化
+    const observer = new MutationObserver(checkTheme)
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    })
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      observer.disconnect()
+    }
   }, [])
 
   const marqueeItems = [
@@ -51,10 +69,11 @@ export default function Header() {
     <>
       {/* Top Banner with Marquee and Digital Effects */}
       <motion.div 
+        suppressHydrationWarning
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-                className="relative bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-white text-sm py-2 overflow-hidden"
+        className="relative bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-white text-sm py-2 overflow-hidden"
       >
         {/* Animated Background Pattern - Multiple Layers */}
         <div className="absolute inset-0 opacity-10">
@@ -163,6 +182,7 @@ export default function Header() {
 
       {/* Main Header with Digital Effects */}
       <motion.header 
+        suppressHydrationWarning
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.2 }}
@@ -199,12 +219,13 @@ export default function Header() {
                 <div className="relative w-24 h-8 sm:w-32 sm:h-10 md:w-40 md:h-12">
                   {!logoError ? (
                     <Image
-                      src="/images/logo/korae-logo.png"
+                      src={isDark ? "/images/logo/korae-logo-dark.png" : "/images/logo/korae-logo.png"}
                       alt="Korae"
                       fill
                       unoptimized
                       className="object-contain"
                       priority
+                      key={isDark ? 'dark' : 'light'}
                       onError={() => {
                         setLogoError(true)
                       }}

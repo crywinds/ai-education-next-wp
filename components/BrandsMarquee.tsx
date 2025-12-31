@@ -7,29 +7,39 @@ import Image from 'next/image'
 
 const brands = [
   {
-    name: 'Garden 嘉頓',
-    logo: '/images/brands/garden-logo.png',
-    alt: 'Garden 嘉頓',
+    name: 'HSBC 滙豐',
+    logo: '/images/partners/hsbc-logo.png',
+    alt: '香港上海滙豐銀行',
   },
   {
-    name: 'Hip Shing Hong 協成行',
-    logo: '/images/brands/hip-shing-hong-logo.png',
-    alt: 'Hip Shing Hong 協成行',
+    name: 'SHOPAGE',
+    logo: '/images/partners/shopage-logo.png',
+    alt: 'SHOPAGE',
   },
   {
-    name: 'CT goodjobs',
-    logo: '/images/brands/ct-goodjobs-logo.png',
-    alt: 'CT goodjobs',
+    name: 'Bowtie',
+    logo: '/images/partners/bowtie-logo.png',
+    alt: 'Bowtie',
   },
   {
-    name: 'Hysan 希慎',
-    logo: '/images/brands/hysan-logo.png',
-    alt: 'Hysan 希慎',
+    name: 'SHOPLINE',
+    logo: '/images/partners/shopline-logo.png',
+    alt: 'SHOPLINE',
   },
   {
-    name: 'PERFECT ME',
-    logo: '/images/brands/perfect-me-logo.png',
-    alt: 'PERFECT ME',
+    name: '新城廣播',
+    logo: '/images/partners/metro-radio-logo.png',
+    alt: '新城廣播有限公司',
+  },
+  {
+    name: '香港電腦商會',
+    logo: '/images/partners/hkcc-logo.png',
+    alt: '香港電腦商會',
+  },
+  {
+    name: '順豐速運',
+    logo: '/images/partners/sfexpress-logo.png',
+    alt: '順豐速運',
   },
 ]
 
@@ -73,7 +83,7 @@ export default function BrandsMarquee() {
                 {/* First Set - 5 brands */}
                 {brands.map((brand, index) => (
                   <div key={`brand-1-${index}`} className="marquee-item">
-                    <div className="relative w-36 h-24 sm:w-44 sm:h-28 md:w-52 md:h-32 lg:w-60 lg:h-36 flex items-center justify-center flex-shrink-0 px-4 sm:px-6 md:px-8">
+                    <div className="relative w-36 h-24 sm:w-44 sm:h-28 md:w-52 md:h-32 lg:w-60 lg:h-36 flex items-center justify-center flex-shrink-0 px-2 sm:px-3 md:px-4">
                       <div className="relative w-full h-full flex items-center justify-center">
                         <Image
                           src={brand.logo}
@@ -98,7 +108,7 @@ export default function BrandsMarquee() {
                               {brand.logo.split('/').pop()}
                             </div>
                             <div className="text-[9px] text-slate-400 dark:text-slate-500 leading-tight">
-                              Admin: /admin<br/>分類: 品牌 Logo
+                              Admin: /admin<br/>分類: 合作伙伴 Logo
                             </div>
                           </div>
                         </div>
@@ -110,7 +120,7 @@ export default function BrandsMarquee() {
                 {/* Duplicate Set for Seamless Loop - 5 brands */}
                 {brands.map((brand, index) => (
                   <div key={`brand-2-${index}`} className="marquee-item" aria-hidden="true">
-                    <div className="relative w-36 h-24 sm:w-44 sm:h-28 md:w-52 md:h-32 lg:w-60 lg:h-36 flex items-center justify-center flex-shrink-0 px-4 sm:px-6 md:px-8">
+                    <div className="relative w-36 h-24 sm:w-44 sm:h-28 md:w-52 md:h-32 lg:w-60 lg:h-36 flex items-center justify-center flex-shrink-0 px-2 sm:px-3 md:px-4">
                       <div className="relative w-full h-full flex items-center justify-center">
                         <Image
                           src={brand.logo}
@@ -134,7 +144,7 @@ export default function BrandsMarquee() {
                               {brand.logo.split('/').pop()}
                             </div>
                             <div className="text-[9px] text-slate-400 dark:text-slate-500 leading-tight">
-                              Admin: /admin<br/>分類: 品牌 Logo
+                              Admin: /admin<br/>分類: 合作伙伴 Logo
                             </div>
                           </div>
                         </div>

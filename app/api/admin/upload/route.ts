@@ -34,6 +34,7 @@ export async function POST(request: NextRequest) {
       'partners': 'partners',
       'testimonials': 'testimonials',
       'about': 'about',
+      'about-section': 'about',
       'services': 'services',
       'wholesale': 'wholesale',
       'careers': 'careers',

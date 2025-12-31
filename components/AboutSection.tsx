@@ -6,16 +6,24 @@ import { motion } from 'framer-motion'
 import Icon from '@/components/Icon'
 
 export default function AboutSection() {
-  const teamImages = [
-    { src: '/images/about/team-1.jpg', alt: 'Korae 團隊活動' },
-    { src: '/images/about/team-2.jpg', alt: 'Korae 團隊會議' },
-    { src: '/images/about/team-3.jpg', alt: 'Korae 團隊工作' },
-  ]
+  // 使用獨立的圖片節點配置
+  const aboutSectionImages = {
+    image1: { src: '/images/about/about-section-1.jpg', alt: 'Korae 團隊活動', filename: 'about-section-1.jpg' },
+    image2: { src: '/images/about/about-section-2.jpg', alt: 'Korae 團隊會議', filename: 'about-section-2.jpg' },
+    image3: { src: '/images/about/about-section-3.jpg', alt: 'Korae 團隊工作', filename: 'about-section-3.jpg' },
+  }
 
   return (
     <section className="relative py-12 sm:py-16 md:py-24 bg-white dark:bg-slate-900 overflow-hidden">
-      {/* Background Brand Text - 淡化的 Korae 文字 */}
+      {/* Background Brand Text - 淡化的 Korae 文字 (上方，右側) */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 opacity-5 dark:opacity-10 pointer-events-none select-none">
+        <div className="text-[200px] sm:text-[300px] md:text-[400px] lg:text-[500px] font-black text-slate-900 dark:text-white leading-none whitespace-nowrap">
+          Korae
+        </div>
+      </div>
+      
+      {/* Background Brand Text - 淡化的 Korae 文字 (下方，左側，從左至右) */}
+      <div className="absolute left-0 top-3/4 -translate-y-1/2 -translate-x-1/4 opacity-5 dark:opacity-10 pointer-events-none select-none">
         <div className="text-[200px] sm:text-[300px] md:text-[400px] lg:text-[500px] font-black text-slate-900 dark:text-white leading-none whitespace-nowrap">
           Korae
         </div>
@@ -86,8 +94,8 @@ export default function AboutSection() {
             >
               <div className="relative w-full h-full bg-slate-200 dark:bg-slate-700">
                 <Image
-                  src={teamImages[0].src}
-                  alt={teamImages[0].alt}
+                  src={aboutSectionImages.image1.src}
+                  alt={aboutSectionImages.image1.alt}
                   fill
                   className="object-cover"
                   unoptimized
@@ -101,12 +109,12 @@ export default function AboutSection() {
                 <div className="image-placeholder hidden absolute inset-0 items-center justify-center bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600">
                   <div className="text-center p-4">
                     <div className="text-3xl mb-2">📸</div>
-                    <div className="text-xs text-slate-600 dark:text-slate-400 font-medium mb-1">團隊照片 1</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-400 font-medium mb-1">關於我們圖片 1</div>
                     <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
-                      {teamImages[0].src.split('/').pop()}
+                      {aboutSectionImages.image1.filename}
                     </div>
                     <div className="text-[9px] text-slate-400 dark:text-slate-500 mt-1 leading-tight">
-                      Admin: /admin<br/>分類: 關於我們 - 團隊照片
+                      Admin: /admin<br/>分類: 關於我們 - 區塊圖片
                     </div>
                   </div>
                 </div>
@@ -123,8 +131,8 @@ export default function AboutSection() {
             >
               <div className="relative w-full h-full bg-slate-200 dark:bg-slate-700">
                 <Image
-                  src={teamImages[1].src}
-                  alt={teamImages[1].alt}
+                  src={aboutSectionImages.image2.src}
+                  alt={aboutSectionImages.image2.alt}
                   fill
                   className="object-cover"
                   unoptimized
@@ -138,12 +146,12 @@ export default function AboutSection() {
                 <div className="image-placeholder hidden absolute inset-0 items-center justify-center bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600">
                   <div className="text-center p-4">
                     <div className="text-3xl mb-2">📸</div>
-                    <div className="text-xs text-slate-600 dark:text-slate-400 font-medium mb-1">團隊照片 2</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-400 font-medium mb-1">關於我們圖片 2</div>
                     <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
-                      {teamImages[1].src.split('/').pop()}
+                      {aboutSectionImages.image2.filename}
                     </div>
                     <div className="text-[9px] text-slate-400 dark:text-slate-500 mt-1 leading-tight">
-                      Admin: /admin<br/>分類: 關於我們 - 團隊照片
+                      Admin: /admin<br/>分類: 關於我們 - 區塊圖片
                     </div>
                   </div>
                 </div>
@@ -160,8 +168,8 @@ export default function AboutSection() {
             >
               <div className="relative w-full h-full bg-slate-200 dark:bg-slate-700">
                 <Image
-                  src={teamImages[2].src}
-                  alt={teamImages[2].alt}
+                  src={aboutSectionImages.image3.src}
+                  alt={aboutSectionImages.image3.alt}
                   fill
                   className="object-cover"
                   unoptimized
@@ -175,12 +183,12 @@ export default function AboutSection() {
                 <div className="image-placeholder hidden absolute inset-0 items-center justify-center bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600">
                   <div className="text-center p-4">
                     <div className="text-3xl mb-2">📸</div>
-                    <div className="text-xs text-slate-600 dark:text-slate-400 font-medium mb-1">團隊照片 3</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-400 font-medium mb-1">關於我們圖片 3</div>
                     <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
-                      {teamImages[2].src.split('/').pop()}
+                      {aboutSectionImages.image3.filename}
                     </div>
                     <div className="text-[9px] text-slate-400 dark:text-slate-500 mt-1 leading-tight">
-                      Admin: /admin<br/>分類: 關於我們 - 團隊照片
+                      Admin: /admin<br/>分類: 關於我們 - 區塊圖片
                     </div>
                   </div>
                 </div>
@@ -190,7 +198,7 @@ export default function AboutSection() {
         </div>
 
         {/* Additional Content - 保留原有的重要資訊，但簡化顯示 */}
-        <div className="mt-16 md:mt-24 max-w-4xl mx-auto">
+        <div className="mt-16 md:mt-24 mb-24 max-w-4xl mx-auto">
           <div className="prose prose-lg max-w-none text-slate-700 dark:text-slate-300 space-y-5 md:space-y-6">
             <p className="text-base md:text-lg leading-relaxed">
               Korae 延續 OrangeBox 的卓越傳統，於 2026 年全新出發，致力提供更優質、更透明的價格及服務，涵蓋亞洲地區客戶需求。
@@ -225,100 +233,6 @@ export default function AboutSection() {
               「在這個數碼新世代，效率至關重要。Korae 作為網上批發平台的市場領導者，一直致力為不同規模的商店提供合適且優質的商品，透過創新並緊貼市場趨勢的服務模式，提升客戶的競爭優勢。」
               <footer className="mt-2 text-sm md:text-base not-italic text-slate-500 dark:text-slate-400">— 新城電台評價</footer>
             </blockquote>
-          </div>
-        </div>
-
-        {/* Awards Grid */}
-        <div className="grid md:grid-cols-3 gap-5 md:gap-6 mb-12 md:mb-16">
-          <div className="bg-gradient-to-br from-blue-50 to-white dark:from-blue-900/20 dark:to-slate-800 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-blue-100 dark:border-blue-800">
-            <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/50 rounded-xl flex items-center justify-center mb-4 overflow-hidden relative">
-              <Image
-                src="/images/awards/metro-radio-award.png"
-                alt="新城電台 傑出批發平台"
-                width={64}
-                height={64}
-                className="object-contain w-full h-full"
-                unoptimized
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement
-                  target.style.display = 'none'
-                  const placeholder = target.nextElementSibling as HTMLElement
-                  if (placeholder) placeholder.style.display = 'flex'
-                }}
-              />
-              <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-center px-2">
-                  <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
-                    metro-radio-award.png
-                  </div>
-                  <div className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight">
-                    Admin: /admin<br/>分類: 獎項圖片<br/>尺寸: 400x400
-                  </div>
-                </div>
-              </div>
-            </div>
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">新城電台 傑出批發平台</h3>
-            <p className="text-slate-600 dark:text-slate-400">業界認可的數碼品牌</p>
-          </div>
-          <div className="bg-gradient-to-br from-amber-50 to-white dark:from-amber-900/20 dark:to-slate-800 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-amber-100 dark:border-amber-800">
-            <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/50 rounded-xl flex items-center justify-center mb-4 overflow-hidden relative">
-              <Image
-                src="/images/awards/award-brand.png"
-                alt="得獎品牌"
-                width={64}
-                height={64}
-                className="object-contain w-full h-full"
-                unoptimized
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement
-                  target.style.display = 'none'
-                  const placeholder = target.nextElementSibling as HTMLElement
-                  if (placeholder) placeholder.style.display = 'flex'
-                }}
-              />
-              <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-center px-2">
-                  <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
-                    award-brand.png
-                  </div>
-                  <div className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight">
-                    Admin: /admin<br/>分類: 獎項圖片<br/>尺寸: 400x400
-                  </div>
-                </div>
-              </div>
-            </div>
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">得獎品牌</h3>
-            <p className="text-slate-600 dark:text-slate-400">備受肯定的優秀品牌</p>
-          </div>
-          <div className="bg-gradient-to-br from-green-50 to-white dark:from-green-900/20 dark:to-slate-800 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-green-100 dark:border-green-800">
-            <div className="w-16 h-16 bg-green-100 dark:bg-green-900/50 rounded-xl flex items-center justify-center mb-4 overflow-hidden relative">
-              <Image
-                src="/images/awards/outstanding-platform.png"
-                alt="傑出網上批發平台"
-                width={64}
-                height={64}
-                className="object-contain w-full h-full"
-                unoptimized
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement
-                  target.style.display = 'none'
-                  const placeholder = target.nextElementSibling as HTMLElement
-                  if (placeholder) placeholder.style.display = 'flex'
-                }}
-              />
-              <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-center px-2">
-                  <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
-                    outstanding-platform.png
-                  </div>
-                  <div className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight">
-                    Admin: /admin<br/>分類: 獎項圖片<br/>尺寸: 400x400
-                  </div>
-                </div>
-              </div>
-            </div>
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">傑出網上批發平台</h3>
-            <p className="text-slate-600 dark:text-slate-400">市場領導者地位</p>
           </div>
         </div>
 

@@ -1,9 +1,9 @@
 'use client'
 
 import Link from 'next/link'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef } from 'react'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -62,14 +62,60 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
   const footerRef = useRef(null)
   const isInView = useInView(footerRef, { once: true, margin: '-50px' })
+  const [popularPosts, setPopularPosts] = useState<Array<{ title: string; date: string; url: string }>>([])
+  const [loadingPosts, setLoadingPosts] = useState(true)
 
-  const popularPosts = [
-    { title: '2025韓國首爾自由行必行服飾潮牌推介，漢南洞/聖水洞最新名店、JENNIE/邊佑錫代言熱門款！', date: '2025-01-02', url: '#' },
-    { title: '掌握韓國Musinsa代購技巧：必買7大品牌，潮流價格低至0.7折！', date: '2024-11-26', url: '#' },
-    { title: '首爾8間影韓式證件相推薦 弘大證件照介紹 2024！', date: '2024-11-11', url: '#' },
-    { title: '7個復古少年風「牛仔五分褲」穿搭範本，(G)I-DLE、aespa都在穿的早秋時尚！', date: '2024-10-25', url: '#' },
-    { title: '格仔恤衫熱潮回歸，跟著韓國女生展現經典不過時的復古韓系穿搭！', date: '2024-10-18', url: '#' },
-  ]
+  // 從 WordPress 獲取熱門文章
+  useEffect(() => {
+    const fetchPopularPosts = async () => {
+      try {
+        const response = await fetch('/api/posts/popular', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        
+        const data = await response.json()
+        if (data && Array.isArray(data.posts) && data.posts.length > 0) {
+          setPopularPosts(data.posts)
+        } else {
+          // 如果獲取失敗，使用默認數據
+          setPopularPosts([
+            { title: '2025韓國首爾自由行必行服飾潮牌推介，漢南洞/聖水洞最新名店、JENNIE/邊佑錫代言熱門款！', date: '2025-01-02', url: '/blog' },
+            { title: '掌握韓國Musinsa代購技巧：必買7大品牌，潮流價格低至0.7折！', date: '2024-11-26', url: '/blog' },
+            { title: '首爾8間影韓式證件相推薦 弘大證件照介紹 2024！', date: '2024-11-11', url: '/blog' },
+            { title: '7個復古少年風「牛仔五分褲」穿搭範本，(G)I-DLE、aespa都在穿的早秋時尚！', date: '2024-10-25', url: '/blog' },
+            { title: '格仔恤衫熱潮回歸，跟著韓國女生展現經典不過時的復古韓系穿搭！', date: '2024-10-18', url: '/blog' },
+          ])
+        }
+      } catch (error) {
+        console.error('Error fetching popular posts:', error)
+        // 使用默認數據
+        setPopularPosts([
+          { title: '2025韓國首爾自由行必行服飾潮牌推介，漢南洞/聖水洞最新名店、JENNIE/邊佑錫代言熱門款！', date: '2025-01-02', url: '/blog' },
+          { title: '掌握韓國Musinsa代購技巧：必買7大品牌，潮流價格低至0.7折！', date: '2024-11-26', url: '/blog' },
+          { title: '首爾8間影韓式證件相推薦 弘大證件照介紹 2024！', date: '2024-11-11', url: '/blog' },
+          { title: '7個復古少年風「牛仔五分褲」穿搭範本，(G)I-DLE、aespa都在穿的早秋時尚！', date: '2024-10-25', url: '/blog' },
+          { title: '格仔恤衫熱潮回歸，跟著韓國女生展現經典不過時的復古韓系穿搭！', date: '2024-10-18', url: '/blog' },
+        ])
+      } finally {
+        setLoadingPosts(false)
+      }
+    }
+
+    // 只在客戶端執行
+    if (typeof window !== 'undefined') {
+      fetchPopularPosts()
+    } else {
+      // 服務器端直接設置默認數據
+      setLoadingPosts(false)
+    }
+  }, [])
 
   const popularTags = [
     '女裝批發', '日本時裝批發', '日韓時裝', '時裝批發', '男裝批發',
@@ -110,6 +156,13 @@ export default function Footer() {
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] bg-[length:40px_40px]"></div>
+      </div>
+      
+      {/* Background Brand Text - 淡化的 Korae 水印 */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] dark:opacity-[0.05] pointer-events-none select-none">
+        <div className="text-[300px] sm:text-[400px] md:text-[500px] lg:text-[600px] font-black text-white leading-none whitespace-nowrap">
+          Korae
+        </div>
       </div>
 
       {/* Main Footer Content */}
@@ -265,23 +318,38 @@ export default function Footer() {
           <FooterSection delay={0.4}>
             <div>
               <h4 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6 text-white">熱門文章</h4>
-              <ul className="space-y-3 sm:space-y-4">
-                {popularPosts.map((post, index) => (
-                  <motion.li
-                    key={index}
-                    variants={itemVariants}
-                    whileHover={{ x: 5 }}
-                    className="group"
-                  >
-                    <Link href={post.url} className="block touch-manipulation">
-                      <p className="text-xs sm:text-sm text-slate-300 group-hover:text-blue-400 transition-colors mb-1 line-clamp-2">
-                        {post.title}
-                      </p>
-                      <span className="text-xs text-slate-500">{post.date}</span>
-                    </Link>
-                  </motion.li>
-                ))}
-              </ul>
+              {loadingPosts ? (
+                <ul className="space-y-3 sm:space-y-4">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <li key={i} className="animate-pulse">
+                      <div className="h-4 bg-slate-700 rounded mb-2"></div>
+                      <div className="h-3 bg-slate-800 rounded w-20"></div>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <ul className="space-y-3 sm:space-y-4">
+                  {popularPosts.length > 0 ? (
+                    popularPosts.map((post, index) => (
+                      <motion.li
+                        key={`${post.url}-${index}`}
+                        variants={itemVariants}
+                        whileHover={{ x: 5 }}
+                        className="group"
+                      >
+                        <Link href={post.url} className="block touch-manipulation">
+                          <p className="text-xs sm:text-sm text-slate-300 group-hover:text-blue-400 transition-colors mb-1 line-clamp-2">
+                            {post.title}
+                          </p>
+                          <span className="text-xs text-slate-500">{post.date}</span>
+                        </Link>
+                      </motion.li>
+                    ))
+                  ) : (
+                    <li className="text-xs sm:text-sm text-slate-400">暫無文章</li>
+                  )}
+                </ul>
+              )}
             </div>
           </FooterSection>
 

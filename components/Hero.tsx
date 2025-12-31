@@ -187,8 +187,8 @@ export default function Hero() {
           <div className="absolute top-0 right-0 w-[60%] h-[45%] rounded-2xl overflow-hidden shadow-xl z-10 bg-purple-100/80 dark:bg-purple-900/40 border-2 border-dashed border-purple-300/50 dark:border-purple-600/30 rotate-[5deg] backdrop-blur-sm">
             <div className="relative w-full h-full">
               <Image
-                src="/images/about/team-1.jpg"
-                alt="團隊照片 1"
+                src="/images/about/team-4.jpg"
+                alt="團隊照片 4"
                 fill
                 className="object-cover rounded-2xl"
                 unoptimized
@@ -202,9 +202,9 @@ export default function Hero() {
               <div className="image-placeholder hidden absolute inset-0 items-center justify-center">
                 <div className="text-center p-3">
                   <Icon emoji="📸" size={32} className="text-purple-500 dark:text-purple-400 mx-auto mb-1" />
-                  <div className="text-xs text-purple-600 dark:text-purple-300 font-medium mb-1">團隊照片 1</div>
+                  <div className="text-xs text-purple-600 dark:text-purple-300 font-medium mb-1">團隊照片 4</div>
                   <div className="text-[9px] text-purple-500 dark:text-purple-400 font-semibold mb-1 px-1.5 py-0.5 bg-purple-50 dark:bg-purple-900/30 rounded">
-                    team-1.jpg
+                    team-4.jpg
                   </div>
                   <div className="text-[8px] text-purple-400 dark:text-purple-500 leading-tight">
                     <a href="/admin" target="_blank" className="underline hover:text-purple-600 dark:hover:text-purple-400">
@@ -221,8 +221,8 @@ export default function Hero() {
           <div className="absolute top-[25%] left-0 w-[55%] h-[50%] rounded-2xl overflow-hidden shadow-xl z-20 bg-indigo-100/80 dark:bg-indigo-900/40 border-2 border-dashed border-indigo-300/50 dark:border-indigo-600/30 rotate-[-8deg] backdrop-blur-sm">
             <div className="relative w-full h-full">
               <Image
-                src="/images/about/team-2.jpg"
-                alt="團隊照片 2"
+                src="/images/about/team-5.jpg"
+                alt="團隊照片 5"
                 fill
                 className="object-cover rounded-2xl"
                 unoptimized
@@ -236,9 +236,9 @@ export default function Hero() {
               <div className="image-placeholder hidden absolute inset-0 items-center justify-center">
                 <div className="text-center p-3">
                   <Icon emoji="📸" size={32} className="text-indigo-500 dark:text-indigo-400 mx-auto mb-1" />
-                  <div className="text-xs text-indigo-600 dark:text-indigo-300 font-medium mb-1">團隊照片 2</div>
+                  <div className="text-xs text-indigo-600 dark:text-indigo-300 font-medium mb-1">團隊照片 5</div>
                   <div className="text-[9px] text-indigo-500 dark:text-indigo-400 font-semibold mb-1 px-1.5 py-0.5 bg-indigo-50 dark:bg-indigo-900/30 rounded">
-                    team-2.jpg
+                    team-5.jpg
                   </div>
                   <div className="text-[8px] text-indigo-400 dark:text-indigo-500 leading-tight">
                     <a href="/admin" target="_blank" className="underline hover:text-indigo-600 dark:hover:text-indigo-400">
@@ -255,8 +255,8 @@ export default function Hero() {
           <div className="absolute bottom-0 right-[10%] w-[50%] h-[40%] rounded-2xl overflow-hidden shadow-xl z-30 bg-teal-100/80 dark:bg-teal-900/40 border-2 border-dashed border-teal-300/50 dark:border-teal-600/30 rotate-[3deg] backdrop-blur-sm">
             <div className="relative w-full h-full">
               <Image
-                src="/images/about/team-3.jpg"
-                alt="團隊照片 3"
+                src="/images/about/team-6.jpg"
+                alt="團隊照片 6"
                 fill
                 className="object-cover rounded-2xl"
                 unoptimized
@@ -270,9 +270,9 @@ export default function Hero() {
               <div className="image-placeholder hidden absolute inset-0 items-center justify-center">
                 <div className="text-center p-3">
                   <Icon emoji="📸" size={32} className="text-teal-500 dark:text-teal-400 mx-auto mb-1" />
-                  <div className="text-xs text-teal-600 dark:text-teal-300 font-medium mb-1">團隊照片 3</div>
+                  <div className="text-xs text-teal-600 dark:text-teal-300 font-medium mb-1">團隊照片 6</div>
                   <div className="text-[9px] text-teal-500 dark:text-teal-400 font-semibold mb-1 px-1.5 py-0.5 bg-teal-50 dark:bg-teal-900/30 rounded">
-                    team-3.jpg
+                    team-6.jpg
                   </div>
                   <div className="text-[8px] text-teal-400 dark:text-teal-500 leading-tight">
                     <a href="/admin" target="_blank" className="underline hover:text-teal-600 dark:hover:text-teal-400">

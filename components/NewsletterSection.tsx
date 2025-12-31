@@ -90,7 +90,7 @@ export default function NewsletterSection() {
   ]
 
   return (
-    <section ref={ref} className="py-12 sm:py-16 md:py-24 bg-white dark:bg-slate-900">
+    <section ref={ref} className="py-10 sm:py-14 md:py-20 bg-white dark:bg-slate-900">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial="hidden"

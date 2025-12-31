@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-TW" data-theme="korae" suppressHydrationWarning className="overflow-x-hidden">
-      <body className={`${inter.className} overflow-x-hidden max-w-full`}>
+      <body className={`${inter.className} overflow-x-hidden max-w-full`} suppressHydrationWarning>
         <SafeComponent>
           <Header />
         </SafeComponent>

@@ -10,3 +10,4 @@ export default function SafeComponent({
   return <ErrorBoundary>{children}</ErrorBoundary>
 }
 
+

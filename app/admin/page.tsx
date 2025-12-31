@@ -34,7 +34,8 @@ const imageCategories: ImageCategory[] = [
     path: '/images/logo/', 
     defaultSize: '300x150',
     files: [
-      { filename: 'korae-logo.png', size: '300x150', description: 'Korae 主 Logo（透明背景 PNG）' }
+      { filename: 'korae-logo.png', size: '300x150', description: 'Korae 主 Logo（透明背景 PNG，淺色模式）' },
+      { filename: 'korae-logo-dark.png', size: '300x150', description: 'Korae 主 Logo 黑夜模式（透明背景 PNG，深色模式）' }
     ] 
   },
   
@@ -90,6 +91,18 @@ const imageCategories: ImageCategory[] = [
       { filename: 'team-6.jpg', size: '400x400', description: '團隊成員照片 6（正方形）' }
     ] 
   },
+  // 關於我們區塊圖片 (about-section)
+  { 
+    id: 'about-section', 
+    name: '關於我們 - 區塊圖片', 
+    path: '/images/about/', 
+    defaultSize: '800x600',
+    files: [
+      { filename: 'about-section-1.jpg', size: '800x600', description: '關於我們區塊圖片 1（橫向）' },
+      { filename: 'about-section-2.jpg', size: '800x600', description: '關於我們區塊圖片 2（橫向）' },
+      { filename: 'about-section-3.jpg', size: '800x600', description: '關於我們區塊圖片 3（橫向）' }
+    ] 
+  },
   
   // 批發+網店服務 (services)
   { 
@@ -142,6 +155,7 @@ const imageCategories: ImageCategory[] = [
     path: '/images/awards/', 
     defaultSize: '400x400',
     files: [
+      { filename: 'metro-radio-award.png', size: '400x400', description: '新城電台 傑出批發平台獎項（正方形）' },
       { filename: 'hk-digital-brand-2018.png', size: '400x400', description: '香港數碼品牌 2018 獎項（正方形）' },
       { filename: 'award-brand.png', size: '400x400', description: '得獎品牌標誌（正方形）' },
       { filename: 'outstanding-platform.png', size: '400x400', description: '傑出網上批發平台獎項（正方形）' },

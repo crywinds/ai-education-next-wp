@@ -2,9 +2,13 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
 import Icon from '@/components/Icon'
 
 export default function ServicesSection() {
+  const [imageError, setImageError] = useState(false)
+
   const services = [
     {
       icon: '📥',
@@ -78,16 +82,167 @@ export default function ServicesSection() {
             </Link>
           </div>
           <div className="relative">
-            <div className="aspect-video bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl shadow-xl overflow-hidden border-2 border-dashed border-slate-400 dark:border-slate-600">
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="mb-4 flex items-center justify-center">
-                    <Icon emoji="📊" size={64} className="text-slate-700 dark:text-slate-300" />
-                  </div>
-                  <div className="text-slate-700 dark:text-slate-300 font-semibold text-lg mb-2">數據下載功能展示</div>
-                  <div className="text-sm text-slate-500 dark:text-slate-400">CSV、Excel、JSON 格式</div>
-                  <div className="text-sm text-slate-500 dark:text-slate-400 mt-2">支援 Shopify、WooCommerce、Shopline、Shopage</div>
+            <div className="aspect-video bg-gradient-to-br from-green-50 via-emerald-50 to-cyan-50 dark:from-green-900/20 dark:via-emerald-900/20 dark:to-cyan-900/20 rounded-2xl shadow-xl overflow-hidden relative">
+              {/* Animated Background */}
+              <div className="absolute inset-0">
+                <div className="absolute inset-0 bg-gradient-to-r from-green-400/10 via-emerald-400/10 to-cyan-400/10 dark:from-green-500/5 dark:via-emerald-500/5 dark:to-cyan-500/5 animate-gradient bg-[length:200%_auto]"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,197,94,0.1),transparent_70%)]"></div>
+              </div>
+
+              {/* Data Download Visualization */}
+              <div className="relative z-10 w-full h-full flex flex-col items-center justify-center p-6 sm:p-8">
+                {/* Download Icon with Animation */}
+                <div className="relative mb-6">
+                  <motion.div
+                    className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg"
+                    animate={{
+                      scale: [1, 1.05, 1],
+                      rotate: [0, 5, -5, 0],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    }}
+                  >
+                    <svg className="w-10 h-10 sm:w-12 sm:h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                  </motion.div>
+                  
+                  {/* Pulsing Ring */}
+                  <motion.div
+                    className="absolute inset-0 border-2 border-green-400 rounded-2xl"
+                    animate={{
+                      scale: [1, 1.3, 1.3],
+                      opacity: [0.5, 0, 0],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: 'easeOut',
+                    }}
+                  />
                 </div>
+
+                {/* Data Flow Animation */}
+                <div className="w-full max-w-xs mb-6">
+                  {/* Progress Bar */}
+                  <div className="relative h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden mb-4">
+                    <motion.div
+                      className="absolute inset-y-0 left-0 bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-500 rounded-full"
+                      initial={{ width: '0%' }}
+                      animate={{ width: '100%' }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                      }}
+                    />
+                    <motion.div
+                      className="absolute inset-y-0 right-0 w-8 bg-white/50 blur-sm"
+                      initial={{ x: '-100%' }}
+                      animate={{ x: '400%' }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: 'linear',
+                      }}
+                    />
+                  </div>
+
+                  {/* File Icons */}
+                  <div className="flex items-center justify-center gap-3 sm:gap-4">
+                    {['CSV', 'Excel', 'JSON'].map((format, index) => (
+                      <motion.div
+                        key={format}
+                        className="flex flex-col items-center"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          delay: index * 0.2,
+                          duration: 0.5,
+                        }}
+                      >
+                        <motion.div
+                          className="w-12 h-12 sm:w-14 sm:h-14 bg-white dark:bg-slate-800 rounded-lg shadow-md flex items-center justify-center mb-2"
+                          whileHover={{ scale: 1.1, y: -5 }}
+                          transition={{ type: 'spring', stiffness: 300 }}
+                        >
+                          <span className="text-xs sm:text-sm font-bold text-green-600 dark:text-green-400">{format}</span>
+                        </motion.div>
+                        <motion.div
+                          className="w-1 h-1 bg-green-500 rounded-full"
+                          animate={{
+                            scale: [1, 1.5, 1],
+                            opacity: [0.5, 1, 0.5],
+                          }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            delay: index * 0.3,
+                          }}
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Platform Icons */}
+                <div className="flex items-center gap-2 sm:gap-3 mb-4">
+                  {['Shopify', 'WooCommerce', 'Shopline', 'Shopage'].map((platform, index) => (
+                    <motion.div
+                      key={platform}
+                      className="px-2 sm:px-3 py-1 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 shadow-sm"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        delay: 0.5 + index * 0.1,
+                        duration: 0.3,
+                      }}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                    >
+                      {platform}
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Download Status Text */}
+                <motion.div
+                  className="text-center"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1 }}
+                >
+                  <div className="text-sm sm:text-base font-semibold text-green-600 dark:text-green-400 mb-1">
+                    數據下載中...
+                  </div>
+                  <div className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                    實時同步 • 無限制下載
+                  </div>
+                </motion.div>
+
+                {/* Floating Data Particles */}
+                {[...Array(6)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-2 h-2 bg-green-400 dark:bg-green-500 rounded-full"
+                    style={{
+                      top: `${20 + Math.random() * 60}%`,
+                      left: `${10 + Math.random() * 80}%`,
+                    }}
+                    animate={{
+                      y: [0, -30, 0],
+                      opacity: [0.3, 1, 0.3],
+                      scale: [0.5, 1, 0.5],
+                    }}
+                    transition={{
+                      duration: 2 + Math.random() * 2,
+                      repeat: Infinity,
+                      delay: Math.random() * 2,
+                    }}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -97,33 +252,31 @@ export default function ServicesSection() {
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-20 items-center">
           <div className="order-2 md:order-1">
             <div className="aspect-video bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl shadow-xl overflow-hidden relative">
-              <Image
-                src="/images/services/dongdaemun-mobile.jpg"
-                alt="東大門 | Korae 韓國批發"
-                fill
-                className="object-cover"
-                unoptimized
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement
-                  target.style.display = 'none'
-                  const placeholder = target.nextElementSibling as HTMLElement
-                  if (placeholder) placeholder.style.display = 'flex'
-                }}
-              />
-              <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-center p-4">
-                  <div className="mb-2 flex items-center justify-center">
-                    <Icon emoji="🖼️" size={40} className="text-slate-600 dark:text-slate-400" />
-                  </div>
-                  <div className="text-slate-600 dark:text-slate-300 font-semibold text-sm mb-1">東大門 | Korae 韓國批發</div>
-                  <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
-                    dongdaemun-mobile.jpg
-                  </div>
-                  <div className="text-[9px] text-slate-500 dark:text-slate-400 mt-1 leading-tight">
-                    Admin: /admin<br/>分類: 服務圖片<br/>尺寸: 1200x675
+              {!imageError ? (
+                <Image
+                  src="/images/services/dongdaemun-mobile.jpg"
+                  alt="東大門 | Korae 韓國批發"
+                  fill
+                  className="object-cover"
+                  unoptimized
+                  onError={() => setImageError(true)}
+                />
+              ) : (
+                <div className="absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center flex">
+                  <div className="text-center p-4">
+                    <div className="mb-2 flex items-center justify-center">
+                      <Icon emoji="🖼️" size={40} className="text-slate-600 dark:text-slate-400" />
+                    </div>
+                    <div className="text-slate-600 dark:text-slate-300 font-semibold text-sm mb-1">東大門 | Korae 韓國批發</div>
+                    <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                      dongdaemun-mobile.jpg
+                    </div>
+                    <div className="text-[9px] text-slate-500 dark:text-slate-400 mt-1 leading-tight">
+                      Admin: /admin<br/>分類: 服務圖片<br/>尺寸: 1200x675
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
           <div className="order-1 md:order-2">
@@ -200,33 +353,111 @@ export default function ServicesSection() {
         {/* Pricing Section */}
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center bg-white dark:bg-slate-800 rounded-2xl p-6 md:p-8 lg:p-12 shadow-lg border border-slate-200 dark:border-slate-700 mb-12">
           <div className="relative">
-            <div className="aspect-video bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl overflow-hidden relative">
-              <Image
-                src="/images/services/service-fee.jpg"
-                alt="服務收費說明圖"
-                fill
-                className="object-cover"
-                unoptimized
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement
-                  target.style.display = 'none'
-                  const placeholder = target.nextElementSibling as HTMLElement
-                  if (placeholder) placeholder.style.display = 'flex'
-                }}
-              />
-              <div className="hidden absolute inset-0 bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-slate-400 dark:border-slate-600 items-center justify-center">
-                <div className="text-center p-4">
-                  <div className="mb-2 flex items-center justify-center">
-                    <Icon emoji="🖼️" size={48} className="text-slate-600 dark:text-slate-400" />
-                  </div>
-                  <div className="text-slate-700 dark:text-slate-300 font-semibold mb-1">服務收費說明圖</div>
-                  <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
-                    service-fee.jpg
-                  </div>
-                  <div className="text-[9px] text-slate-500 dark:text-slate-400 mt-1 leading-tight">
-                    Admin: /admin<br/>分類: 服務圖片<br/>尺寸: 1200x675
-                  </div>
+            <div className="aspect-video bg-gradient-to-br from-green-50 via-emerald-50 to-cyan-50 dark:from-green-900/20 dark:via-emerald-900/20 dark:to-cyan-900/20 rounded-xl overflow-hidden relative flex items-center justify-center">
+              {/* Animated Background */}
+              <div className="absolute inset-0">
+                <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 via-emerald-400/20 to-cyan-400/20 dark:from-green-500/10 dark:via-emerald-500/10 dark:to-cyan-500/10 animate-gradient bg-[length:200%_auto]"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,197,94,0.1),transparent_70%)]"></div>
+              </div>
+
+              {/* Price Animation Container */}
+              <div className="relative z-10 text-center">
+                {/* Price Labels */}
+                <div className="mb-4">
+                  <div className="text-sm text-slate-600 dark:text-slate-400 mb-2 font-medium">成交費</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-400 font-medium">交易費</div>
                 </div>
+
+                {/* Animated Price Display */}
+                <div className="relative h-24 sm:h-28 md:h-32 flex items-center justify-center">
+                  {/* High Price (Starting) */}
+                  <motion.div
+                    initial={{ opacity: 1, y: 0, scale: 1 }}
+                    animate={{ opacity: 0, y: -20, scale: 0.8 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    className="absolute"
+                  >
+                    <div className="text-5xl sm:text-6xl md:text-7xl font-black text-slate-400 dark:text-slate-600 line-through">
+                      $999
+                    </div>
+                  </motion.div>
+
+                  {/* Medium Price (Transition) */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                    animate={{ opacity: [0, 1, 0], y: [20, 0, -20], scale: [0.8, 1, 0.8] }}
+                    transition={{ duration: 1, delay: 1.5 }}
+                    className="absolute"
+                  >
+                    <div className="text-5xl sm:text-6xl md:text-7xl font-black text-amber-500 dark:text-amber-400">
+                      $499
+                    </div>
+                  </motion.div>
+
+                  {/* Final Price $0 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 2.5, type: 'spring', stiffness: 200 }}
+                    className="relative"
+                  >
+                    <div className="text-6xl sm:text-7xl md:text-8xl font-black bg-gradient-to-r from-green-600 via-emerald-500 to-cyan-500 bg-clip-text text-transparent">
+                      $0
+                    </div>
+                    {/* Sparkle Effect */}
+                    <motion.div
+                      className="absolute -top-2 -right-2 text-2xl"
+                      animate={{ 
+                        rotate: [0, 180, 360],
+                        scale: [1, 1.2, 1]
+                      }}
+                      transition={{ 
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: 'easeInOut'
+                      }}
+                    >
+                      ✨
+                    </motion.div>
+                  </motion.div>
+                </div>
+
+                {/* Subtitle */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 3.3 }}
+                  className="mt-4"
+                >
+                  <div className="text-lg sm:text-xl font-bold text-green-600 dark:text-green-400">
+                    全免
+                  </div>
+                  <div className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                    透明收費，無隱藏費用
+                  </div>
+                </motion.div>
+
+                {/* Floating Elements */}
+                {[...Array(8)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-2 h-2 bg-green-400 dark:bg-green-500 rounded-full"
+                    style={{
+                      top: `${10 + Math.random() * 80}%`,
+                      left: `${10 + Math.random() * 80}%`,
+                    }}
+                    animate={{
+                      y: [0, -30, 0],
+                      opacity: [0.3, 1, 0.3],
+                      scale: [0.5, 1, 0.5],
+                    }}
+                    transition={{
+                      duration: 3 + Math.random() * 2,
+                      repeat: Infinity,
+                      delay: Math.random() * 2,
+                    }}
+                  />
+                ))}
               </div>
             </div>
           </div>

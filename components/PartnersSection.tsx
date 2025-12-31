@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import Image from 'next/image'
 
 const containerVariants = {
@@ -85,6 +85,7 @@ const partners = [
 export default function PartnersSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({})
 
   return (
     <section ref={ref} className="py-12 sm:py-16 md:py-24 bg-white dark:bg-slate-900">
@@ -122,40 +123,34 @@ export default function PartnersSection() {
                   <div className="relative w-24 sm:w-32 md:w-40 h-16 sm:h-20 md:h-24 flex items-center justify-center">
                     {/* 嘗試載入圖片，如果失敗則顯示佔位符 */}
                     <div className="relative w-full h-full">
-                      <Image
-                        src={partner.logo}
-                        alt={partner.alt}
-                        fill
-                        className="object-contain opacity-70 group-hover:opacity-100 transition-opacity"
-                        sizes="(max-width: 768px) 150px, 200px"
-                        unoptimized
-                        onError={(e) => {
-                          // 如果圖片載入失敗，顯示佔位符
-                          const target = e.target as HTMLImageElement
-                          target.style.display = 'none'
-                          const placeholder = target.parentElement?.querySelector('.partner-placeholder') as HTMLElement
-                          if (placeholder) {
-                            placeholder.style.display = 'flex'
-                          }
-                        }}
-                      />
-                      {/* 佔位符 - 當圖片不存在時顯示 */}
-                      <div
-                        className="partner-placeholder hidden w-full h-full items-center justify-center bg-slate-100 dark:bg-slate-800 rounded-lg border-2 border-dashed border-slate-300 dark:border-slate-600 absolute inset-0"
-                      >
-                        <div className="text-center p-2">
-                          <div className="text-2xl mb-1">🏢</div>
-                          <div className="text-xs text-slate-500 dark:text-slate-400 font-medium mb-1">
-                            {partner.name}
-                          </div>
-                          <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
-                            {partner.logo.split('/').pop()}
-                          </div>
-                          <div className="text-[9px] text-slate-400 dark:text-slate-500 mt-1 leading-tight">
-                            Admin: /admin<br/>分類: 合作伙伴 Logo
+                      {!imageErrors[index] ? (
+                        <Image
+                          src={partner.logo}
+                          alt={partner.alt}
+                          fill
+                          className="object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                          sizes="(max-width: 768px) 150px, 200px"
+                          unoptimized
+                          onError={() => {
+                            setImageErrors(prev => ({ ...prev, [index]: true }))
+                          }}
+                        />
+                      ) : (
+                        <div className="absolute inset-0 w-full h-full items-center justify-center bg-slate-100 dark:bg-slate-800 rounded-lg border-2 border-dashed border-slate-300 dark:border-slate-600 flex">
+                          <div className="text-center p-2">
+                            <div className="text-2xl mb-1">🏢</div>
+                            <div className="text-xs text-slate-500 dark:text-slate-400 font-medium mb-1">
+                              {partner.name}
+                            </div>
+                            <div className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mb-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded">
+                              {partner.logo.split('/').pop()}
+                            </div>
+                            <div className="text-[9px] text-slate-400 dark:text-slate-500 mt-1 leading-tight">
+                              Admin: /admin<br/>分類: 合作伙伴 Logo
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      )}
                     </div>
                   </div>
                 </a>
