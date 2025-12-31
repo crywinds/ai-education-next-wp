@@ -10,8 +10,9 @@
     "start:3000": "next start -p 3000",
     "lint": "next lint",
     "deploy": "node scripts/deploy.js",
-    "deploy:vercel": "vercel --prod",
-    "deploy:preview": "vercel"
+    "deploy:vercel": "vercel --prod --yes",
+    "deploy:preview": "vercel --yes",
+    "vercel:link": "vercel link --project prj_S0hUHJSetVeIV55AuIlybmd7sPmE --yes"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.8",
